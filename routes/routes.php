@@ -9,16 +9,19 @@ $routes = array(
         'class_name' => 'Homepage',
         'has_detail' => 0
     ),
+    "about-us" => array(
+        'class_name' => '',
+        'has_detail' => 0
+    ),
     "adopt" => array(
-        'class_name' => 'Adopt',
+        'class_name' => '',
         'has_detail' => 0
     ),
 );
 /** END SET ROUTES */
 
-
 $base_folder = "pages/";
-$page = str_replace("/petsave/admin/", "", $request);
+$page = str_replace("/petsave/", "", $request);
 
 // chec if has parameters
 if (substr_count($page, "?") > 0) {

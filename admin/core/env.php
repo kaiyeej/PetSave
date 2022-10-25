@@ -1,12 +1,17 @@
 <?php
 
-define('BASE_URL', 'http://localhost/CDMS/');
+define('BASE_URL', 'http://localhost/petsave/');
 define("BASE_PATH", __DIR__ . "/../");
 
-define("HOST", "localhost");
+/*define("HOST", "localhost");
 define("USER", "root");
 define("PASSWORD", "");
-define("DBNAME", "cdms_db");
+define("DBNAME", "petsave_db");*/
+
+define("HOST", "localhost");
+define("USER", "u981310152_ps_root");
+define("PASSWORD", "lMJKix7;3?");
+define("DBNAME", "u981310152_petsave_db");
 
 
 

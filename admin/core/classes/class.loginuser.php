@@ -18,20 +18,9 @@ class LoginUser extends Connection
 
         if ($row) {
 
-            if($row['user_category'] == "A"){
-                $cat = "Admin";
-            }else if($row['user_category'] == "S"){
-                $cat = "Student";
-            }else{
-                $cat = "Teacher";
-            }
-
             $_SESSION['status'] = "in";
-            $_SESSION["cdms_username"] = $row['username'];
-            $_SESSION["cdms_user_category"] = $row['user_category'];
-            $_SESSION["cdms_user_cat"] = $cat;
-            $_SESSION["cdms_user_id"] = $row['user_id'];
-            $_SESSION["cdms_user_email"] = $row['user_email'];
+            $_SESSION['user']['id'] = $row['user_id'];
+            $_SESSION['user']['fullname'] = $row['user_fullname'];
 
             $res = 1;
         } else {

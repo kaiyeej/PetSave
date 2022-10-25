@@ -13,7 +13,7 @@ if (isset($_SESSION["status"])) {
 <head>
 	<base href="../">
 	<meta charset="utf-8" />
-	<title>CHMSU-DMS</title>
+	<title>PetSave</title>
 	<meta name="description" content="Login page" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
@@ -36,7 +36,7 @@ if (isset($_SESSION["status"])) {
 	<!--begin::Layout Themes(used by all pages)-->
 	<!--end::Layout Themes-->
 
-	<link rel="shortcut icon" href="assets/media/logos/CHMSU.png" />
+	<link rel="shortcut icon" href="assets/media/logos/logo.png" />
 
 </head>
 <!--end::Head-->
@@ -56,7 +56,7 @@ if (isset($_SESSION["status"])) {
 					<!--begin::Aside body-->
 					<div class="d-flex flex-column-fluid flex-column flex-center mt-5 mt-lg-0">
 						<a href="#" class="mb-15 text-center">
-							<img src="assets/media/logos/CHMSU.png" class="max-h-75px" alt="" />
+							<img src="assets/media/logos/logo.png" class="max-h-75px" alt="" />
 						</a>
 
 						<!--begin::Signin-->
@@ -103,7 +103,7 @@ if (isset($_SESSION["status"])) {
 					<!--begin: Aside footer for desktop-->
 					<div class="d-flex flex-column-auto justify-content-between mt-15">
 						<div class="text-dark-50 font-weight-bold order-2 order-sm-1 my-2">
-							&copy; 2022 Carlos Hilado Memorial State University
+							&copy; 2022 PetSave
 						</div>
 					</div>
 					<!--end: Aside footer for desktop-->
@@ -117,9 +117,9 @@ if (isset($_SESSION["status"])) {
 				<!--begin::Content body-->
 				<div class="d-flex flex-column-fluid flex-lg-center">
 					<div class="d-flex flex-column justify-content-center">
-						<h3 class="display-3 font-weight-bold my-7 text-white">Welcome to CDMS!</h3>
+						<h3 class="display-3 font-weight-bold my-7 text-white">Welcome to PetSave!</h3>
 						<p class="font-weight-bold font-size-lg text-white opacity-80">
-						Carlos Hilado Memorial State University - Document Management System
+						Our mission is to rescue dogs and cats that have been abandoned, abused, or neglected throughout the Philippines and to make sure that each animal is given "Life with a New Leash"
 						</p>
 					</div>
 				</div>

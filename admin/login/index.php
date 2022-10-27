@@ -30,7 +30,7 @@ if (isset($_SESSION["status"])) {
 	<link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
 	<link href="assets/plugins/custom/prismjs/prismjs.bundle.css" rel="stylesheet" type="text/css" />
 	<link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
 	<!--end::Global Theme Styles-->
 
 	<!--begin::Layout Themes(used by all pages)-->

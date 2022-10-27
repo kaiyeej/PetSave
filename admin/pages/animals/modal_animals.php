@@ -73,6 +73,13 @@
                                 </div>
                             </div>
                         </div>
+                        
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label>Image <span class="text-danger">*</span></label>
+                                <input type="file" class="form-control input-item" name="file" id="if_animal_image" autocomplete="off" required>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">

@@ -1,6 +1,6 @@
 <?php
 
-class Users extends Connection
+class Profile extends Connection
 {
     private $table = 'tbl_users';
     private $pk = 'user_id';
@@ -13,7 +13,6 @@ class Users extends Connection
         if ($is_exist->num_rows > 0) {
             return 2;
         } else {
-            $pass = $this->inputs['password'];
             $form = array(
                 'user_fullname'     => $this->inputs['user_fullname'],
                 'user_address'      => $this->inputs['user_address'],
@@ -30,7 +29,7 @@ class Users extends Connection
 
     public function edit()
     {
-        $primary_id = $this->inputs[$this->pk];
+        $primary_id = $_SESSION['user']['id'];
         $username = $this->clean($this->inputs['username']);
         $is_exist = $this->select($this->table, $this->pk, "username = '$username' AND  $this->pk != '$primary_id'");
         if ($is_exist->num_rows > 0) {
@@ -70,7 +69,7 @@ class Users extends Connection
         $rows = array();
         $result = $this->select($this->table);
         while ($row = $result->fetch_assoc()) {
-            $row['category'] = $row['user_category'] == "A" ? "Admin" :  "Instructor";
+            $row['category'] = $row['user_category'] == "A" ? "Admin" :  "Staff";
             $rows[] = $row;
         }
         return $rows;
@@ -78,8 +77,8 @@ class Users extends Connection
 
     public function view()
     {
-        $primary_id = $this->inputs['id'];
-        $result = $this->select($this->table, "*");
+        $primary_id = $_SESSION['user']['id'];
+        $result = $this->select($this->table, "*", "$this->pk = '$primary_id'");
         return $result->fetch_assoc();
     }
 

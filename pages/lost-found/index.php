@@ -100,7 +100,19 @@
                     $("#canvas_lost_found").html('<div class="col-md-12">' +'<center> No data available</center>' +'</div>');
                 }else{
                     while (i < arr_count) {
-                        console.log(json.data[i]);
+
+                        if(json.data[i].if_type == "L"){
+                            var t_color = "#ff5722;";
+                        }else{
+                            var t_color = "green;";
+                        }
+
+                        if(json.data[i].status == "R"){
+                            var r_status = "";
+                        }else{
+                            var r_status = "display:none;";
+                        }
+                        
                         $("#canvas_lost_found").append(
                             '<div class="col-lg-4 col-md-6">'+
                                 '<div class="single_service">'+
@@ -111,12 +123,13 @@
                                     '</div>'+
                                     '<div class="service_content text-center">'+
                                         '<h3>Name: ' + json.data[i].if_animal_name + '</h3>'+
-                                        '<p style="font-weight: bold;color: #ff5722;">' + json.data[i].type + '</p>'+
+                                        '<p style="font-weight: bold;color: '+t_color+' ">' + json.data[i].type + '</p>'+
                                         '<p style="text-align: left;">Description: ' + json.data[i].if_animal_desc + '</p>'+
                                         '<p style="text-align: left;">Last location: ' + json.data[i].if_last_location_found + '</p>'+
                                         '<p style="text-align: left;">Other remarks: ' + json.data[i].if_other_remarks + '</p>'+
                                         '<p style="text-align: left;">Date Reported: ' + json.data[i].reported_date + '</p>'+
                                     '</div>'+
+                                    '<span class="badge badge-success" style="background-color: #28a745;padding: 10px;width: 100%;'+r_status+'">RESOLVED</span>'+
                                '</div>'+
                             '</div>');
                         i++;

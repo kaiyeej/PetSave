@@ -8,5 +8,7 @@ $classes = array(
     'Adopt'             => $pre_class . 'adopt.php',
     'Animals'           => $pre_class . 'animals.php',
     'LostAndFound'      => $pre_class . 'lostandfound.php',
+    'Profile'           => $pre_class . 'profile.php',
+    'Users'             => $pre_class . 'users.php',
     
 );

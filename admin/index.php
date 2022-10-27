@@ -119,7 +119,7 @@ if (!isset($_SESSION['user']['id'])) {
                             <div class="topbar-item">
                                 <div class="btn btn-icon w-auto btn-clean d-flex align-items-center btn-lg px-2" id="kt_quick_user_toggle">
                                     <div class="d-flex flex-column text-right pr-3">
-                                        <span class="text-muted font-weight-bold font-size-base d-none d-md-inline">Admin</span>
+                                        <span id="span_username_upper" style="text-transform: uppercase;" class="text-muted font-weight-bold font-size-base d-none d-md-inline"></span>
                                     </div>
                                     <span class="symbol symbol-35 symbol-light-warning">
                                         <span class="symbol-label font-size-h5 font-weight-bold">A</span>
@@ -247,10 +247,10 @@ if (!isset($_SESSION['user']['id'])) {
                 </div>
                 <div class="d-flex flex-column">
                     <a href="#" class="font-weight-bold font-size-h5 text-dark-75 text-hover-primary">
-                    Juan Dela Cruz
+                      <span id="span_user_name"></span>
                     </a>
                     <div class="text-muted mt-1">
-                    Admin
+                      <span id="span_username"></span>
                     </div>
                     <div class="navi mt-2">
                         <a href="#" class="navi-item">
@@ -266,7 +266,7 @@ if (!isset($_SESSION['user']['id'])) {
                                         </svg>
                                         <!--end::Svg Icon-->
                                     </span> </span>
-                                <span class="navi-text text-muted text-hover-primary">petsaveadmin@gmail.com</span>
+                                <span id="span_user_email" class="navi-text text-muted text-hover-primary"></span>
                             </span>
                         </a>
 
@@ -306,10 +306,17 @@ if (!isset($_SESSION['user']['id'])) {
     <!-- end::User Panel-->
     <script type='text/javascript'>
     <?php
-    echo "var route_settings = " . $route_settings . ";\n";
+      echo "var route_settings = " . $route_settings . ";\n";
+      echo "var user_profile = " . $user_profile . ";\n";
     ?>
   </script>
 <script type="text/javascript">
+
+  $("#span_user_name").html(user_profile.user_fullname);
+  $("#span_username").html(user_profile.username);
+  $("#span_user_email").html(user_profile.user_email);
+  $("#span_username_upper").html(user_profile.username);
+
     var modal_detail_status = 0;
     $(document).ready(function() {
       $(".select2").select2();
@@ -364,6 +371,10 @@ if (!isset($_SESSION['user']['id'])) {
 
     function success_approve() {
       swal("Success!", "Successfully approved entry!", "success");
+    }
+
+    function success_resolve() {
+      swal("Success!", "Successfully resolved entry!", "success");
     }
 
     function success_delete() {
@@ -553,6 +564,60 @@ if (!isset($_SESSION['user']['id'])) {
       }
     }
 
+    function resolveEntry() {
+
+      var count_checked = $("input[class='dt_id']:checked").length;
+
+      if (count_checked > 0) {
+        swal({
+            title: "Are you sure?",
+            text: "You will not be able to recover these entries!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonClass: "btn-danger",
+            cancelButtonClass: "btn-primary",
+            confirmButtonText: "Yes, resolve it!",
+            cancelButtonText: "No, cancel!",
+            closeOnConfirm: false,
+            closeOnCancel: false
+          },
+          function(isConfirm) {
+            if (isConfirm) {
+              var checkedValues = $("input[class='dt_id']:checked").map(function() {
+                return this.value;
+              }).get();
+
+              $.ajax({
+                type: "POST",
+                url: "controllers/sql.php?c=" + route_settings.class_name + "&q=approve",
+                data: {
+                  input: {
+                    ids: checkedValues
+                  }
+                },
+                success: function(data) {
+                  getEntries();
+                  var json = JSON.parse(data);
+                  console.log(json);
+                  if (json.data == 1) {
+                    success_resolve();
+                  } else {
+                    failed_query(json);
+                  }
+                }
+              });
+
+              $("#btn_delete").prop('disabled', true);
+
+            } else {
+              swal("Cancelled", "Entries are safe :)", "error");
+            }
+          });
+        } else {
+          swal("Cannot proceed!", "Please select entries to delete!", "warning");
+        }
+      }
+
     function approveEntry() {
 
       var count_checked = $("input[class='dt_id']:checked").length;
@@ -605,7 +670,7 @@ if (!isset($_SESSION['user']['id'])) {
       } else {
         swal("Cannot proceed!", "Please select entries to delete!", "warning");
       }
-}
+    }
 
     function cancelEntry() {
 

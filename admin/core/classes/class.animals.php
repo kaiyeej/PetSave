@@ -9,6 +9,13 @@ class Animals extends Connection
 
     public function add()
     {
+        if (isset($_FILES['file']['tmp_name'])) {
+            $img_file = $_FILES['file']['name'];
+            move_uploaded_file($_FILES['file']['tmp_name'], '../assets/file/' . $img_file);
+        } else {
+            $img_file = "";
+        }
+
         $form = array(
             $this->name             => $this->clean($this->inputs[$this->name]),
             'animal_description'    => $this->inputs['animal_description'],
@@ -17,7 +24,8 @@ class Animals extends Connection
             'animal_breed'          => $this->inputs['animal_breed'],
             'animal_weight'         => $this->inputs['animal_weight'],
             'animal_color'          => $this->inputs['animal_color'],
-            'animal_identifier'     => $this->inputs['animal_identifier']
+            'animal_identifier'     => $this->inputs['animal_identifier'],
+            'animal_image'          => $img_file,
         );
 
         return $this->insertIfNotExist($this->table, $form, "$this->name = '".$this->inputs[$this->name]."'");
@@ -93,6 +101,12 @@ class Animals extends Connection
     public function remove()
     {
         $ids = implode(",", $this->inputs['ids']);
+
+        $result = $this->select($this->table, "animal_image", "$this->pk IN($ids)");
+        while($row = $result->fetch_assoc()){
+            unlink('../assets/file/'.$row['animal_image']);
+        }
+
 
         return $this->delete($this->table, "$this->pk IN($ids)");
     }

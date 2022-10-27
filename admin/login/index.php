@@ -82,7 +82,7 @@ if (isset($_SESSION["status"])) {
 									<div class="my-3 mr-2">
 										
 									</div>
-									<button type="submit" id="kt_login_signin_submit" class="btn btn-primary font-weight-bold px-9 py-4 my-3">Sign In</button>
+									<button type="submit" id="kt_login_signin_submit" class="btn btn-warning font-weight-bold px-9 py-4 my-3">Sign In</button>
 								</div>
 							</form>
 							<!--end::Form-->
@@ -113,7 +113,7 @@ if (isset($_SESSION["status"])) {
 			<!--begin::Aside-->
 
 			<!--begin::Content-->
-			<div class="order-1 order-lg-2 flex-column-auto flex-lg-row-fluid d-flex flex-column p-7" style="background-image: url(assets/media/bg/bg-4.jpg);">
+			<div class="order-1 order-lg-2 flex-column-auto flex-lg-row-fluid d-flex flex-column p-7" style="background-image: url(assets/media/bg/bg-4.png);">
 				<!--begin::Content body-->
 				<div class="d-flex flex-column-fluid flex-lg-center">
 					<div class="d-flex flex-column justify-content-center">

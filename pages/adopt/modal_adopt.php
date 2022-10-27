@@ -1,6 +1,6 @@
 <form method='POST' id='frm_submit'>
     <div class="modal fade" id="modalEntry" class="modal fade bs-example-modal-md" role="dialog">
-        <div class="modal-dialog modal-lg" style="margin-top: 50px;" role="document">
+        <div class="modal-dialog modal-lg" style="margin-top: 50px;border: 2px dashed #ff9800;" role="document">
             <div class="modal-content">
                 <div class="modal-header" style="">
                     <h4 id="modalLabel"><i class='flaticon-edit'></i> ADOPTION APPLICATION </h4>
@@ -287,8 +287,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-light-danger font-weight-bold" data-dismiss="modal"><i class="fas fa-times"></i></button>
-                    <button type="submit" class="btn btn-primary font-weight-bold"><i class="flaticon2-check-mark"></i></button>
+                    <button type="button" id="btn_add"  data-dismiss="modal" class="genric-btn primary-border circle arrow">Cancel</button>
+                    <button type="submit" id="btn_submit" class="genric-btn success circle"> Submit</button>
                 </div>
             </div>
         </div>

@@ -9,6 +9,10 @@ $routes = array(
         'class_name' => 'Homepage',
         'has_detail' => 0
     ),
+    "profile" => array(
+        'class_name' => 'Profile',
+        'has_detail' => 0
+    ),
     "adopt" => array(
         'class_name' => 'Adopt',
         'has_detail' => 0
@@ -24,6 +28,8 @@ $routes = array(
 );
 /** END SET ROUTES */
 
+$Profile = new Profile();
+$user_profile = json_encode($Profile->view());
 
 $base_folder = "pages/";
 $page = str_replace("/petsave/admin/", "", $request);
@@ -49,3 +55,5 @@ if (array_key_exists($page, $routes)) {
     require_once "index.php";//'error-404.html';
     $route_settings = json_encode([]);
 }
+
+

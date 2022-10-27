@@ -100,6 +100,10 @@ class LostAndFound extends Connection
     public function remove()
     {
         $ids = implode(",", $this->inputs['ids']);
+        $result = $this->select($this->table, "if_animal_image", "$this->pk IN($ids)");
+        while($row = $result->fetch_assoc()){
+            unlink('../assets/lost_found/'.$row['if_animal_image']);
+        }
 
         return $this->delete($this->table, "$this->pk IN($ids)");
     }
@@ -118,7 +122,7 @@ class LostAndFound extends Connection
     {
         $ids = implode(",", $this->inputs['ids']);
         $form = array(
-            "status" => "A"
+            "status" => "R"
         );
 
         return $this->update($this->table, $form, "$this->pk IN($ids)");

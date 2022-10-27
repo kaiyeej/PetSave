@@ -7,7 +7,7 @@
                 </div>
                 <div class="modal-body">
                     <input type="hidden" id="hidden_id_3" name="input[animal_id]">
-                    <input type="file" name="file">
+                    <input type="file" required name="file">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn" data-bs-dismiss="modal">

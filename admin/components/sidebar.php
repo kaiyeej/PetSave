@@ -6,9 +6,9 @@ $page = str_replace("/petsave/admin/", "", $request);
     <!--begin::Nav-->
     <ul class="nav flex-column">
         <!--begin::Item-->
-        <li class="nav-item mb-5" data-toggle="tooltip" data-placement="right" data-container="body" data-boundary="window" title="Homepage">
+        <li class="nav-item mb-5" data-toggle="tooltip" data-placement="right" data-container="body" data-boundary="window" title="Dashboard">
             <a href="./" class="nav-link btn btn-icon btn-clean btn-icon-white btn-lg <?= $page == "" || $page == "homepage" || $page == null ? 'active' : '' ?>">
-                <i class="flaticon2-protection icon-lg"></i>
+                <i class="flaticon-dashboard icon-lg"></i>
             </a>
         </li>
         <li class="nav-item mb-5" data-toggle="tooltip" data-placement="right" data-container="body" data-boundary="window" title="Adoption">
@@ -16,6 +16,17 @@ $page = str_replace("/petsave/admin/", "", $request);
                 <i class="flaticon-folder-1 icon-lg"></i>
             </a>
         </li>
+        <li class="nav-item mb-5" data-toggle="tooltip" data-placement="right" data-container="body" data-boundary="window" title="Animals">
+            <a href="./animals" class="nav-link btn btn-icon btn-clean btn-icon-white btn-lg <?= $page == 'animals' ? 'active' : '' ?>">
+                <i class="flaticon2-shelter icon-lg"></i>
+            </a>
+        </li>
+        <li class="nav-item mb-5" data-toggle="tooltip" data-placement="right" data-container="body" data-boundary="window" title="Lost and Found">
+            <a href="./lost-found" class="nav-link btn btn-icon btn-clean btn-icon-white btn-lg <?= $page == 'lost-found' ? 'active' : '' ?>">
+                <i class="flaticon-open-box icon-lg"></i>
+            </a>
+        </li>
+        
     </ul>
     <!--end::Nav-->
 </div>

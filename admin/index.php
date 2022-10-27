@@ -51,7 +51,7 @@ if (!isset($_SESSION['user']['id'])) {
     <div id="kt_header_mobile" class="header-mobile  header-mobile-fixed ">
         <!--begin::Logo-->
         <a href="./">
-            <img alt="Logo" src="assets/media/logos/logo.png" class="logo-default max-h-30px" />
+            <img alt="Logo" src="assets/media/logos/logo_white.png" class="logo-default max-h-30px" />
         </a>
         <!--end::Logo-->
 
@@ -89,7 +89,7 @@ if (!isset($_SESSION['user']['id'])) {
                 <div class="aside-brand d-flex flex-column align-items-center flex-column-auto py-4 py-lg-8">
                     <!--begin::Logo-->
                     <a href="./">
-                        <img alt="Logo" src="assets/media/logos/logo.png" class="max-h-70px" />
+                        <img alt="Logo" src="assets/media/logos/logo_white.png" class="max-h-70px" />
                     </a>
                     <!--end::Logo-->
                 </div>
@@ -362,6 +362,10 @@ if (!isset($_SESSION['user']['id'])) {
       swal("Success!", "Successfully updated entry!", "success");
     }
 
+    function success_approve() {
+      swal("Success!", "Successfully approved entry!", "success");
+    }
+
     function success_delete() {
       swal("Success!", "Successfully deleted entry!", "success");
     }
@@ -521,6 +525,114 @@ if (!isset($_SESSION['user']['id'])) {
               $.ajax({
                 type: "POST",
                 url: "controllers/sql.php?c=" + route_settings.class_name + "&q=remove",
+                data: {
+                  input: {
+                    ids: checkedValues
+                  }
+                },
+                success: function(data) {
+                  getEntries();
+                  var json = JSON.parse(data);
+                  console.log(json);
+                  if (json.data == 1) {
+                    success_delete();
+                  } else {
+                    failed_query(json);
+                  }
+                }
+              });
+
+              $("#btn_delete").prop('disabled', true);
+
+            } else {
+              swal("Cancelled", "Entries are safe :)", "error");
+            }
+          });
+      } else {
+        swal("Cannot proceed!", "Please select entries to delete!", "warning");
+      }
+    }
+
+    function approveEntry() {
+
+      var count_checked = $("input[class='dt_id']:checked").length;
+
+      if (count_checked > 0) {
+        swal({
+            title: "Are you sure?",
+            text: "You will not be able to recover these entries!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonClass: "btn-danger",
+            cancelButtonClass: "btn-primary",
+            confirmButtonText: "Yes, approve it!",
+            cancelButtonText: "No, cancel!",
+            closeOnConfirm: false,
+            closeOnCancel: false
+          },
+          function(isConfirm) {
+            if (isConfirm) {
+              var checkedValues = $("input[class='dt_id']:checked").map(function() {
+                return this.value;
+              }).get();
+
+              $.ajax({
+                type: "POST",
+                url: "controllers/sql.php?c=" + route_settings.class_name + "&q=approve",
+                data: {
+                  input: {
+                    ids: checkedValues
+                  }
+                },
+                success: function(data) {
+                  getEntries();
+                  var json = JSON.parse(data);
+                  console.log(json);
+                  if (json.data == 1) {
+                    success_approve();
+                  } else {
+                    failed_query(json);
+                  }
+                }
+              });
+
+              $("#btn_delete").prop('disabled', true);
+
+            } else {
+              swal("Cancelled", "Entries are safe :)", "error");
+            }
+          });
+      } else {
+        swal("Cannot proceed!", "Please select entries to delete!", "warning");
+      }
+}
+
+    function cancelEntry() {
+
+      var count_checked = $("input[class='dt_id']:checked").length;
+
+      if (count_checked > 0) {
+        swal({
+            title: "Are you sure to cancel?",
+            text: "You will not be able to recover these entries!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonClass: "btn-primary",
+            cancelButtonClass: "btn-secondary",
+            confirmButtonText: "Yes",
+            cancelButtonText: "No",
+            closeOnConfirm: false,
+            closeOnCancel: false
+          },
+          function(isConfirm) {
+            if (isConfirm) {
+              var checkedValues = $("input[class='dt_id']:checked").map(function() {
+                return this.value;
+              }).get();
+
+              $.ajax({
+                type: "POST",
+                url: "controllers/sql.php?c=" + route_settings.class_name + "&q=cancel",
                 data: {
                   input: {
                     ids: checkedValues

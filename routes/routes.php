@@ -17,6 +17,14 @@ $routes = array(
         'class_name' => '',
         'has_detail' => 0
     ),
+    "animals" => array(
+        'class_name' => '',
+        'has_detail' => 0
+    ),
+    "lost-found" => array(
+        'class_name' => '',
+        'has_detail' => 0
+    ),
 );
 /** END SET ROUTES */
 

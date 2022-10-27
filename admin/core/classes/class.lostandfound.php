@@ -1,23 +1,28 @@
 <?php
 
-class Animals extends Connection
+class LostAndFound extends Connection
 {
-    private $table = 'tbl_animals';
-    public $pk = 'animal_id';
-    public $name = 'animal_name';
+    private $table = 'tbl_lost_and_found';
+    public $pk = 'if_id';
+    public $name = 'if_animal_name';
 
 
     public function add()
     {
+        if (isset($_FILES['file']['tmp_name'])) {
+            $img_file = $_FILES['file']['name'];
+            move_uploaded_file($_FILES['file']['tmp_name'], '../assets/lost_found/' . $img_file);
+        } else {
+            $img_file = "";
+        }
+
         $form = array(
-            $this->name             => $this->clean($this->inputs[$this->name]),
-            'animal_description'    => $this->inputs['animal_description'],
-            'animal_dob'            => $this->inputs['animal_dob'],
-            'animal_type'           => $this->inputs['animal_type'],
-            'animal_breed'          => $this->inputs['animal_breed'],
-            'animal_weight'         => $this->inputs['animal_weight'],
-            'animal_color'          => $this->inputs['animal_color'],
-            'animal_identifier'     => $this->inputs['animal_identifier']
+            $this->name                 => $this->clean($this->inputs[$this->name]),
+            'if_animal_desc'            => $this->inputs['if_animal_desc'],
+            'if_animal_image'           => $img_file,
+            'if_last_location_found'    => $this->inputs['if_last_location_found'],
+            'if_other_remarks'          => $this->inputs['if_other_remarks'],
+            'if_type'                   => $this->inputs['if_type'],
         );
 
         return $this->insertIfNotExist($this->table, $form, "$this->name = '".$this->inputs[$this->name]."'");
@@ -68,6 +73,8 @@ class Animals extends Connection
         $rows = array();
         $result = $this->select($this->table, '*', $param);
         while ($row = $result->fetch_assoc()) {
+            $row['type'] = $row['if_type'] == "L" ? "LOST" : "FOUND";
+            $row['reported_date'] = date('M d, Y h:m A', strtotime($row["date_added"]));
             $rows[] = $row;
         }
         return $rows;

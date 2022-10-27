@@ -5,21 +5,15 @@
         <div class="alert alert-custom alert-white alert-shadow fade show gutter-b " style="border: 1.5px dashed #ff9800;background: #f9f0e3;padding:10px;" role="alert">
             <div class="alert-icon">
                 <span class="svg-icon svg-icon-primary svg-icon-xl">
-                <i class="menu-icon flaticon-folder-1 text-warning"></i>
+                <i class="menu-icon flaticon2-shelter text-warning"></i>
                 </span>
             </div>
             <div class="alert-text" style="color: #ff9800;font-weight: 500;">
-                Adoption
+                Animals
             </div>
             <div class="card-toolbar btn-group" style="padding-top: 5px">
                 <a href="#" onclick="addModal()" data-container="body" data-offset="20px 20px" data-toggle="popover" data-placement="top" data-content="Add New Entry" style="padding:10px;" class="btn btn-primary  btn-sm">
                     <i class="flaticon2-add"></i> Add
-                </a>
-                <a href="#"  data-container="body" data-offset="20px 20px" data-toggle="popover" data-placement="top" data-content="Approve Selected Entry" onclick='approveEntry()' style="padding:10px;" class="btn btn-success btn-sm">
-                    <i class="flaticon2-check-mark"></i> Approve
-                </a>
-                <a href="#"  data-container="body" data-offset="20px 20px" data-toggle="popover" data-placement="top" data-content="Cancel Selected Entry" onclick='cancelEntry()' style="padding:10px;" class="btn btn-warning btn-sm">
-                    <i class="flaticon2-cancel"></i> Cancel
                 </a>
                 <a href="#"  data-container="body" data-offset="20px 20px" data-toggle="popover" data-placement="top" data-content="Delete Selected Entry" onclick='deleteEntry()' style="padding:10px;" class="btn btn-danger btn-sm">
                     <i class="flaticon-delete-1"></i> Delete
@@ -37,7 +31,7 @@
                     <div class="card-header">
                         <div class="card-title">
                             <h3 class="card-label">
-                                List of Adoption
+                                List of Rescued Animals
                             </h3>
                         </div>
                     </div>
@@ -49,9 +43,9 @@
                                         <th><input type='checkbox' onchange="checkAll(this, 'dt_id')"></th>
                                         <th></th>
                                         <th>Name</th>
-                                        <th>Animal</th>
-                                        <th>Status</th>
-                                        <th>Date Added</th>
+                                        <th>Type</th>
+                                        <th>Image</th>
+                                        <th>Date Modified</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -67,7 +61,8 @@
     </div>
     <!--end::Container-->
 </div>
-<?php require_once 'modal_adopt.php'; ?>
+<?php require_once 'modal_animals.php'; ?>
+<?php require_once 'modal_upload.php'; ?>
 <script type="text/javascript">
 </script>
 <script type="text/javascript">
@@ -82,25 +77,24 @@
             },
             "columns": [{
                     "mRender": function(data, type, row) {
-                        return row.status == "A" ? "" : "<input type='checkbox' value=" + row.adoption_id + " class='dt_id' style='position: initial; opacity:1;'>";
+                        return row.status == "A" ? "" : "<input type='checkbox' value=" + row.animal_id + " class='dt_id' style='position: initial; opacity:1;'>";
                     }
                 },
                 {
                     "mRender": function(data, type, row) {
-                        return "<center><button class='btn btn-icon btn-sm btn-light-primary' onclick='getEntryDetails(" + row.adoption_id + ")'><i class='flaticon-edit-1'></i></button></center>";
+                        return "<center><button class='btn btn-icon btn-sm btn-light-primary' onclick='getEntryDetails(" + row.animal_id + ")'><i class='flaticon-edit-1'></i></button></center>";
 
                     }
                 },
                 {
-                    "data": "fullname"
+                    "data": "animal_name"
                 },
                 {
-                    "data": "animal"
+                    "data": "animal_type"
                 },
                 {
                     "mRender": function(data, type, row) {
-                        return row.status == "A" ? "<span class='badge badge-success'>Approved</span>" : (row.status == "C" ? "<span class='badge badge-danger'>Cancel</span>" : "<span class='badge badge-warning'>Pending</span>");
-
+                        return row.animal_image == "" ? "<img style='width:50px;' src='assets/media/error/no_image.png' onclick=\"uploadImage('" + row.animal_id + "')\">" : "<img src='assets/file/" + row.animal_image + "' style='width:50px;' onclick=\"uploadImage('" + row.animal_id + "')\">";
                     }
                 },
                 {
@@ -109,6 +103,45 @@
             ]
         });
     }
+
+    function uploadImage(id) {
+      // alert(id);
+      $("#hidden_id_3").val(id);
+      $("#modalUpload").modal('show');
+
+    }
+
+    $("#frm_upload_img_animal").submit(function(e) {
+      e.preventDefault();
+
+      //var formData = new FormData(this);
+      $("#btn_submit").prop('disabled', true);
+      $("#btn_submit").html("<span class='fa fa-spinner fa-spin'></span>");
+      // console.log(formData);
+
+      var url = "controllers/sql.php?c=" + route_settings.class_name + "&q=uploadImage";
+      $.ajax({
+        url: url,
+        type: "POST",
+        data: new FormData(this),
+        contentType: false,
+        cache: false,
+        processData: false,
+        success: function(data) {
+
+          var json = JSON.parse(data);
+          if (json.data == 1) {
+            $("#modalUpload").modal('hide');
+            success_update();
+            getEntries();
+
+          }
+            $("#btn_submit").prop('disabled', false);
+            $("#btn_submit").html("Submit");
+        }
+      });
+
+    });
 
 
     $(document).ready(function() {

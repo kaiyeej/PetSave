@@ -30,23 +30,6 @@
         </div>
     </div>
 </div>
-
-<div class="whole-wrap">
-	<div class="container box_1170">
-        <div class="section-top-border">
-            <h3 class="mb-30">Available animals</h3>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="single-defination" style="border: 1px dashed orange;padding: 15px;">
-                        <h4 class="mb-20">Name</h4>
-                        <p>Description</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
 <?php require_once 'modal_adopt.php'; ?>
 <script type="text/javascript">
     function adoptNow(){
@@ -84,4 +67,5 @@
         }
       });
     });
+
 </script>

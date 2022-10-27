@@ -7,5 +7,6 @@ $classes = array(
     'LoginUser'         => $pre_class . 'loginuser.php',
     'Adopt'             => $pre_class . 'adopt.php',
     'Animals'           => $pre_class . 'animals.php',
+    'LostAndFound'      => $pre_class . 'lostandfound.php',
     
 );

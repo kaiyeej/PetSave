@@ -12,7 +12,7 @@
                 Animals
             </div>
             <div class="card-toolbar btn-group" style="padding-top: 5px">
-                <a href="#" onclick="addModal()" data-container="body" data-offset="20px 20px" data-toggle="popover" data-placement="top" data-content="Add New Entry" style="padding:10px;" class="btn btn-primary  btn-sm">
+                <a href="#" onclick="addAnimal()" data-container="body" data-offset="20px 20px" data-toggle="popover" data-placement="top" data-content="Add New Entry" style="padding:10px;" class="btn btn-primary  btn-sm">
                     <i class="flaticon2-add"></i> Add
                 </a>
                 <a href="#"  data-container="body" data-offset="20px 20px" data-toggle="popover" data-placement="top" data-content="Delete Selected Entry" onclick='deleteEntry()' style="padding:10px;" class="btn btn-danger btn-sm">
@@ -66,6 +66,24 @@
 <script type="text/javascript">
 </script>
 <script type="text/javascript">
+    function addAnimal() {
+      modal_detail_status = 0;
+      $("#hidden_id").val(0);
+      document.getElementById("frm_submit").reset();
+
+      var element = document.getElementById('reference_code');
+      if (typeof(element) != 'undefined' && element != null) {
+        generateReference(route_settings.class_name);
+      }
+
+      
+      $("#div_image").show();
+      $("#if_animal_image").prop('required');
+
+      $("#modalLabel").html("<i class='flaticon2-add'></i> Add Entry");
+      $("#modalEntry").modal('show');
+    }
+
     function getEntries() {
         $("#dt_entries").DataTable().destroy();
         $("#dt_entries").DataTable({
@@ -82,7 +100,7 @@
                 },
                 {
                     "mRender": function(data, type, row) {
-                        return "<center><button class='btn btn-icon btn-sm btn-light-primary' onclick='getEntryDetails(" + row.animal_id + ")'><i class='flaticon-edit-1'></i></button></center>";
+                        return "<center><button class='btn btn-icon btn-sm btn-light-primary' onclick='getAnimalDetails(" + row.animal_id + ")'><i class='flaticon-edit-1'></i></button></center>";
 
                     }
                 },
@@ -102,6 +120,12 @@
                 }
             ]
         });
+    }
+
+    function getAnimalDetails(id){
+        $("#div_image").hide();
+        $("#if_animal_image").removeAttr('required');
+        getEntryDetails(id);
     }
 
     function uploadImage(id) {

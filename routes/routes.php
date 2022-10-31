@@ -52,6 +52,3 @@ if (array_key_exists($page, $routes)) {
     require_once "index.php";//'error-404.html';
     $route_settings = json_encode([]);
 }
-
-$Settings = new Settings();
-$company_profile = json_encode($Settings->view());

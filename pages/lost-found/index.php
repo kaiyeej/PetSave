@@ -23,7 +23,7 @@
                         <h3><span>Would you like to </span>
                         report a lost/found pet?</h3>
                         <p>Using PetSave, users can find their missing pet or a pet that appears to be missing its owner.</p>
-                        <a data-toggle="modal" data-backdrop="false" data-target="#modalEntry" href="#modalEntry" class="boxed-btn3">Report now</a>
+                        <a data-toggle="modal" data-backdrop="false"  onclick="reportNow()" data-target="#modalEntry" href="#modalEntry" class="boxed-btn3">Report now</a>
                     </div>
                 </div>
             </div>
@@ -49,7 +49,7 @@
 
 <?php require_once 'modal_lost_found.php'; ?>
 <script type="text/javascript">
-    function adoptNow(){
+    function reportNow(){
         $("#modalEntry").prependTo("body");
         $("#frm_submit").removeClass("required");
     }

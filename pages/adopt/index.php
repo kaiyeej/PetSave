@@ -23,7 +23,7 @@
                         <h3><span>We need your</span>
                             help Adopt Us</h3>
                         <p>All animals at PetSave are all looking for their Forever Homes right now!</p>
-                        <a data-toggle="modal" data-backdrop="false" data-target="#modalEntry" href="#modalEntry" class="boxed-btn3">Adopt now</a>
+                        <a data-toggle="modal" data-backdrop="false" onclick="adoptNow()" data-target="#modalEntry" href="#modalEntry" class="boxed-btn3">Adopt now</a>
                     </div>
                 </div>
             </div>

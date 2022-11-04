@@ -122,7 +122,8 @@ class LostAndFound extends Connection
     {
         $ids = implode(",", $this->inputs['ids']);
         $form = array(
-            "status" => "R"
+            "status"        => "R",
+            "shelter_id"    => $_SESSION['user']['shelter'],
         );
 
         return $this->update($this->table, $form, "$this->pk IN($ids)");

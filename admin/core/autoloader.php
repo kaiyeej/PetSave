@@ -10,5 +10,5 @@ $classes = array(
     'LostAndFound'      => $pre_class . 'lostandfound.php',
     'Profile'           => $pre_class . 'profile.php',
     'Users'             => $pre_class . 'users.php',
-    
+    'Shelters'          => $pre_class . 'shelters.php',
 );

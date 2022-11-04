@@ -38,8 +38,11 @@ if (!isset($_SESSION['user']['id'])) {
     
 
     <link rel="shortcut icon" href="assets/media/logos/logo.png" />
-
+  
+      
+    
 </head>
+
 <!--end::Head-->
 
 <!--begin::Body-->
@@ -114,15 +117,14 @@ if (!isset($_SESSION['user']['id'])) {
 
                         <!--begin::Topbar-->
                         <div class="topbar">
-
                             <!--begin::User-->
                             <div class="topbar-item">
                                 <div class="btn btn-icon w-auto btn-clean d-flex align-items-center btn-lg px-2" id="kt_quick_user_toggle">
                                     <div class="d-flex flex-column text-right pr-3">
-                                        <span id="span_username_upper" style="text-transform: uppercase;" class="text-muted font-weight-bold font-size-base d-none d-md-inline"></span>
+                                        <span id="span_shelter" style="text-transform: uppercase;color: #f44336 !important;font-size: 15px;" class="text-muted font-weight-bold font-size-base d-none d-md-inline"></span>
                                     </div>
                                     <span class="symbol symbol-35 symbol-light-warning">
-                                        <span class="symbol-label font-size-h5 font-weight-bold">A</span>
+                                        <span class="symbol-label font-size-h5 font-weight-bold"><span id="span_username_initial"></span></span>
                                     </span>
                                 </div>
                             </div>
@@ -247,29 +249,12 @@ if (!isset($_SESSION['user']['id'])) {
                 </div>
                 <div class="d-flex flex-column">
                     <a href="#" class="font-weight-bold font-size-h5 text-dark-75 text-hover-primary">
-                      <span id="span_user_name"></span>
+                      <span id="span_fullname"></span>
                     </a>
                     <div class="text-muted mt-1">
                       <span id="span_username"></span>
                     </div>
                     <div class="navi mt-2">
-                        <a href="#" class="navi-item">
-                            <span class="navi-link p-0 pb-2">
-                                <span class="navi-icon mr-1">
-                                    <span class="svg-icon svg-icon-lg svg-icon-primary">
-                                        <!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Mail-notification.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                <rect x="0" y="0" width="24" height="24" />
-                                                <path d="M21,12.0829584 C20.6747915,12.0283988 20.3407122,12 20,12 C16.6862915,12 14,14.6862915 14,18 C14,18.3407122 14.0283988,18.6747915 14.0829584,19 L5,19 C3.8954305,19 3,18.1045695 3,17 L3,8 C3,6.8954305 3.8954305,6 5,6 L19,6 C20.1045695,6 21,6.8954305 21,8 L21,12.0829584 Z M18.1444251,7.83964668 L12,11.1481833 L5.85557487,7.83964668 C5.4908718,7.6432681 5.03602525,7.77972206 4.83964668,8.14442513 C4.6432681,8.5091282 4.77972206,8.96397475 5.14442513,9.16035332 L11.6444251,12.6603533 C11.8664074,12.7798822 12.1335926,12.7798822 12.3555749,12.6603533 L18.8555749,9.16035332 C19.2202779,8.96397475 19.3567319,8.5091282 19.1603533,8.14442513 C18.9639747,7.77972206 18.5091282,7.6432681 18.1444251,7.83964668 Z" fill="#000000" />
-                                                <circle fill="#000000" opacity="0.3" cx="19.5" cy="17.5" r="2.5" />
-                                            </g>
-                                        </svg>
-                                        <!--end::Svg Icon-->
-                                    </span> </span>
-                                <span id="span_user_email" class="navi-text text-muted text-hover-primary"></span>
-                            </span>
-                        </a>
-
                         <a href="#" onclick="logout()" class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5">Sign Out</a>
                     </div>
                 </div>
@@ -299,6 +284,23 @@ if (!isset($_SESSION['user']['id'])) {
 
                 <!--end::Item-->
             </div>
+            <div>
+                <!--begin::Item-->
+                <div class="d-flex align-items-center bg-light-danger rounded p-5 gutter-b">
+                    <span class="svg-icon svg-icon-success mr-5">
+                        <i class="flaticon2-architecture-and-city"></i>
+                    </span>
+
+                    <div class="d-flex flex-column flex-grow-1 mr-2">
+                        <a href="./shelters" class="font-weight-normal text-dark-75 text-hover-primary font-size-lg mb-1">Shelter</a>
+                        <span class="text-muted font-size-sm">Shelter's information and settings</span>
+                    </div>
+
+                </div>
+                <!--end::Item-->
+
+                <!--end::Item-->
+            </div>
             <!--end::Notifications-->
         </div>
         <!--end::Content-->
@@ -308,14 +310,15 @@ if (!isset($_SESSION['user']['id'])) {
     <?php
       echo "var route_settings = " . $route_settings . ";\n";
       echo "var user_profile = " . $user_profile . ";\n";
+      echo "var shelter_profile = " . $shelter_profile . ";\n";
     ?>
   </script>
 <script type="text/javascript">
 
-  $("#span_user_name").html(user_profile.user_fullname);
+  $("#span_shelter").html(shelter_profile.shelter_name);
+  $("#span_fullname").html(user_profile.user_fullname);
   $("#span_username").html(user_profile.username);
-  $("#span_user_email").html(user_profile.user_email);
-  $("#span_username_upper").html(user_profile.username);
+  $("#span_username_initial").html((user_profile.username.substring(0, 1)).toUpperCase());
 
     var modal_detail_status = 0;
     $(document).ready(function() {
@@ -346,7 +349,6 @@ if (!isset($_SESSION['user']['id'])) {
           }
         });
       }
-      
     }
 
     function schema() {

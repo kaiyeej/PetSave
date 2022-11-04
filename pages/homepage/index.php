@@ -42,6 +42,61 @@
 </div>
 <!-- pet_care_area_end  -->
 
+<div class="contact_anipat anipat_bg_1">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="contact_text text-center">
+                    <div class="section_title text-center">
+                        <h3>Why go with PetSave?</h3>
+                        <p style="margin-bottom: 15px;font-size: 20px;"> An innovative online community that connects animal lovers with the Philippines' animal shelters supports the nation's animal shelters, safe animal adoption, and pet rescue.</p>
+                        <p style="margin-bottom: 15px;font-size: 20px;">Animals can now find their FUR-EVER home on a new digital platform</p>
+                    </div>
+                    <div class="contact_btn d-flex align-items-center justify-content-center">
+                        <a onclick="registerNow()"  data-toggle="modal" data-backdrop="false" data-target="#" href="#modalEntry" class="boxed-btn4">Register Your Shelter Account</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php require_once 'modal_register.php'; ?>
+<script type="text/javascript">
+    function registerNow(){
+        $("#modalEntry").prependTo("body");
+        $("#frm_submit").removeClass("required");
+    }
+
+    $("#frm_submit").submit(function(e) {
+      e.preventDefault();
+      $("#btn_submit").prop('disabled', true);
+      $("#btn_submit").html("<span class='fa fa-spinner fa-spin'></span> Submitting ...");
+
+      $.ajax({
+        type: "POST",
+        url: "admin/controllers/sql.php?c=Shelters&q=add",
+        data: new FormData(this),
+        contentType: false,
+        cache: false,
+        processData: false,
+        success: function(data) {
+          var json = JSON.parse(data);
+            if (json.data > 0) {
+                $("#modalEntry").modal('hide');
+                success_add();
+            } else if (json.data == -2) {
+                entry_already_exists();
+            } else {
+                failed_query(json);
+            }
+            $("#btn_submit").prop('disabled', false);
+            $("#btn_submit").html("<span class='fa fa-check-circle'></span> Submit");
+        }
+      });
+    });
+</script>
+
 <!-- adapt_area_start  -->
 <div class="adapt_area">
     <div class="container">
@@ -91,3 +146,5 @@
     </div>
 </div>
 <!-- adapt_area_end  -->
+
+

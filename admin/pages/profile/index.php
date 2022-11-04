@@ -25,23 +25,11 @@
                     <input type="text" autocomplete="off" class="form-control input-item" id="user_contact_num" name="input[user_contact_num]" placeholder="Contact number" required>
                   </div>
                   <div class="form-group col-sm-6">
-                    <label for="exampleInputUsername1">Email</label>
-                    <input type="email" autocomplete="off" class="form-control input-item" id="user_email" name="input[user_email]" placeholder="Email Address" required>
-                  </div>
-                  <div class="form-group col-sm-12">
-                    <label for="exampleInputUsername1">Address</label>
-                    <textarea type="text" autocomplete="off" class="form-control input-item" id="user_address" name="input[user_address]" placeholder="Address" required></textarea>
-                  </div>
-                  <div class="form-group col-sm-12">
-                    <label for="exampleInputUsername1">Remarks</label>
-                    <textarea type="text" autocomplete="off" class="form-control input-item" id="user_remarks" name="input[user_remarks]" placeholder="User Remarks" required></textarea>
-                  </div>
-                  <div class="form-group col-sm-6">
                     <label for="exampleInputUsername1">Username</label>
                     <input type="text" autocomplete="off" class="form-control input-item" id="username" name="input[username]" placeholder="Username" required>
                   </div>
-                  <div class="form-group col-sm-6" style="padding-top: 30px">
-                    <button type="submit" style="float: right;" id="btn_submit" class="btn btn-success me-2">Update</button>
+                  <div class="form-group col-sm-12" style="padding-top: 30px">
+                    <button type="submit" style="float: right;" id="btn_submit" class="btn btn-success me-2">Save</button>
                   </div>
                 </div>
               </form>
@@ -69,7 +57,7 @@
                 <label for="exampleInputConfirmPassword1">Confirm Password</label>
                 <input type="password" autocomplete="off" class="form-control" required id="confirm_password" name="input[confirm_password]" placeholder="Confirm Password">
               </div>
-              <button type="submit" style="float: right;" id="" class="btn btn-warning me-2">Save</button>
+              <button type="submit" style="float: right;" id="" class="btn btn-warning me-2">Update</button>
             </form>
           </div>
         </div>

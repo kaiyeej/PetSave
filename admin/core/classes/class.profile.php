@@ -37,10 +37,7 @@ class Profile extends Connection
         } else {
             $form = array(
                 'user_fullname'     => $this->inputs['user_fullname'],
-                'user_address'      => $this->inputs['user_address'],
                 'user_contact_num'  => $this->inputs['user_contact_num'],
-                'user_email'        => $this->inputs['user_email'],
-                'user_remarks'      => $this->inputs['user_remarks'],
                 'username'          => $this->inputs['username'],
             );
             return $this->update($this->table, $form, "username = '$username' AND  $this->pk = '$primary_id'");

@@ -1,6 +1,7 @@
-<form method='POST' id='frm_submit'>
-    <div class="modal fade" id="modalEntry" class="modal fade bs-example-modal-md" role="dialog">
-        <div class="modal-dialog modal-lg" style="margin-top: 50px;border: 2px dashed #ff9800;" role="document">
+
+<div class="modal fade" id="modalEntry" class="modal fade bs-example-modal-md" role="dialog">
+    <div class="modal-dialog modal-lg" style="margin-top: 50px;border: 2px dashed #ff9800;" role="document">
+        <form method='POST' id='frm_submit'>
             <div class="modal-content">
                 <div class="modal-header" style="">
                     <h4 id="modalLabel"><i class='flaticon-edit'></i> ADOPTION APPLICATION </h4>
@@ -115,7 +116,7 @@
                         <div class="row">
                             <div class="col-sm-4">
                                 <div class="form-group">
-                                    <label>1. What prompted you to adopt from PetSave <span class="text-danger">*</span></label>
+                                    <label>1. What prompted you to adopt from PetSave? <span class="text-danger">*</span></label>
                                     <select class="form-control input-item" name="input[q1]" id="q1" required>
                                         <option value="">Please Select</option>
                                         <option value="Friends">Friends</option>
@@ -291,6 +292,6 @@
                     <button type="submit" id="btn_submit" class="genric-btn success circle"> Submit</button>
                 </div>
             </div>
-        </div>
+        </form>
     </div>
-</form>
+</div>

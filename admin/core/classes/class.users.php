@@ -16,13 +16,11 @@ class Users extends Connection
             $pass = $this->inputs['password'];
             $form = array(
                 'user_fullname'     => $this->inputs['user_fullname'],
-                'user_address'      => $this->inputs['user_address'],
-                'user_contact_num'  => $this->inputs['user_contact_num'],
-                'user_email'        => $this->inputs['user_email'],
-                'user_remarks'      => $this->inputs['user_remarks'],
-                'username'          => $this->inputs['username'],
+                'user_category'     => $this->inputs['user_category'],
                 'date_added'        => $this->getCurrentDate(),
-                'password'          => md5('$pass')
+                'username'          => $this->inputs['username'],
+                'password'          => md5($pass),
+                'shelter_id'        => $_SESSION['user']['shelter'],
             );
             return $this->insert($this->table, $form);
         }
@@ -32,20 +30,12 @@ class Users extends Connection
     {
         $primary_id = $this->inputs[$this->pk];
         $username = $this->clean($this->inputs['username']);
-        $is_exist = $this->select($this->table, $this->pk, "username = '$username' AND  $this->pk != '$primary_id'");
-        if ($is_exist->num_rows > 0) {
-            return 2;
-        } else {
-            $form = array(
-                'user_fullname'     => $this->inputs['user_fullname'],
-                'user_address'      => $this->inputs['user_address'],
-                'user_contact_num'  => $this->inputs['user_contact_num'],
-                'user_email'        => $this->inputs['user_email'],
-                'user_remarks'      => $this->inputs['user_remarks'],
-                'username'          => $this->inputs['username'],
-            );
-            return $this->update($this->table, $form, "username = '$username' AND  $this->pk = '$primary_id'");
-        }
+        $form = array(
+            'user_fullname'     => $this->inputs['user_fullname'],
+            'user_contact_num'  => $this->inputs['user_contact_num'],
+            'username'          => $this->inputs['username'],
+        );
+        return $this->update($this->table, $form, "username = '$username' AND  $this->pk = '$primary_id'");
     }
 
 
@@ -68,9 +58,10 @@ class Users extends Connection
     public function show()
     {
         $rows = array();
-        $result = $this->select($this->table);
+        $shelter_id = $_SESSION['user']['shelter'];
+        $result = $this->select($this->table, "*", "shelter_id='$shelter_id'");
         while ($row = $result->fetch_assoc()) {
-            $row['category'] = $row['user_category'] == "A" ? "Admin" :  "Instructor";
+            $row['category'] = $row['user_category'] == "A" ? "Admin" :  "Staff";
             $rows[] = $row;
         }
         return $rows;
@@ -79,7 +70,7 @@ class Users extends Connection
     public function view()
     {
         $primary_id = $this->inputs['id'];
-        $result = $this->select($this->table, "*");
+        $result = $this->select($this->table, "*", "$this->pk = '$primary_id'");
         return $result->fetch_assoc();
     }
 
@@ -90,4 +81,14 @@ class Users extends Connection
         $row = $result->fetch_assoc();
         return $row[$self->name];
     }
+
+    public static function user_shelter($primary_id)
+    {
+        $self = new self;
+        $result = $self->select($self->table, 'shelter_id', "$self->pk  = '$primary_id'");
+        $row = $result->fetch_assoc();
+        return $row['shelter_id'];
+    }
+
+
 }

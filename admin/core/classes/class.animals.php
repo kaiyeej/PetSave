@@ -26,6 +26,7 @@ class Animals extends Connection
             'animal_color'          => $this->inputs['animal_color'],
             'animal_identifier'     => $this->inputs['animal_identifier'],
             'animal_image'          => $img_file,
+            'shelter_id'            => $_SESSION['user']['shelter'],
         );
 
         return $this->insertIfNotExist($this->table, $form, "$this->name = '".$this->inputs[$this->name]."'");
@@ -72,9 +73,11 @@ class Animals extends Connection
 
     public function show()
     {
-        $param = isset($this->inputs['param']) ? $this->inputs['param'] : null;
+        
+        $shelter_id = $_SESSION['user']['shelter'];
+        $param = isset($this->inputs['param']) ? "AND $this->inputs['param']" : null;
         $rows = array();
-        $result = $this->select($this->table, '*', $param);
+        $result = $this->select($this->table, '*', ("shelter_id = '$shelter_id' $param"));
         while ($row = $result->fetch_assoc()) {
             $rows[] = $row;
         }

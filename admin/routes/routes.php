@@ -25,11 +25,22 @@ $routes = array(
         'class_name' => 'LostAndFound',
         'has_detail' => 0
     ),
+    "shelters" => array(
+        'class_name' => 'Shelters',
+        'has_detail' => 0
+    ),
+    "users" => array(
+        'class_name' => 'Users',
+        'has_detail' => 0
+    ),
 );
 /** END SET ROUTES */
 
 $Profile = new Profile();
 $user_profile = json_encode($Profile->view());
+
+$Shelters = new Shelters();
+$shelter_profile = json_encode($Shelters->view());
 
 $base_folder = "pages/";
 $page = str_replace("/petsave/admin/", "", $request);

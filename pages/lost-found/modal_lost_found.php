@@ -1,6 +1,7 @@
-<form method='POST' id='frm_submit'>
-    <div class="modal fade" id="modalEntry" class="modal fade bs-example-modal-md" role="dialog">
-        <div class="modal-dialog modal-lg" style="margin-top: 50px;border: 2px dashed #ff9800;" role="document">
+
+<div class="modal fade" id="modalEntry" class="modal fade bs-example-modal-md" role="dialog">
+    <div class="modal-dialog modal-lg" style="margin-top: 50px;border: 2px dashed #ff9800;" role="document">
+        <form method='POST' id='frm_submit'>
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 id="modalLabel"  style="color: #f44336;"><i class='flaticon-edit'></i> Lost and Found Animals </h4>
@@ -31,7 +32,7 @@
                             </div>
                             <div class="col-sm-12">
                                 <div class="form-group">
-                                    <label>Last location  <span class="text-danger">*</span><</label>
+                                    <label>Last location  <span class="text-danger">*</span></label>
                                     <textarea class="form-control input-item" name="input[if_last_location_found]" id="if_last_location_found" autocomplete="off" placeholder="Last location found" required></textarea>
                                 </div>
                             </div>
@@ -57,6 +58,6 @@
                     <button type="submit" id="btn_submit" class="genric-btn success circle"> Submit</button>
                 </div>
             </div>
-        </div>
+        </form>
     </div>
-</form>
+</div>

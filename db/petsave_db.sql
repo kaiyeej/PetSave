@@ -54,9 +54,9 @@ CREATE TABLE IF NOT EXISTS `tbl_adoption` (
   `date_added` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `user_id` int(11) NOT NULL,
   PRIMARY KEY (`adoption_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 
--- Dumping data for table petsave_db.tbl_adoption: ~17 rows (approximately)
+-- Dumping data for table petsave_db.tbl_adoption: ~19 rows (approximately)
 /*!40000 ALTER TABLE `tbl_adoption` DISABLE KEYS */;
 INSERT INTO `tbl_adoption` (`adoption_id`, `animal_id`, `status`, `application_date`, `fullname`, `age`, `social_media_account`, `address`, `contact_num`, `email_adderess`, `occupation`, `civil_status`, `alternate_contact`, `relationship`, `guardian_contact_num`, `q1`, `q2`, `q3`, `q4`, `q5`, `q6`, `q7`, `q8`, `q9`, `q10`, `q11`, `q12`, `q13`, `q14`, `q15`, `q16`, `q17`, `q18`, `q19`, `q20`, `q21`, `adoption_agreement`, `date_added`, `user_id`) VALUES
 	(1, 0, 'A', '2022-10-26', 'Sample Name', 2, '2', '2', '2', '2@f.v', '2', 'Married', '2', '2', 'd', 'Other', 'Dog', '2', '2', '2', 'For myself', '2', 'Yes', 'Yes', 'Spouse', '2', '2', '2', '2', '2', '2', '2', 'Other', '2', '2', 'Yes', '', '2022-10-25 13:41:17', 0),
@@ -75,7 +75,9 @@ INSERT INTO `tbl_adoption` (`adoption_id`, `animal_id`, `status`, `application_d
 	(14, 0, 'S', '2022-11-04', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '2022-11-04 15:51:03', 0),
 	(15, 0, 'S', '2022-11-04', '33', 3, '3', '3', '3', '3', '3', '3', '3', '3', '3', 'Other', 'Cat', '3', '3', '3', 'For myself', '3', 'No', 'Yes', 'Parents', '3', '33', '3', '3', '4', '4', '4', 'Apartment', '4', '4', 'Yes', '', '2022-11-04 15:51:03', 0),
 	(16, 0, 'S', '2022-11-04', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '2022-11-04 15:51:20', 0),
-	(17, 0, 'S', '2022-11-04', '33', 3, '3', '3', '3', '3', '3', '3', '3', '3', '3', 'Other', 'Cat', '3', '3', '3', 'For myself', '3', 'No', 'Yes', 'Parents', '3', '33', '3', '3', '4', '4', '4', 'Apartment', '4', '4', 'Yes', '', '2022-11-04 15:51:20', 0);
+	(17, 0, 'S', '2022-11-04', '33', 3, '3', '3', '3', '3', '3', '3', '3', '3', '3', 'Other', 'Cat', '3', '3', '3', 'For myself', '3', 'No', 'Yes', 'Parents', '3', '33', '3', '3', '4', '4', '4', 'Apartment', '4', '4', 'Yes', '', '2022-11-04 15:51:20', 0),
+	(18, 0, 'S', '2022-11-09', 'asdasd', 3, '3', '3', '3', '3@gmail.com', '3', 'Married', '3', '3', '3', 'Friends', 'Cat', '3', '3', '3', 'For myself', '3', 'Yes', 'Yes', 'Parents', '3', '3', '3', '3', '3', '3', '3', 'House', '3', '3', 'Yes', '', '2022-11-09 16:50:02', 0),
+	(19, 2, 'S', '2022-11-09', 'asdasd32423', 3, '3', '3', '3', '3@gmail.com', '3', 'Married', '3', '3', '3', 'Friends', 'Cat', '3', '3', '3', 'For myself', '3', 'Yes', 'Yes', 'Parents', '3', '3', '3', '3', '3', '3', '3', 'House', '3', '3', 'Yes', '', '2022-11-09 16:51:06', 0);
 /*!40000 ALTER TABLE `tbl_adoption` ENABLE KEYS */;
 
 -- Dumping structure for table petsave_db.tbl_animals
@@ -120,13 +122,14 @@ CREATE TABLE IF NOT EXISTS `tbl_lost_and_found` (
   `date_added` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `date_modified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`if_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
--- Dumping data for table petsave_db.tbl_lost_and_found: ~2 rows (approximately)
+-- Dumping data for table petsave_db.tbl_lost_and_found: ~3 rows (approximately)
 /*!40000 ALTER TABLE `tbl_lost_and_found` DISABLE KEYS */;
 INSERT INTO `tbl_lost_and_found` (`if_id`, `if_animal_name`, `if_animal_desc`, `if_last_location_found`, `if_animal_image`, `if_other_remarks`, `if_type`, `status`, `shelter_id`, `date_added`, `date_modified`) VALUES
 	(1, '7', '7', '', 'Background.png', '7', '', 'R', NULL, '2022-10-26 16:11:31', '2022-10-27 13:39:45'),
-	(2, '3', '3', '3', 'png-clipart-do-not-catch-the-tongue-of-the-dog-pet-dog.png', '3', 'L', '', NULL, '2022-10-26 16:12:42', '2022-10-26 16:12:42');
+	(2, '3', '3', '3', 'png-clipart-do-not-catch-the-tongue-of-the-dog-pet-dog.png', '3', 'L', '', NULL, '2022-10-26 16:12:42', '2022-10-26 16:12:42'),
+	(3, 'ewr', 'e', 'we', 'logo.jpg', 'w', 'L', '', NULL, '2022-11-08 14:30:09', '2022-11-08 14:30:09');
 /*!40000 ALTER TABLE `tbl_lost_and_found` ENABLE KEYS */;
 
 -- Dumping structure for table petsave_db.tbl_posts
@@ -164,13 +167,14 @@ CREATE TABLE IF NOT EXISTS `tbl_shelters` (
   `date_added` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `date_last_modified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`shelter_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
--- Dumping data for table petsave_db.tbl_shelters: ~2 rows (approximately)
+-- Dumping data for table petsave_db.tbl_shelters: ~3 rows (approximately)
 /*!40000 ALTER TABLE `tbl_shelters` DISABLE KEYS */;
 INSERT INTO `tbl_shelters` (`shelter_id`, `shelter_name`, `shelter_address`, `shelter_email`, `shelter_contact_number`, `shelter_remarks`, `shelter_location`, `date_added`, `date_last_modified`) VALUES
-	(1, 'Balay Pawssion', 'M2JV+5W, Bacolod, Negros Occidental', 'balaypawssion@gmail.com', '0917120 3717', 'If you canâ€™t Adopt, Foster or Sponsor, there are always other ways to help!\r\n\r\nVolunteers who choose to spend time with our rescues play an important role in their rehabilitation and socialization. Most of the dogs at our shelters love to walk, play and get some quality time out of the environment they inhabit on a daily basis. Enrichment for the animals is one of the key factors to their wellbeing, so just getting more people to spend time with them and help supervise them, will already do wonders!', '', '2022-11-04 07:58:52', '2022-11-04 08:36:56'),
-	(2, 'CARE Bacolod', 'J2C4+XGF, Bacolod, Negros Occidental', 'caresfsd@gmail.com', '0920 925 4500', 'COMMUNITY ANIMAL RESCUE EFFORTS (CARE), INC. is a SEC registered animal welfare organization in Bacolod City.\r\n\r\nWe seek to augment much-needed services in animal rescue, adoption, and in some cases, euthanasia of terminally ill street animals.', '', '2022-11-04 13:53:13', '2022-11-04 13:53:13');
+	(1, 'Balay Pawssion', 'M2JV+5W, Bacolod, Negros Occidental', 'balaypawssion@gmail.com', '0917120 3717', ' A non-profit organization dedicated to the rescue, rehabilitation, and rehoming of dogs in distress. After their first pound rescue, the immediate need for dog rescues proliferated, which eventually led to the opening of their second shelter in mid 2019. Since then, the journey has led Pawssion Project to more than 2000 rescues, and over 600 rehomed dogs.', '', '2022-11-04 07:58:52', '2022-11-08 16:19:45'),
+	(2, 'CARE Bacolod', 'J2C4+XGF, Bacolod, Negros Occidental', 'caresfsd@gmail.com', '0920 925 4500', 'COMMUNITY ANIMAL RESCUE EFFORTS (CARE), INC. is a SEC registered animal welfare organization in Bacolod City.\r\n\r\nWe seek to augment much-needed services in animal rescue, adoption, and in some cases, euthanasia of terminally ill street animals.', '', '2022-11-04 13:53:13', '2022-11-04 13:53:13'),
+	(3, 'Green Paws', 'Lot 3, Block 1, Eufemia Compound, Circumferential Rd, Bacolod, 6100 Negros Occidental', 'greenpaws@gmail.com', '0908 888 1104', 'The Pawssion Project Shelters in Bacolod City and SJDM, Bulacan currently houses a total of 450 rescues dogs and 150 rescued cats combined. Our rescues are free-roaming, fully vaccinated, spayed & neutered and fed 2 times a day with snacks and vitamins! We are also employing 12 stay-in Caretakers, our resident Vet, Dr. Anjuli Garingalao, and have built a small clinic in our Bulacan Shelter.', '', '2022-11-08 14:40:29', '2022-11-08 16:19:22');
 /*!40000 ALTER TABLE `tbl_shelters` ENABLE KEYS */;
 
 -- Dumping structure for table petsave_db.tbl_users
@@ -187,7 +191,7 @@ CREATE TABLE IF NOT EXISTS `tbl_users` (
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
--- Dumping data for table petsave_db.tbl_users: ~10 rows (approximately)
+-- Dumping data for table petsave_db.tbl_users: ~11 rows (approximately)
 /*!40000 ALTER TABLE `tbl_users` DISABLE KEYS */;
 INSERT INTO `tbl_users` (`user_id`, `user_fullname`, `user_category`, `user_contact_num`, `shelter_id`, `username`, `password`, `date_added`, `date_last_modified`) VALUES
 	(1, 'Juan Dela Cruz', 'A', '09265402020', 1, 'admin', '0cc175b9c0f1b6a831c399e269772661', '2022-10-25 14:36:57', '2022-11-04 09:37:08'),
@@ -199,7 +203,8 @@ INSERT INTO `tbl_users` (`user_id`, `user_fullname`, `user_category`, `user_cont
 	(7, 'ss', 'A', 's', 1, 'ss', '03c7c0ace395d80182db07ae2c30f034', '2022-11-04 14:32:00', '2022-11-04 14:32:00'),
 	(8, 'sad', 'A', 'sad', 1, 'caresfsd@gmail.coms', '2398f39c695d1dd15006ab0a2edcebcb', '2022-11-04 15:02:52', '2022-11-04 15:02:52'),
 	(9, 'sad6', 'A', 'sad', 1, 'caresfsd@gmail.co6ms', '2398f39c695d1dd15006ab0a2edcebcb', '2022-11-04 15:03:18', '2022-11-04 15:03:18'),
-	(10, 'sad6', 'A', 'sad', 1, 'caresfsd@gmsadail.co6ms', '2398f39c695d1dd15006ab0a2edcebcb', '2022-11-04 15:05:58', '2022-11-04 15:05:58');
+	(10, 'sad6', 'A', 'sad', 1, 'caresfsd@gmsadail.co6ms', '2398f39c695d1dd15006ab0a2edcebcb', '2022-11-04 15:05:58', '2022-11-04 15:05:58'),
+	(11, 'Juan Ponce', 'A', '0212121', 3, 'greenpaws', '0cc175b9c0f1b6a831c399e269772661', '2022-11-08 14:40:29', '2022-11-08 14:40:29');
 /*!40000 ALTER TABLE `tbl_users` ENABLE KEYS */;
 
 -- Dumping structure for trigger petsave_db.delete_users

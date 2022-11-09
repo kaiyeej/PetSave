@@ -69,8 +69,8 @@ class Shelters extends Connection
     public function view()
     {
         $Users = new Users();
-        $primary_id = $_SESSION['user']['shelter'];
-        $result = $this->select($this->table, "*", "$this->pk = '$primary_id'");
+        $param = isset($this->inputs['param']) ? $this->inputs['param'] : "$this->pk = '".$_SESSION['user']['shelter']."'";
+        $result = $this->select($this->table, "*", $param);
         return $result->fetch_assoc();
     }
 
@@ -79,6 +79,17 @@ class Shelters extends Connection
         $result = $this->select($this->table, $this->name, "$this->pk = '$primary_id'");
         $row = $result->fetch_assoc();
         return $row[$this->name];
+    }
+
+    public function getShelters()
+    {
+        $rows = array();
+        $param = isset($this->inputs['param']) ? $this->inputs['param'] : null;
+        $result = $this->select($this->table, "*", $param);
+        while ($row = $result->fetch_assoc()) {
+            $rows[] = $row;
+        }
+        return $rows;
     }
 
 }

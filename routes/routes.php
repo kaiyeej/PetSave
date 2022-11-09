@@ -17,12 +17,16 @@ $routes = array(
         'class_name' => '',
         'has_detail' => 0
     ),
-    "animals" => array(
+    "shelters" => array(
         'class_name' => '',
         'has_detail' => 0
     ),
     "lost-found" => array(
         'class_name' => '',
+        'has_detail' => 0
+    ),
+    "shelter-details" => array(
+        'class_name' => 'Shelters',
         'has_detail' => 0
     ),
 );

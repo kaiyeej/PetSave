@@ -15,6 +15,7 @@
                                     <label>Animal <span class="text-danger">*</span></label>
                                     <select style="pointer-events: none;" class="form-control input-item animal_id" readonly name="input[animal_id]" id="animal_id" required>
                                     </select>
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-sm-6">

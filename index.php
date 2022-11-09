@@ -75,8 +75,8 @@ include '/admin/core/config.php';
                                 <nav>
                                     <ul id="navigation">
                                         <li><a  href="./">home</a></li>
+                                        <li><a href="./shelters">shelters</a></li>
                                         <li><a href="./adopt">adopt</a></li>
-                                        <li><a href="./animals">animals</a></li>
                                         <li><a href="./lost-found">lost & found</a></li>
                                         <li><a href="./about-us">About us</a></li>
                                     </ul>
@@ -222,6 +222,7 @@ include '/admin/core/config.php';
         var timepicker = $('#timepicker').timepicker({
          format: 'HH.MM'
      });
+
     </script>
 </body>
 

@@ -84,6 +84,17 @@ class Animals extends Connection
         return $rows;
     }
 
+    public function show2()
+    {
+        
+        $rows = array();
+        $result = $this->select($this->table, '*');
+        while ($row = $result->fetch_assoc()) {
+            $rows[] = $row;
+        }
+        return $rows;
+    }
+
     public function view()
     {
         $primary_id = $this->inputs['id'];
@@ -94,8 +105,11 @@ class Animals extends Connection
     public function availableAnimals()
     {
         $rows = array();
-        $result = $this->select($this->table, "*", "status='0'");
+        $Shelters = new Shelters();
+        $param = isset($this->inputs['param']) ? $this->inputs['param']." AND " : null;
+        $result = $this->select($this->table, "*", "$param status='0'");
         while ($row = $result->fetch_assoc()) {
+            $row['shelter'] = $Shelters->name($row['shelter_id']);
             $rows[] = $row;
         }
         return $rows;

@@ -1,34 +1,17 @@
-<div class="bradcam_area breadcam_bg">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="bradcam_text text-center">
-                        <h3>Adopt now</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-</div>
-<div class="pet_care_area">
+<div class="bradcam_area breadcam_bg" style="padding: 140px 0;">
     <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-5 col-md-6">
-                <div class="pet_thumb">
-                    <img src="img/about/pet_care.png" alt="">
-                </div>
-            </div>
-            <div class="col-lg-6 offset-lg-1 col-md-6">
-                <div class="pet_info">
-                    <div class="section_title">
-                        <h3><span>We need your</span>
-                            help Adopt Us</h3>
-                        <p>All animals at PetSave are all looking for their Forever Homes right now!</p>
-                    </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="bradcam_text text-center">
+                    <h3 class="tag-item" id="shelter_name"></h3>
+                    <p style="color: #fff;margin-bottom: 0px;"><i class="ti-location-pin"></i> <span class="tag-item" id="shelter_address"></span></p>
+                    <p style="color: #fff;margin-bottom: 0px;"><i class="ti-email"></i> <span class="tag-item" id="shelter_email"></span> || <i class="ti-mobile"></i> <span class="tag-item" id="shelter_contact_number"></span></p>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 <div class="service_area">
     <div class="container">
         <div class="row justify-content-center ">
@@ -43,6 +26,7 @@
         </div>
     </div>
 </div>
+
 <?php require_once 'modal_adopt.php'; ?>
 <script type="text/javascript">
     function adoptNow(id){
@@ -82,20 +66,48 @@
       });
     });
 
-    function getAnimals() {
+    function getShelters() {
+        var id = "<?= $_GET['id'] ?>";
+        getAnimals(id);
+        var param = "shelter_id = '"+id+"'";
+        var q = "view";
+        $.ajax({
+            type: 'POST',
+            url:  "admin/controllers/sql.php?c=Shelters&q=" + q,
+            data:{
+                input: {
+                    param:param
+                }
+            },
+            success: function(data) {
+                var jsonParse = JSON.parse(data);
+                const json = jsonParse.data;
+                $('.tag-item').map(function() {
+                   // console.log(this.id);
+                    const id_name = this.id;
+                    this.innerHTML = json[id_name];
+                });
+            }
+        });
+    }
+
+    function getAnimals(id) {
         var q = "availableAnimals";
+        var param = "shelter_id = '"+id+"'";
         $.ajax({
             type: 'POST',
             url:  "admin/controllers/sql.php?c=Animals&q=" + q,
             data:{
-
+                input: {
+                    param:param
+                }
             },
             success: function(data) {
                 var json = JSON.parse(data);
                 var arr_count = json.data.length;
                 var i = 0;
                 if(arr_count <= 0){
-                    $("#canvas_animals").html('<div class="col-md-12">' +'<center> No data available</center>' +'</div>');
+                    $("#canvas_animals").html('<div class="col-md-12">' +'<center> <h3 style="color: #9e9e9e;">No data available</h3></center>' +'</div>');
                 }else{
                     while (i < arr_count) {
                         console.log(json.data[i]);
@@ -111,7 +123,7 @@
                                         '<h3  style="margin-bottom: 0px;">' + json.data[i].animal_name + '</h3>'+
                                         '<strong style="color: #ff5722;">' + json.data[i].shelter + '</strong>'+
                                         '<p>' + json.data[i].animal_description + '</p><br>'+
-                                    '<a data-toggle="modal" data-backdrop="false" onclick="adoptNow('+ json.data[i].animal_id +')" data-target="#modalEntry" href="#" class="genric-btn info-border circle">Adopt now</a>'+
+                                    '<a data-toggle="modal" data-backdrop="false" onclick="adoptNow(' + json.data[i].animal_id + ')" data-target="#modalEntry" href="#" class="genric-btn info-border circle">Adopt now</a>'+
                                     '</div>'+
                                '</div>'+
                             '</div>');
@@ -123,10 +135,12 @@
         });
     }
 
-    getAnimals();
-    getSelectOption('Animals', 'animal_id', 'animal_name', "status='0'");
+    $(document).ready(function() {
+        getShelters();
+        getSelectOption('Animals', 'animal_id', 'animal_name', "status='0'");
+    });
 
-    
+
     function getSelectOption(class_name, primary_id, label, param = '', attributes = [], pre_value='', pre_label = 'Please Select') {
       $.ajax({
         type: "POST",

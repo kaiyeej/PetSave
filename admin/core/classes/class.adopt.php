@@ -12,6 +12,7 @@ class Adopt extends Connection
         $form = array(
             $this->name         => $this->clean($this->inputs[$this->name]),
             'application_date'  => $this->inputs['application_date'],
+            'animal_id'          => $this->inputs['animal_id'],
             'age'               => $this->inputs['age'],
             'social_media_account'   => $this->inputs['social_media_account'],
             'address'           => $this->inputs['address'],
@@ -59,6 +60,7 @@ class Adopt extends Connection
             $form = array(
             $this->name         => $this->clean($this->inputs[$this->name]),
             'application_date'  => $this->inputs['application_date'],
+            'animal_id'          => $this->inputs['animal_id'],
             'age'               => $this->inputs['age'],
             'social_media_account'   => $this->inputs['social_media_account'],
             'address'           => $this->inputs['address'],

@@ -12,7 +12,11 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label>Animal <span class="text-danger">*</span></label>
+<<<<<<< Updated upstream
                                     <select class="form-control input-item animal_id" readonly name="input[animal_id]" id="animal_id" required>
+=======
+                                    <select style="pointer-events: none;" class="form-control input-item animal_id" readonly name="input[animal_id]" id="animal_id" required>
+>>>>>>> Stashed changes
                                     </select>
                                 </div>
                             </div>

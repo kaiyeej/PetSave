@@ -13,8 +13,14 @@ function getUser($id){
 	global $mysqli_connect;
 
 	$fetch = $mysqli_connect->query("SELECT * from tbl_users where user_id='$id' ");
-	$row = $fetch->fetch_array();
-	$user_name = $row['user_fullname'];
+
+    if($fetch->num_rows > 0){
+        $row = $fetch->fetch_array();
+        $user_name = $row['user_fullname'];
+    }else{
+	    $user_name = "";
+    }
+	
 
 	return $user_name;
 }

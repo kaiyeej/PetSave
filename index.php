@@ -1,6 +1,6 @@
 <!doctype html>
 <?php
-include '/admin/core/config.php';
+include 'admin/core/config.php';
 
 ?>
 <html class="no-js" lang="zxx">

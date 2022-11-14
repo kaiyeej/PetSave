@@ -11,6 +11,13 @@
                         <input type="hidden" id="hidden_id" name="input[adoption_id]">
                             <div class="col-sm-6">
                                 <div class="form-group">
+                                    <label>Animal <span class="text-danger">*</span></label>
+                                    <select class="form-control input-item animal_id" readonly name="input[animal_id]" id="animal_id" required>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
                                     <label>DATE OF APPLICATION <span class="text-danger">*</span></label>
                                     <input type="date" class="form-control input-item" name="input[application_date]" id="application_date" autocomplete="off" placeholder="Document name" required>
                                 </div>

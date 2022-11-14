@@ -137,12 +137,12 @@ class Adopt extends Connection
 
     public function approve()
     {
-        $ids = implode(",", $this->inputs['ids']);
+        $primary_id = $this->inputs['id'];
         $form = array(
             "status" => "A"
         );
 
-        return $this->update($this->table, $form, "$this->pk IN($ids)");
+        return $this->update($this->table, $form, "$this->pk = '$primary_id'");
     }
 
     public function name($primary_id)

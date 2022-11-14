@@ -113,5 +113,6 @@
 
     $(document).ready(function() {
         getEntries();
+        getSelectOption('Animals', 'animal_id', 'animal_name', "status='0'");
     });
 </script>

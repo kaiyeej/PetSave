@@ -75,9 +75,9 @@ class Animals extends Connection
     {
         
         $shelter_id = $_SESSION['user']['shelter'];
-        $param = isset($this->inputs['param']) ? "AND $this->inputs['param']" : null;
+        $param = isset($this->inputs['param']) ? "AND ".$this->inputs['param']."" : null;
         $rows = array();
-        $result = $this->select($this->table, '*', ("shelter_id = '$shelter_id' $param"));
+        $result = $this->select($this->table, '*', "shelter_id = '$shelter_id' $param");
         while ($row = $result->fetch_assoc()) {
             $rows[] = $row;
         }
@@ -150,8 +150,8 @@ class Animals extends Connection
 
     public function name($primary_id)
     {
-        $result = $this->select($this->table, 'course_name', "$this->pk = '$primary_id'");
+        $result = $this->select($this->table, 'animal_name', "$this->pk = '$primary_id'");
         $row = $result->fetch_assoc();
-        return $row['course_name'];
+        return $row['animal_name'];
     }
 }

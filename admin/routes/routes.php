@@ -33,6 +33,10 @@ $routes = array(
         'class_name' => 'Users',
         'has_detail' => 0
     ),
+    "post" => array(
+        'class_name' => 'Post',
+        'has_detail' => 0
+    ),
 );
 /** END SET ROUTES */
 

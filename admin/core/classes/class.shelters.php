@@ -68,7 +68,6 @@ class Shelters extends Connection
 
     public function view()
     {
-        $Users = new Users();
         $param = isset($this->inputs['param']) ? $this->inputs['param'] : "$this->pk = '".$_SESSION['user']['shelter']."'";
         $result = $this->select($this->table, "*", $param);
         return $result->fetch_assoc();

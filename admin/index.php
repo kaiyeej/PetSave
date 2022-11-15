@@ -138,8 +138,7 @@ if (!isset($_SESSION['user']['id'])) {
 
                 <!--begin::Content-->
                 <div class="content  d-flex flex-column flex-column-fluid" id="kt_content" style="padding-top: 50px;">
-                    
-          <?php require 'routes/routes.php'; ?>
+                    <?php require 'routes/routes.php'; ?>
                 </div>
                 <!--end::Content-->
 

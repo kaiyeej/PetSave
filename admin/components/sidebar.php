@@ -26,6 +26,11 @@ $page = str_replace("/petsave/admin/", "", $request);
                 <i class="flaticon-open-box icon-lg"></i>
             </a>
         </li>
+        <li class="nav-item mb-5" data-toggle="tooltip" data-placement="right" data-container="body" data-boundary="window" title="Post">
+            <a href="./post" class="nav-link btn btn-icon btn-clean btn-icon-white btn-lg <?= $page == 'post' ? 'active' : '' ?>">
+                <i class="flaticon-notes icon-lg"></i>
+            </a>
+        </li>
         <li class="nav-item mb-5" data-toggle="tooltip" data-placement="right" data-container="body" data-boundary="window" title="Lost and Found">
             <a href="./users" class="nav-link btn btn-icon btn-clean btn-icon-white btn-lg <?= $page == 'users' ? 'active' : '' ?>">
                 <i class="flaticon-user-add icon-lg"></i>

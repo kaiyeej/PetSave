@@ -89,6 +89,6 @@ class Shelters extends Connection
             $rows[] = $row;
         }
         return $rows;
-    }
+    }   
 
 }

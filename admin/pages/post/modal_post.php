@@ -6,7 +6,7 @@
                     <h4 class="modal-title" id="modalLabel"><span class='fa fa-pen'></span> Update Post</h4>
                 </div>
                 <div class="modal-body">
-                    <input class="input-item" type="text" id="hidden_id" name="input[post_id]">
+                    <input type="hidden" id="hidden_id" name="input[post_id]">
                     <div class="col-sm-12">
                         <div class="form-group">
                             <label><strong>Title</strong><span class="text-danger">*</span></label>
@@ -29,7 +29,7 @@
                         <i class="bx bx-x d-block d-sm-none"></i>
                         <span class="d-none d-sm-block">Close</span>
                     </button>
-                    <button type="submit" class="btn btn-primary ml-1">
+                    <button type="submit" id="btn_update" class="btn btn-primary ml-1">
                         <i class="bx bx-check d-block d-sm-none"></i>
                         <span class="d-none d-sm-block">Update</span>
                     </button>

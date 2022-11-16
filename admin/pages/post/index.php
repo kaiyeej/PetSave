@@ -85,10 +85,10 @@
                   <form id="frm_post" class="pt-10 ql-quil ql-quil-plain">
                       <!--begin::Editor-->
                       <div class="form-group mb-6">
-                          <input type="text" class="form-control border-0 form-control-solid pl-6 min-h-50px font-size-lg font-weight-bolder" name="input[post_title]" placeholder="Title" required>
+                          <input type="text" class="form-control border-0 form-control-solid pl-6 min-h-50px font-size-lg font-weight-bolder" autocomplete="off" name="input[post_title]" placeholder="Title" required>
                       </div>
                       <div id="kt_forms_widget_2_editor" class="ql-container ql-snow">
-                          <textarea class="form-control border-0 form-control-solid pl-6 font-size-lg font-weight-bolder min-h-130px" rows="4" placeholder="Content here" id="kt_forms_widget_7_input"  name="input[post_content]" style="overflow: hidden; overflow-wrap: break-word; resize: none; height: 130px;" required></textarea>
+                          <textarea class="form-control border-0 form-control-solid pl-6 font-size-lg font-weight-bolder min-h-130px" autocomplete="off" rows="4" placeholder="Content here" id="kt_forms_widget_7_input"  name="input[post_content]" style="overflow: hidden; overflow-wrap: break-word; resize: none; height: 130px;" required></textarea>
                       </div>
                       <!--end::Editor-->
 
@@ -206,6 +206,32 @@
     });
   });
 
+  $("#frm_update_post").submit(function(e) {
+    e.preventDefault();
+
+    $("#btn_update").prop('disabled', true);
+
+    $.ajax({
+      type: "POST",
+      url: "controllers/sql.php?c=" + route_settings.class_name + "&q=edit",
+      data: $("#frm_update_post").serialize(),
+      success: function(data) {
+        var json = JSON.parse(data);
+        if (json.data == 1) {
+          success_update();
+          $("#modalEntry").modal("hide");
+          getOwnPost();
+        } else if (json.data == 2) {
+          entry_already_exists();
+        } else {
+          failed_query(json);
+        }
+
+        $("#btn_update").prop('disabled', false);
+      }
+    });
+  });
+
   function getOwnPost(){
     $("#canvas_own_post").html("");
     $.ajax({
@@ -228,7 +254,7 @@
                                 ''+json.data[i].post_content+'<br>'+
                                 ''+json.data[i].post_date+''+
                             '</span>'+
-                            '<div><button type="button" onclick="updatePost('+json.data[i].post_id+')" class="btn btn-warning font-weight-bolder font-size-sm py-2">Update</button></div>'+
+                            '<div><button type="button" onclick="getEntryDetails('+json.data[i].post_id+')" class="btn btn-warning font-weight-bolder font-size-sm py-2">Update</button></div>'+
                         '</div>'+
                         '</div>');
                 i++;
@@ -242,9 +268,6 @@
     });
   }
 
-  function updatePost(id){
-      getEntryDetails(id);
-  }
 
   getOwnPost();
 </script>

@@ -82,7 +82,7 @@
                             <div class="single_adapt text-center">
                                 <img src="img/adapt_icon/1.png" alt="">
                                 <div class="adapt_content">
-                                    <h3 class="counter" id="total_animals_label">452</h3>
+                                    <h3 class="summary-label" id="total_animals_label"></h3>
                                     <p>Animals Available</p>
                                 </div>
                             </div>
@@ -91,14 +91,14 @@
                             <div class="single_adapt text-center">
                                 <img src="img/adapt_icon/3.png" alt="">
                                 <div class="adapt_content">
-                                    <h3><span class="counter summary-label" id="total_lost_found_label"></span>+</h3>
+                                    <h3><span class="summary-label" id="total_lost_found_label"></span>+</h3>
                                     <p>Lost and Found</p>
                                 </div>
                             </div>
                             <div class="single_adapt text-center">
                                 <img src="img/adapt_icon/2.png" alt="">
                                 <div class="adapt_content">
-                                    <h3><span class="counter" id="total_adopted_label">52</span>+</h3>
+                                    <h3><span class="summary-label" id="total_adopted_label"></h3>
                                     <p>Adopted animals</p>
                                 </div>
                             </div>
@@ -112,21 +112,21 @@
 <!-- adapt_area_end  -->
 <script type="text/javascript">
     $(document).ready(function() {
-        getSummarys();
+        getSummary();
     });
 
-    function getSummarys() {
+    function getSummary() {
       $.ajax({
-        url: "controllers/sql.php?c=Homepage&q=view",
+        url: "admin/controllers/sql.php?c=Homepage&q=view",
         success: function(data) {
-            //var jsonParse = JSON.parse(data);
-           // const json = jsonParse.data;
+            var jsonParse = JSON.parse(data);
+            const json = jsonParse.data;
 
-            /*$('.summary-label').map(function() {
+            $('.summary-label').map(function() {
                 const id_name = this.id;
                 const new_id = id_name.replace('_label', '');
                 this.innerHTML = json[new_id];
-            });*/
+            });
         }
       });
     }

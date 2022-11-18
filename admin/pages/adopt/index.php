@@ -12,11 +12,8 @@
                 Adoption
             </div>
             <div class="card-toolbar btn-group" style="padding-top: 5px">
-                <a href="#" onclick="addModal()" data-container="body" data-offset="20px 20px" data-toggle="popover" data-placement="top" data-content="Add New Entry" style="padding:10px;" class="btn btn-primary  btn-sm">
+                <a href="#" onclick="addAdopt()" data-container="body" data-offset="20px 20px" data-toggle="popover" data-placement="top" data-content="Add New Entry" style="padding:10px;" class="btn btn-primary  btn-sm">
                     <i class="flaticon2-add"></i> Add
-                </a>
-                <a href="#"  data-container="body" data-offset="20px 20px" data-toggle="popover" data-placement="top" data-content="Approve Selected Entry" onclick='approveEntry()' style="padding:10px;" class="btn btn-success btn-sm">
-                    <i class="flaticon2-check-mark"></i> Approve
                 </a>
                 <a href="#"  data-container="body" data-offset="20px 20px" data-toggle="popover" data-placement="top" data-content="Cancel Selected Entry" onclick='cancelEntry()' style="padding:10px;" class="btn btn-warning btn-sm">
                     <i class="flaticon2-cancel"></i> Cancel
@@ -71,6 +68,12 @@
 <script type="text/javascript">
 </script>
 <script type="text/javascript">
+    function addAdopt(){
+        $("#btn_approve").hide();
+        $('#div_adopt').css('pointer-events', 'auto');
+        addModal();
+    }
+
     function getEntries() {
         $("#dt_entries").DataTable().destroy();
         $("#dt_entries").DataTable({
@@ -87,7 +90,7 @@
                 },
                 {
                     "mRender": function(data, type, row) {
-                        return "<center><button class='btn btn-icon btn-sm btn-light-primary' onclick='getEntryDetails(" + row.adoption_id + ")'><i class='flaticon-edit-1'></i></button></center>";
+                        return "<center><button class='btn btn-icon btn-sm btn-light-primary' onclick='getDetails(" + row.adoption_id + ")'><i class='flaticon-edit-1'></i></button></center>";
 
                     }
                 },
@@ -110,9 +113,58 @@
         });
     }
 
+    function getDetails(id){
+        getEntryDetails(id);
+        $("#btn_approve").show();
+    }
+
+    function approveNow() {
+        swal({
+            title: "Are you sure?",
+            text: "You will not be able to recover these entries!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonClass: "btn-danger",
+            cancelButtonClass: "btn-primary",
+            confirmButtonText: "Yes, approve it!",
+            cancelButtonText: "No, cancel!",
+            closeOnConfirm: false,
+            closeOnCancel: false
+        },function(isConfirm) {
+            if (isConfirm) {
+                var id = $("#hidden_id").val();
+
+                $.ajax({
+                    type: "POST",
+                    url: "controllers/sql.php?c=" + route_settings.class_name + "&q=approve",
+                    data: {
+                        input: {
+                            id: id
+                        }
+                    },
+                    success: function(data) {
+                        getEntries();
+                        var json = JSON.parse(data);
+                        console.log(json);
+                        if (json.data == 1) {
+                            success_approve();
+                        } else if(json.data == -1){
+                            swal("Cannot proceed!", "Selected animal is not available!", "warning");
+                        } else {
+                            failed_query(json);
+                        }
+                    }
+                });
+
+            } else {
+                swal("Cancelled", "Entries are safe :)", "error");
+            }
+        });
+    }
+
 
     $(document).ready(function() {
         getEntries();
-        getSelectOption('Animals', 'animal_id', 'animal_name', "status='0'");
+        getSelectOption('Animals', 'animal_id', 'animal_name', "status='0' OR status='1'");
     });
 </script>

@@ -13,7 +13,7 @@
         <div class="card card-custom">
           <div class="card-body">
             <h4 class="card-title" style="color: #009688;">Shelter information</h4>
-              <form method='POST' id='frm_profile' class="profile">
+              <form method='POST' id='frm_shelter' class="profile">
                 <div class="row">
                   <div class="form-group col-sm-12">
                     <label for="exampleInputUsername1">Shelter Name</label>
@@ -74,7 +74,7 @@
       });
     }
 
-    $("#frm_profile").submit(function(e) {
+    $("#frm_shelter").submit(function(e) {
       e.preventDefault();
 
       $("#btn_submit").prop('disabled', true);
@@ -83,7 +83,7 @@
       $.ajax({
         type: "POST",
         url: "controllers/sql.php?c=Shelters&q=edit",
-        data: $("#frm_profile").serialize(),
+        data: $("#frm_shelter").serialize(),
         success: function(data) {
           var json = JSON.parse(data);
           if (json.data == 1) {

@@ -32,7 +32,7 @@
                             </div>
                             <div class="col-sm-12">
                                 <div class="form-group">
-                                    <label>Last location  <span class="text-danger">*</span><</label>
+                                    <label>Last location  <span class="text-danger">*</span></label>
                                     <textarea class="form-control input-item" name="input[if_last_location_found]" id="if_last_location_found" autocomplete="off" placeholder="Last location found" required></textarea>
                                 </div>
                             </div>

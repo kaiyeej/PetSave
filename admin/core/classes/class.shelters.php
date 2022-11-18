@@ -40,20 +40,20 @@ class Shelters extends Connection
 
     public function edit()
     {
-        $primary_id = $_SESSION['user']['id'];
+        $primary_id = $_SESSION['user']['shelter'];
         $shelter_name = $this->clean($this->inputs['shelter_name']);
         $is_exist = $this->select($this->table, $this->pk, "shelter_name = '$shelter_name' AND  $this->pk != '$primary_id'");
         if ($is_exist->num_rows > 0) {
             return 2;
         } else {
             $form = array(
-                'shelter_name'              => $this->inputs['shelter_name'],
+                'shelter_name'              => $shelter_name,
                 'shelter_address'           => $this->inputs['shelter_address'],
                 'shelter_email'             => $this->inputs['shelter_email'],
                 'shelter_contact_number'    => $this->inputs['shelter_contact_number'],
                 'shelter_remarks'           => $this->inputs['shelter_remarks']
             );
-            return $this->update($this->table, $form, "shelter_name = '$shelter_name' AND  $this->pk = '$primary_id'");
+            return $this->update($this->table, $form, "$this->pk = '$primary_id'");
         }
     }
     public function show()

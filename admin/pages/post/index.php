@@ -112,44 +112,7 @@
               <!--end::Forms Widget 2-->
 
               <!--begin::Forms Widget 3-->
-              <div class="card card-custom gutter-b">
-                <!--begin::Body-->
-                <div class="card-body">
-                  <!--begin::Header-->
-                  <div class="d-flex align-items-center">
-                    <!--begin::Symbol-->
-                    <div class="symbol symbol-40 symbol-light-danger mr-5">
-                      <span class="symbol-label">
-                        <i class="flaticon2-user" style="font-size: 2.25rem;"></i>
-                      </span>
-                    </div>
-                    <!--end::Symbol-->
-
-                    <!--begin::Info-->
-                    <div class="d-flex flex-column flex-grow-1">
-                      <a href="#" class="text-dark-75 text-hover-primary mb-1 font-size-lg font-weight-bolder">Grace Logan</a>
-                      <span class="text-muted font-weight-bold">PHP, SQLite, Artisan CLI</span>
-                    </div>
-                    <!--end::Info-->
-
-                  </div>
-                  <!--end::Header-->
-                  <!--begin::Body-->
-                  <div class="pt-5">
-                    <!--begin::Text-->
-                    <p class="text-dark-75 font-size-lg font-weight-normal  mb-2">
-                      Outlines keep you honest. They stop you from indulging in
-                      poorly thought-out metaphors about driving and keep you
-                      focused on the overall structure of your post
-                    </p>
-                    <!--end::Text-->
-                  </div>
-                  <!--end::Body-->
-
-                  <!--begin::Separator-->
-                  <div class="separator separator-solid mt-2 mb-4"></div>
-                </div>
-                <!--end::Body-->
+              <div id="canvas_other_post">
               </div>
               <!--end::Forms Widget 3-->
 
@@ -268,6 +231,52 @@
     });
   }
 
+  function getOtherPost(){
+    $("#canvas_other_post").html("");
+    $.ajax({
+        type: 'POST',
+        url:  "controllers/sql.php?c=Post&q=getOtherPost",
+        data: {
+          
+        },
+        success: function(data) {
+            console.log(data);
+            var json = JSON.parse(data);
+            var arr_count = json.data.length;
+            var i = 0;
+            while (i < arr_count) {
+                $("#canvas_other_post").append(
+                '<div class="card card-custom gutter-b" style="margin-bottom: 10px;">'+
+                  '<div class="card-body">'+
+                    '<div class="d-flex align-items-center">'+
+                      '<div class="symbol symbol-40 symbol-light-danger mr-5">'+
+                            '<span class="symbol-label">'+
+                              '<i class="flaticon2-user" style="font-size: 2.25rem;"></i>'+
+                            '</span>'+
+                          '</div>'+
+                          '<div class="d-flex flex-column flex-grow-1">'+
+                            '<a href="#" class="text-dark-75 text-hover-primary mb-1 font-size-lg font-weight-bolder">'+json.data[i].fullname+'</a>'+
+                            '<span class="text-muted font-weight-bold">'+json.data[i].fullname+' | '+json.data[i].post_date+
+                          '</div>'+
+                        '</div>'+
+                        '<div class="pt-5">'+
+                          '<p class="text-dark-75 font-size-lg font-weight-bold  mb-2">'+json.data[i].post_title+'</p>'+
+                          '<p class="text-dark-75 font-size-lg font-weight-normal  mb-2">'+json.data[i].post_content+'</p>'+
+                      '</div>'+
+                    '</div>'+
+                  '</div>'+
+                  '<div class="separator separator-solid mt-2 mb-4"></div>');
+                i++;
+            }
 
+            if(arr_count <= 0){
+                $("#canvas_own_post").html('<div class="col-xl-12"><div class="card card-custom gutter-b card-stretch"><div class="card-header border-0"><div class="card-body"><h6 style="color: #9e9e9e;">No subject found.</h6></div></div></div></div>');
+            }
+
+        }
+    });
+  }
+
+  getOtherPost();
   getOwnPost();
 </script>

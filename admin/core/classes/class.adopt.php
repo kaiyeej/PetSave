@@ -138,17 +138,35 @@ class Adopt extends Connection
     public function approve()
     {
         $primary_id = $this->inputs['id'];
-        $form = array(
-            "status" => "A"
-        );
+        $animal_id = $this->adopt_animal_id($primary_id);
+        $result = $this->select("tbl_animals", '*', "animal_id = '$animal_id'");
+        $row = $result->fetch_assoc();
+        if($row['status'] == 0){
+            $form_ = array(
+                "status" => "1"
+            );
+            $this->update("tbl_animals", $form_, "animal_id = '$animal_id'");
 
-        return $this->update($this->table, $form, "$this->pk = '$primary_id'");
+            $form = array(
+                "status" => "A"
+            );
+            return $this->update($this->table, $form, "$this->pk = '$primary_id'");
+        }else{
+            return -1;
+        }
     }
+
+    public function adopt_animal_id($primary_id)
+    {
+        $result = $this->select($this->table, 'animal_id', "$this->pk = '$primary_id'");
+        $row = $result->fetch_assoc();
+        return $row['animal_id'];
+    } 
 
     public function name($primary_id)
     {
-        $result = $this->select($this->table, 'course_name', "$this->pk = '$primary_id'");
+        $result = $this->select($this->table, 'fullname', "$this->pk = '$primary_id'");
         $row = $result->fetch_assoc();
-        return $row['course_name'];
+        return $row['fullname'];
     }
 }

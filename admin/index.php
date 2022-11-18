@@ -495,7 +495,17 @@ if (!isset($_SESSION['user']['id'])) {
             this.value = json[id_name];
           });
 
-          //$(".select2").select2().trigger('change');
+          if(route_settings.class_name == "Adopt" && json.status == "A"){
+            $("#btn_approve").hide();
+            $("#btn_submit").hide();
+            $('#div_adopt').css('pointer-events', 'none');
+          }else{
+            $("#btn_approve").show();
+            $("#btn_submit").show();
+            $('#div_adopt').css('pointer-events', 'auto');
+          }
+
+          $(".select2").select2().trigger('change');
 
           $("#modalLabel").html("<i class='flaticon-edit'></i> Update Entry");
           $("#modalEntry").modal('show');

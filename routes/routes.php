@@ -6,7 +6,7 @@ $request = $_SERVER['REQUEST_URI'];
 // insert routes alphabetically
 $routes = array(
     "homepage" => array(
-        'class_name' => 'Homepage',
+        'class_name' => '',
         'has_detail' => 0
     ),
     "about-us" => array(

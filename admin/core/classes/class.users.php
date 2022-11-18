@@ -82,6 +82,14 @@ class Users extends Connection
         return $row[$self->name];
     }
 
+    public static function fullname($primary_id)
+    {
+        $self = new self;
+        $result = $self->select($self->table, 'user_fullname', "$self->pk  = '$primary_id'");
+        $row = $result->fetch_assoc();
+        return $row['user_fullname'];
+    }
+
     public static function user_shelter($primary_id)
     {
         $self = new self;

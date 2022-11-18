@@ -61,6 +61,20 @@ class Post extends Connection
         return $rows;
     }
 
+    public function getOtherPost(){
+        $user_id = $_SESSION['user']['id'];
+        $Users = new Users();
+        $rows = array();
+        $result = $this->select($this->table, "*", "user_id!='$user_id' ORDER BY post_date DESC");
+        while ($row = $result->fetch_assoc()) {
+            $row['fullname'] = $Users->fullname($row['user_id']);
+            $row['shelter'] = $Users->user_shelter($row['user_id']);
+            $row['post_date'] = date('M d, Y H:i', strtotime($row["post_date"]));;
+            $rows[] = $row;
+        }
+        return $rows;
+    }
+
     public function view()
     {
         $primary_id = $this->inputs['id'];

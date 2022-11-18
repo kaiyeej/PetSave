@@ -4,19 +4,16 @@
             <div class="modal-content">
                 <div class="modal-header" style="">
                     <h4 id="modalLabel"><i class='flaticon-edit'></i> ADOPTION APPLICATION </h4>
+                    <button type="button" id="btn_approve" class="btn btn-light-success font-weight-bold" onclick="approveNow()" data-dismiss="modal"><i class="flaticon2-check-mark"></i> Approve</button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body" id="div_adopt">
                     <div class="container-fluid">
                         <div class="row">
                         <input type="hidden" id="hidden_id" name="input[adoption_id]">
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label>Animal <span class="text-danger">*</span></label>
-<<<<<<< Updated upstream
-                                    <select class="form-control input-item animal_id" readonly name="input[animal_id]" id="animal_id" required>
-=======
-                                    <select style="pointer-events: none;" class="form-control input-item animal_id" readonly name="input[animal_id]" id="animal_id" required>
->>>>>>> Stashed changes
+                                    <select class="form-control input-item" readonly name="input[animal_id]" id="animal_id" required>
                                     </select>
                                 </div>
                             </div>
@@ -298,8 +295,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-light-danger font-weight-bold" data-dismiss="modal"><i class="fas fa-times"></i></button>
-                    <button type="submit" class="btn btn-primary font-weight-bold"><i class="flaticon2-check-mark"></i></button>
+                    <button type="button" id="btn_close" class="btn btn-light-danger font-weight-bold" data-dismiss="modal"><i class="fas fa-times"></i></button>
+                    <button type="submit" id="btn_submit" class="btn btn-primary font-weight-bold"><i class="flaticon2-check-mark"></i></button>
                 </div>
             </div>
         </div>

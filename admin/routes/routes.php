@@ -47,7 +47,8 @@ $Shelters = new Shelters();
 $shelter_profile = json_encode($Shelters->view());
 
 $base_folder = "pages/";
-$page = str_replace("/petsave/admin/", "", $request);
+//$page = str_replace("/petsave/admin/", "", $request);
+$page = str_replace("/admin/", "", $request);
 
 // chec if has parameters
 if (substr_count($page, "?") > 0) {

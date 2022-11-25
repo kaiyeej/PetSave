@@ -78,6 +78,7 @@ include 'admin/core/config.php';
                                         <li><a href="./shelters">shelters</a></li>
                                         <li><a href="./adopt">adopt</a></li>
                                         <li><a href="./lost-found">lost & found</a></li>
+                                        <li><a href="./pet-care">PetCare</a></li>
                                         <li><a href="./about-us">About us</a></li>
                                     </ul>
                                 </nav>

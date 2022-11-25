@@ -29,6 +29,10 @@ $routes = array(
         'class_name' => 'Shelters',
         'has_detail' => 0
     ),
+    "pet-care" => array(
+        'class_name' => '',
+        'has_detail' => 0
+    ),
 );
 /** END SET ROUTES */
 

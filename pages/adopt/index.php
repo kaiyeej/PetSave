@@ -45,6 +45,10 @@
 </div>
 <?php require_once 'modal_adopt.php'; ?>
 <script type="text/javascript">
+    function showTC(){
+        window.open("terms-condition");
+    }
+
     function adoptNow(id){
         $("#modalEntry").prependTo("body");
         $("#frm_submit").removeClass("required");

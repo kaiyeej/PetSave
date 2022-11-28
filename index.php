@@ -78,6 +78,7 @@ include 'admin/core/config.php';
                                         <li><a href="./shelters">shelters</a></li>
                                         <li><a href="./adopt">adopt</a></li>
                                         <li><a href="./lost-found">lost & found</a></li>
+                                        <li><a href="./pet-care">PetCare</a></li>
                                         <li><a href="./about-us">About us</a></li>
                                     </ul>
                                 </nav>
@@ -136,7 +137,9 @@ include 'admin/core/config.php';
                                 <img src="admin/assets/media/logos/logo.png" alt="logo" style="height: 100px;">
                                 </a>
                             </div>
-
+                            <a href="terms-condition">
+                                Terms and Condition
+                            </a>
                         </div>
                     </div>
                 </div>

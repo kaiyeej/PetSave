@@ -291,6 +291,14 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class="col-sm-12">
+                                <div class="form-check">
+                                <input class="form-check-input is-invalid" type="checkbox" value="" id="invalidCheck3" aria-describedby="invalidCheck3Feedback" required required>
+                                <label class="form-check-label" for="invalidCheck3">
+                                    I have read and agree to the <a href="#" onclick="showTC()">Terms and Condition</a>
+                                </label>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

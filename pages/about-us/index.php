@@ -26,16 +26,18 @@
                     </div>
                 </div>
             </div>
+            <div class="col-lg-12">
+                <div class="pet_info">
+                    <div class="section_title">
+                        <img src="img/gallery/donation.gif" alt="" style="border-style: dashed;border-color: orangered;">
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 <section class="contact-section">
     <div class="container">
-        <div class="d-none d-sm-block mb-5 pb-4">
-        
-
-        </div>
-
         <div class="row">
             <div class="col-12">
                 <h2 class="contact-title">Get in Touch</h2>

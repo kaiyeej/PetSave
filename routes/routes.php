@@ -29,12 +29,20 @@ $routes = array(
         'class_name' => 'Shelters',
         'has_detail' => 0
     ),
+    "pet-care" => array(
+        'class_name' => '',
+        'has_detail' => 0
+    ),
+    "terms-condition" => array(
+        'class_name' => '',
+        'has_detail' => 0
+    ),
 );
 /** END SET ROUTES */
 
 $base_folder = "pages/";
-//$page = str_replace("/petsave/", "", $request);
 $page = str_replace("/", "", $request);
+//$page = str_replace("/petsave/", "", $request);
 
 // chec if has parameters
 if (substr_count($page, "?") > 0) {

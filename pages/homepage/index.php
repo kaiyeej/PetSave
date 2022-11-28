@@ -42,7 +42,7 @@
 </div>
 <!-- pet_care_area_end  -->
 
-<div class="contact_anipat anipat_bg_1">
+<div class="contact_anipat anipat_bg_1" style="display: none;">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-8">

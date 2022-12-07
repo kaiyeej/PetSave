@@ -109,11 +109,79 @@
         </div>
     </div>
 </div>
+<div class="service_area" style="padding-top:106px;">
+    <div class="container">
+        <div class="row justify-content-center ">
+            <div class="col-lg-7 col-md-10">
+                <div class="section_title text-center mb-95">
+                    <h3>Rescued Animals</h3>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+        <div  id="canvas_rescued" class="row justify-content-center">
+            
+        </div>
+    </div>
+</div>
 <!-- adapt_area_end  -->
 <script type="text/javascript">
     $(document).ready(function() {
         getSummary();
+        getAnimals();
     });
+
+    function getAnimals() {
+        $.ajax({
+            type: 'POST',
+            url:  "admin/controllers/sql.php?c=Homepage&q=rescueAll",
+            data:{
+
+            },
+            success: function(data) {
+                var json = JSON.parse(data);
+                var arr_count = json.data.length;
+                var i = 0;
+                if(arr_count <= 0){
+                    $("#canvas_rescued").html('<div class="col-md-12">' +'<center> No data available</center>' +'</div>');
+                }else{
+                    while (i < arr_count) {
+
+                        if(json.data[i].if_type == "L"){
+                            var t_color = "#ff5722;";
+                        }else{
+                            var t_color = "green;";
+                        }
+
+                        if(json.data[i].shelter_id != 0){
+                            var r_status = "";
+                        }else{
+                            var r_status = "display:none;";
+                        }
+                        
+                        $("#canvas_rescued").append(
+                            '<div class="col-lg-4 col-md-6">'+
+                                '<div class="single_service">'+
+                                   '<div class="service_thumb service_icon_bg_1 d-flex align-items-center justify-content-center">'+
+                                        '<div class="service_icon">'+
+                                            '<img style="max-width: 300px;max-height: 220px;" src="admin/assets/lost_found/' + json.data[i].img_file + '" alt="">'+
+                                        '</div>'+
+                                    '</div>'+
+                                    '<div class="service_content text-center" style="padding-top: 50px;">'+
+                                        '<p style="text-align: left;">Description: ' + json.data[i].description + '</p>'+
+                                        '<p style="text-align: left;">Location: ' + json.data[i].location + '</p>'+
+                                        '<p style="text-align: left;">Date Reported: ' + json.data[i].date_added + '</p>'+
+                                    '</div>'+
+                                    '<span class="badge badge-success" style="background-color: #28a745;padding: 10px;width: 100%;'+r_status+'">RESOLVED ('+json.data[i].shelter+')</span>'+
+                               '</div>'+
+                            '</div>');
+                        i++;
+                    }
+                }
+
+            }
+        });
+    }
 
     function getSummary() {
       $.ajax({

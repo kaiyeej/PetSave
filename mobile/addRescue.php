@@ -7,11 +7,8 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 
 require_once 'core/config.php';
 $data = json_decode(file_get_contents("php://input"));
-$if_animal_name = $mysqli_connect->real_escape_string($data->if_animal_name);
-$if_animal_desc = $mysqli_connect->real_escape_string($data->if_animal_desc);
-$if_type = $mysqli_connect->real_escape_string($data->if_type);
-$if_last_location_found = $mysqli_connect->real_escape_string($data->if_last_location_found);
-$if_other_remarks = $mysqli_connect->real_escape_string($data->if_other_remarks);
+$description = $mysqli_connect->real_escape_string($data->r_description);
+$location = $mysqli_connect->real_escape_string($data->r_location);
 
 $image = $mysqli_connect->real_escape_string($data->image->dataUrl);
 $DIR = "../admin/assets/lost_found/";
@@ -26,13 +23,13 @@ $file = $DIR . $img_file;
 
 $date = getCurrentDate();
 
-$sql= $mysqli_connect->query("INSERT INTO `tbl_lost_and_found`(`if_animal_name`, `if_animal_desc`, `if_last_location_found`,`if_other_remarks`, `if_type`,if_animal_image) VALUES ('$if_animal_name','$if_animal_desc','$if_last_location_found','$if_other_remarks','$if_type','$img_file')");
+$sql= $mysqli_connect->query("INSERT INTO `tbl_rescue`(`description`, `location`, `img_file`) VALUES ('$description','$location','$img_file')");
 			
 if($sql){
     $base64Img = base64_decode($file_chunks[1]);
     file_put_contents($file, $base64Img);
     
-    $mysqli_connect->query("DELETE FROM `tbl_lost_and_found` WHERE if_animal_name = '' AND if_animal_desc = '' AND if_animal_image != ''");
+    $mysqli_connect->query("DELETE FROM `tbl_rescue` WHERE description = '' AND location = '' AND img_file != ''");
     echo 1;
 }else{
     echo 0;

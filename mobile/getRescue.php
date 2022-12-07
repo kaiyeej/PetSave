@@ -9,15 +9,16 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 require_once 'core/config.php';
 $data = json_decode(file_get_contents("php://input"));
    // $r_id = $mysqli_connect->real_escape_string($data->r_id);
-    $fetch = $mysqli_connect->query("SELECT * FROM tbl_lost_and_found ORDER by date_modified DESC");
+    $fetch = $mysqli_connect->query("SELECT * FROM tbl_rescue ORDER by date_added DESC");
     $response = array();
     while ($row = $fetch->fetch_array()) {
         $list = array();
-        $list['if_id'] = $row['if_id'];
-        $list['if_animal_name'] = $row['if_animal_name'];
-        $list['if_animal_desc'] = $row['if_animal_desc'];
-        $list['if_animal_image'] = $row['if_animal_image'];
-        $list['status'] = $row['status'];
+        $list['rescue_id'] = $row['rescue_id'];
+        $list['location'] = $row['location'];
+        $list['description'] = $row['description'];
+        $list['img_file'] = $row['img_file'];
+        $list['shelter_id'] = $row['shelter_id'];
+        $list['date_added'] = date("F j, Y h:i A",strtotime($row['date_added']));
         array_push($response, $list);
     }
 

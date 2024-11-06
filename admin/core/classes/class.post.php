@@ -8,7 +8,7 @@ class Post extends Connection
 
     public function add()
     {
-        $user_id = $_SESSION['user']['id'];
+        $user_id = $_SESSION['pas_user_id'];
         $post_title = $this->clean($this->inputs['post_title']);
         $is_exist = $this->select($this->table, $this->pk, "post_title = '$post_title'");
         if ($is_exist->num_rows > 0) {
@@ -52,7 +52,7 @@ class Post extends Connection
     }
 
     public function getOwnPost(){
-        $user_id = $_SESSION['user']['id'];
+        $user_id = $_SESSION['pas_user_id'];
         $rows = array();
         $result = $this->select($this->table, "*", "user_id='$user_id'");
         while ($row = $result->fetch_assoc()) {
@@ -62,7 +62,7 @@ class Post extends Connection
     }
 
     public function getOtherPost(){
-        $user_id = $_SESSION['user']['id'];
+        $user_id = $_SESSION['pas_user_id'];
         $Users = new Users();
         $rows = array();
         $result = $this->select($this->table, "*", "user_id!='$user_id' ORDER BY post_date DESC");

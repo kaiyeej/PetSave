@@ -19,7 +19,7 @@ class LoginUser extends Connection
         if ($row) {
 
             $_SESSION['status'] = "in";
-            $_SESSION['user']['id'] = $row['user_id'];
+            $_SESSION['pas_user_id'] = $row['user_id'];
             $_SESSION['user']['fullname'] = $row['user_fullname'];
             $_SESSION['user']['shelter'] = $row['shelter_id'];
 

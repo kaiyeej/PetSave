@@ -2,4 +2,4 @@ RewriteEngine On
 RewriteBase /
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^(.+)$ /admin/ [QSA,L]
+RewriteRule ^(.+)$ pet-adoption/admin/ [QSA,L]

@@ -8,7 +8,7 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 
 require_once 'core/config.php';
 $data = json_decode(file_get_contents("php://input"));
-$animal_id = $mysqli_connect->real_escape_string($data->animal_id);
+$pet_id = $mysqli_connect->real_escape_string($data->pet_id);
 $fullname = $mysqli_connect->real_escape_string($data->fullname);
 $age = $mysqli_connect->real_escape_string($data->age);
 $social_media_account = $mysqli_connect->real_escape_string($data->social_media_account);
@@ -46,7 +46,7 @@ $q21 = $mysqli_connect->real_escape_string($data->q21);
 
 $date = getCurrentDate();
 
-$sql= $mysqli_connect->query("INSERT INTO `tbl_adoption`(animal_id,`application_date`, `fullname`, `age`, `social_media_account`, `address`, `contact_num`, `email_adderess`, `occupation`, `civil_status`, `alternate_contact`, `relationship`, `guardian_contact_num`, `q1`, `q2`, `q3`, `q4`, `q5`, `q6`, `q7`, `q8`, `q9`, `q10`, `q11`, `q12`, `q13`, `q14`, `q15`, `q16`, `q17`, `q18`, `q19`, `q20`, `q21`) VALUES ('$animal_id','$date','$fullname','$age','$social_media_account','$address','$contact_num','$email_address','$occupation','$civil_status','$alternate_contact','$relationship','$guardian_contact_num','$q1','$q2','$q3','$q4','$q5','$q6','$q7','$q8','$q9','$q10','$q11','$q12','$q13','$q14','$q15','$q16','$q17','$q18','$q19','$q20','$q21')");
+$sql= $mysqli_connect->query("INSERT INTO `tbl_adoption`(pet_id,`application_date`, `fullname`, `age`, `social_media_account`, `address`, `contact_num`, `email_adderess`, `occupation`, `civil_status`, `alternate_contact`, `relationship`, `guardian_contact_num`, `q1`, `q2`, `q3`, `q4`, `q5`, `q6`, `q7`, `q8`, `q9`, `q10`, `q11`, `q12`, `q13`, `q14`, `q15`, `q16`, `q17`, `q18`, `q19`, `q20`, `q21`) VALUES ('$pet_id','$date','$fullname','$age','$social_media_account','$address','$contact_num','$email_address','$occupation','$civil_status','$alternate_contact','$relationship','$guardian_contact_num','$q1','$q2','$q3','$q4','$q5','$q6','$q7','$q8','$q9','$q10','$q11','$q12','$q13','$q14','$q15','$q16','$q17','$q18','$q19','$q20','$q21')");
 			
 if($sql){
     echo 1;

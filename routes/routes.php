@@ -37,12 +37,16 @@ $routes = array(
         'class_name' => '',
         'has_detail' => 0
     ),
+    "support-us" => array(
+        'class_name' => '',
+        'has_detail' => 0
+    ),
 );
 /** END SET ROUTES */
 
 $base_folder = "pages/";
-$page = str_replace("/", "", $request);
-//$page = str_replace("/petsave/", "", $request);
+// $page = str_replace("/", "", $request);
+$page = str_replace("/pet-adoption/", "", $request);
 
 // chec if has parameters
 if (substr_count($page, "?") > 0) {

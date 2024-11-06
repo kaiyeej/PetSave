@@ -8,7 +8,6 @@ class Connection
     private $dbname = DBNAME;
     private $result = array();
     private $mysqli = '';
-    //private $userID = USERID;
 
 
     public function __construct()

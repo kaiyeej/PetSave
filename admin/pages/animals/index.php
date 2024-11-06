@@ -9,7 +9,7 @@
                 </span>
             </div>
             <div class="alert-text" style="color: #ff9800;font-weight: 500;">
-                Animals
+                Pets
             </div>
             <div class="card-toolbar btn-group" style="padding-top: 5px">
                 <a href="#" onclick="addAnimal()" data-container="body" data-offset="20px 20px" data-toggle="popover" data-placement="top" data-content="Add New Entry" style="padding:10px;" class="btn btn-primary  btn-sm">
@@ -31,7 +31,7 @@
                     <div class="card-header">
                         <div class="card-title">
                             <h3 class="card-label">
-                                List of Rescued Animals
+                                List of Rescued Pets
                             </h3>
                         </div>
                     </div>
@@ -71,14 +71,8 @@
       $("#hidden_id").val(0);
       document.getElementById("frm_submit").reset();
 
-      var element = document.getElementById('reference_code');
-      if (typeof(element) != 'undefined' && element != null) {
-        generateReference(route_settings.class_name);
-      }
-
-      
       $("#div_image").show();
-      $("#if_animal_image").prop('required');
+      $("#if_pet_image").prop('required');
 
       $("#modalLabel").html("<i class='flaticon2-add'></i> Add Entry");
       $("#modalEntry").modal('show');
@@ -95,24 +89,24 @@
             },
             "columns": [{
                     "mRender": function(data, type, row) {
-                        return row.status == "A" ? "" : "<input type='checkbox' value=" + row.animal_id + " class='dt_id' style='position: initial; opacity:1;'>";
+                        return row.status == "A" ? "" : "<input type='checkbox' value=" + row.pet_id + " class='dt_id' style='position: initial; opacity:1;'>";
                     }
                 },
                 {
                     "mRender": function(data, type, row) {
-                        return "<center><button class='btn btn-icon btn-sm btn-light-primary' onclick='getAnimalDetails(" + row.animal_id + ")'><i class='flaticon-edit-1'></i></button></center>";
+                        return "<center><button class='btn btn-icon btn-sm btn-light-primary' onclick='getAnimalDetails(" + row.pet_id + ")'><i class='flaticon-edit-1'></i></button></center>";
 
                     }
                 },
                 {
-                    "data": "animal_name"
+                    "data": "pet_name"
                 },
                 {
-                    "data": "animal_type"
+                    "data": "pet_type"
                 },
                 {
                     "mRender": function(data, type, row) {
-                        return row.animal_image == "" ? "<img style='width:50px;' src='assets/media/error/no_image.png' onclick=\"uploadImage('" + row.animal_id + "')\">" : "<img src='assets/file/" + row.animal_image + "' style='width:50px;' onclick=\"uploadImage('" + row.animal_id + "')\">";
+                        return row.pet_image == "" ? "<img style='width:50px;' src='assets/media/error/no_image.png' onclick=\"uploadImage('" + row.pet_id + "')\">" : "<img src='assets/file/" + row.pet_image + "' style='width:50px;' onclick=\"uploadImage('" + row.pet_id + "')\">";
                     }
                 },
                 {
@@ -124,7 +118,7 @@
 
     function getAnimalDetails(id){
         $("#div_image").hide();
-        $("#if_animal_image").removeAttr('required');
+        $("#if_pet_image").removeAttr('required');
         getEntryDetails(id);
     }
 

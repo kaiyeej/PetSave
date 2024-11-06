@@ -8,7 +8,7 @@ define("database","u981310152_petsave_db");*/
 define("host","localhost");
 define("username","root");
 define("password","");
-define("database","petsave_db");
+define("database","petadoption_db");
 
 //inside dir
 define ("VALUE",serialize (array("","my_functions.php")));

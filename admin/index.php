@@ -1,7 +1,7 @@
 <?php
 include 'core/config.php';
 
-if (!isset($_SESSION['user']['id'])) {
+if (!isset($_SESSION['pas_user_id'])) {
  header("location:./login/index.php");
 }
 
@@ -13,7 +13,7 @@ if (!isset($_SESSION['user']['id'])) {
 <head>
     <base href="">
     <meta charset="utf-8" />
-    <title>PetSave</title>
+    <title>BACH Project PH</title>
     <meta name="description" content="Updates and statistics" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
@@ -309,15 +309,9 @@ if (!isset($_SESSION['user']['id'])) {
     <?php
       echo "var route_settings = " . $route_settings . ";\n";
       echo "var user_profile = " . $user_profile . ";\n";
-      echo "var shelter_profile = " . $shelter_profile . ";\n";
     ?>
   </script>
 <script type="text/javascript">
-
-  $("#span_shelter").html(shelter_profile.shelter_name);
-  $("#span_fullname").html(user_profile.user_fullname);
-  $("#span_username").html(user_profile.username);
-  $("#span_username_initial").html((user_profile.username.substring(0, 1)).toUpperCase());
 
     var modal_detail_status = 0;
     $(document).ready(function() {
@@ -498,7 +492,7 @@ if (!isset($_SESSION['user']['id'])) {
           if(route_settings.class_name == "Adopt" && json.status == "A"){
             $("#btn_approve").hide();
             $("#btn_submit").hide();
-            $('#div_adopt').css('pointer-events', 'none');
+            // $('#div_adopt').css('pointer-events', 'none');
           }else{
             $("#btn_approve").show();
             $("#btn_submit").show();

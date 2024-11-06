@@ -18,15 +18,7 @@ $routes = array(
         'has_detail' => 0
     ),
     "animals" => array(
-        'class_name' => 'Animals',
-        'has_detail' => 0
-    ),
-    "lost-found" => array(
-        'class_name' => 'LostAndFound',
-        'has_detail' => 0
-    ),
-    "shelters" => array(
-        'class_name' => 'Shelters',
+        'class_name' => 'Pets',
         'has_detail' => 0
     ),
     "users" => array(
@@ -43,12 +35,8 @@ $routes = array(
 $Profile = new Profile();
 $user_profile = json_encode($Profile->view());
 
-$Shelters = new Shelters();
-$shelter_profile = json_encode($Shelters->view());
-
 $base_folder = "pages/";
-//$page = str_replace("/petsave/admin/", "", $request);
-$page = str_replace("/admin/", "", $request);
+$page = str_replace("/pet-adoption/admin/", "", $request);
 
 // chec if has parameters
 if (substr_count($page, "?") > 0) {

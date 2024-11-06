@@ -32,7 +32,7 @@
     function adoptNow(id){
         $("#modalEntry").prependTo("body");
         $("#frm_submit").removeClass("required");
-        $("#animal_id").val(id);
+        $("#pet_id").val(id);
     }
 
     $("#frm_submit").submit(function(e) {
@@ -116,14 +116,14 @@
                                 '<div class="single_service">'+
                                    '<div class="service_thumb service_icon_bg_1 d-flex align-items-center justify-content-center">'+
                                         '<div class="service_icon">'+
-                                            '<img style="max-width: 300px;max-height: 220px;" src="admin/assets/file/' + json.data[i].animal_image + '" alt="">'+
+                                            '<img style="max-width: 300px;max-height: 220px;" src="admin/assets/file/' + json.data[i].pet_image + '" alt="">'+
                                         '</div>'+
                                     '</div>'+
                                     '<div class="service_content text-center">'+
-                                        '<h3  style="margin-bottom: 0px;">' + json.data[i].animal_name + '</h3>'+
+                                        '<h3  style="margin-bottom: 0px;">' + json.data[i].pet_name + '</h3>'+
                                         '<strong style="color: #ff5722;">' + json.data[i].shelter + '</strong>'+
-                                        '<p>' + json.data[i].animal_description + '</p><br>'+
-                                    '<a data-toggle="modal" data-backdrop="false" onclick="adoptNow(' + json.data[i].animal_id + ')" data-target="#modalEntry" href="#" class="genric-btn info-border circle">Adopt now</a>'+
+                                        '<p>' + json.data[i].pet_description + '</p><br>'+
+                                    '<a data-toggle="modal" data-backdrop="false" onclick="adoptNow(' + json.data[i].pet_id + ')" data-target="#modalEntry" href="#" class="genric-btn info-border circle">Adopt now</a>'+
                                     '</div>'+
                                '</div>'+
                             '</div>');
@@ -137,7 +137,7 @@
 
     $(document).ready(function() {
         getShelters();
-        getSelectOption('Animals', 'animal_id', 'animal_name', "status='0'");
+        getSelectOption('Animals', 'pet_id', 'pet_name', "status='0'");
     });
 
 

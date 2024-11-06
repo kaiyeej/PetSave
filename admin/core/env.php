@@ -6,7 +6,7 @@ define("BASE_PATH", __DIR__ . "/../");
 define("HOST", "localhost");
 define("USER", "root");
 define("PASSWORD", "");
-define("DBNAME", "petsave_db");
+define("DBNAME", "petadoption_db");
 
 /*define("HOST", "localhost");
 define("USER", "u981310152_ps_root");

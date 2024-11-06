@@ -13,11 +13,11 @@ $Homepage = new Homepage();
                     <!--begin::Engage Widget 1-->
                     <div class="card card-custom card-stretch gutter-b">
                         <div class="card-body d-flex p-0">
-                            <div class="flex-grow-1 p-12 card-rounded bgi-no-repeat d-flex flex-column justify-content-center align-items-start" style="background-color: #ffcc80; background-position: right bottom; background-size: auto 100%; background-image: url(assets/media/svg/humans/custom-8.svg)">
-                                <h4 class="text-danger font-weight-bolder m-0">PetSave</h4>
+                            <div class="flex-grow-1 p-12 card-rounded bgi-no-repeat d-flex flex-column justify-content-center align-items-start" style="background-color: #AD974F; background-position: right bottom; background-size: auto 100%; background-image: url(assets/media/logos/logo.png)">
+                                <h4 class="text-light font-weight-bolder m-0">BACH Project PH</h4>
 
-                                <p class="text-dark-50 my-5 font-size-xl font-weight-bold" style="width: 70%;">
-                                    Our mission is to rescue dogs and cats that have been abandoned, abused, or neglected throughout the Philippines and to make sure that each animal is given "Life with a New Leash"
+                                <p class="text-light-50 my-5 font-size-xl font-weight-bold" style="width: 70%;">
+                                BACH Project PH is grounded in the belief that all animals deserve to be treated with compassion, respect, and care, ensuring their well-being in a safe and non-judgmental environment.
                                 </p>
                             </div>
                         </div>
@@ -57,7 +57,7 @@ $Homepage = new Homepage();
                                         </div>
                                     </div>
                                     <div
-                                        class="label label-light label-inline font-weight-bold text-dark-50 py-4 px-3 font-size-base"><?= $Homepage->rescued_animals_shelter() ?></div>
+                                        class="label label-light label-inline font-weight-bold text-dark-50 py-4 px-3 font-size-base">1</div>
                                 </div>
                                 <!--end::Item-->
 
@@ -76,7 +76,7 @@ $Homepage = new Homepage();
                                         </div>
                                     </div>
                                     <div
-                                        class="label label-light label-inline font-weight-bold text-dark-50 py-4 px-3 font-size-base"><?= $Homepage->available_animals_shelter() ?></div>
+                                        class="label label-light label-inline font-weight-bold text-dark-50 py-4 px-3 font-size-base">1</div>
                                 </div>
                                 <!--end::Item-->
 
@@ -95,7 +95,7 @@ $Homepage = new Homepage();
                                         </div>
                                     </div>
                                     <div
-                                        class="label label-light label-inline font-weight-bold text-dark-50 py-4 px-3 font-size-base"><?= $Homepage->adopted_animals_shelter() ?></div>
+                                        class="label label-light label-inline font-weight-bold text-dark-50 py-4 px-3 font-size-base">1</div>
                                 </div>
                                 <!--end::Item-->
 

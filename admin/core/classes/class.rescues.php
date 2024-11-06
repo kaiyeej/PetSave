@@ -1,32 +1,28 @@
 <?php
 
-class Animals extends Connection
+class Rescues extends Connection
 {
-    private $table = 'tbl_animals';
-    public $pk = 'animal_id';
-    public $name = 'animal_name';
+    private $table = 'tbl_rescue';
+    public $pk = 'rescue_id';
+    public $name = '';
 
 
     public function add()
     {
         if (isset($_FILES['file']['tmp_name'])) {
             $img_file = $_FILES['file']['name'];
-            move_uploaded_file($_FILES['file']['tmp_name'], '../assets/file/' . $img_file);
+            move_uploaded_file($_FILES['file']['tmp_name'], '../assets/lost_found/' . $img_file);
         } else {
             $img_file = "";
         }
 
         $form = array(
-            $this->name             => $this->clean($this->inputs[$this->name]),
-            'animal_description'    => $this->inputs['animal_description'],
-            'animal_dob'            => $this->inputs['animal_dob'],
-            'animal_type'           => $this->inputs['animal_type'],
-            'animal_breed'          => $this->inputs['animal_breed'],
-            'animal_weight'         => $this->inputs['animal_weight'],
-            'animal_color'          => $this->inputs['animal_color'],
-            'animal_identifier'     => $this->inputs['animal_identifier'],
-            'animal_image'          => $img_file,
-            'shelter_id'            => $_SESSION['user']['shelter'],
+            $this->name                 => $this->clean($this->inputs[$this->name]),
+            'if_pet_desc'               => $this->inputs['if_pet_desc'],
+            'if_pet_image'              => $img_file,
+            'if_last_location_found'    => $this->inputs['if_last_location_found'],
+            'if_other_remarks'          => $this->inputs['if_other_remarks'],
+            'if_type'                   => $this->inputs['if_type'],
         );
 
         return $this->insertIfNotExist($this->table, $form, "$this->name = '".$this->inputs[$this->name]."'");
@@ -42,13 +38,13 @@ class Animals extends Connection
         } else {
             $form = array(
                 $this->name             => $this->clean($this->inputs[$this->name]),
-                'animal_description'    => $this->inputs['animal_description'],
-                'animal_dob'            => $this->inputs['animal_dob'],
-                'animal_type'           => $this->inputs['animal_type'],
-                'animal_breed'          => $this->inputs['animal_breed'],
-                'animal_weight'         => $this->inputs['animal_weight'],
-                'animal_color'          => $this->inputs['animal_color'],
-                'animal_identifier'     => $this->inputs['animal_identifier']
+                'pet_description'    => $this->inputs['pet_description'],
+                'pet_dob'            => $this->inputs['pet_dob'],
+                'pet_type'           => $this->inputs['pet_type'],
+                'pet_breed'          => $this->inputs['pet_breed'],
+                'pet_weight'         => $this->inputs['pet_weight'],
+                'pet_color'          => $this->inputs['pet_color'],
+                'pet_identifier'     => $this->inputs['pet_identifier']
             );
 
             return $this->updateIfNotExist($this->table, $form, "$this->pk != '$primary_id' AND $this->name = '".$this->inputs[$this->name]."'");
@@ -57,7 +53,7 @@ class Animals extends Connection
 
     public function uploadImage()
     {
-        $id = $this->inputs['animal_id'];
+        $id = $this->inputs['pet_id'];
         if (isset($_FILES['file']['tmp_name'])) {
             $image_name = $_FILES['file']['name'];
             move_uploaded_file($_FILES['file']['tmp_name'], '../assets/file/' . $image_name);
@@ -66,30 +62,19 @@ class Animals extends Connection
         }
 
         $form = array(
-            'animal_image' => $image_name,
+            'pet_image' => $image_name,
         );
         return $this->update($this->table, $form, "$this->pk = '$id'");
     }
 
     public function show()
     {
-        
-        $shelter_id = $_SESSION['user']['shelter'];
-        $param = isset($this->inputs['param']) ? "AND ".$this->inputs['param']."" : null;
+        $param = isset($this->inputs['param']) ? $this->inputs['param'] : null;
         $rows = array();
-        $result = $this->select($this->table, '*', "shelter_id = '$shelter_id' $param");
+        $result = $this->select($this->table, '*', $param);
         while ($row = $result->fetch_assoc()) {
-            $rows[] = $row;
-        }
-        return $rows;
-    }
-
-    public function show2()
-    {
-        
-        $rows = array();
-        $result = $this->select($this->table, '*');
-        while ($row = $result->fetch_assoc()) {
+            $row['type'] = $row['if_type'] == "L" ? "LOST" : "FOUND";
+            $row['reported_date'] = date('M d, Y h:m A', strtotime($row["date_added"]));
             $rows[] = $row;
         }
         return $rows;
@@ -105,11 +90,8 @@ class Animals extends Connection
     public function availableAnimals()
     {
         $rows = array();
-        $Shelters = new Shelters();
-        $param = isset($this->inputs['param']) ? $this->inputs['param']." AND " : null;
-        $result = $this->select($this->table, "*", "$param status='0'");
+        $result = $this->select($this->table, "*", "status='0'");
         while ($row = $result->fetch_assoc()) {
-            $row['shelter'] = $Shelters->name($row['shelter_id']);
             $rows[] = $row;
         }
         return $rows;
@@ -118,12 +100,10 @@ class Animals extends Connection
     public function remove()
     {
         $ids = implode(",", $this->inputs['ids']);
-
-        $result = $this->select($this->table, "animal_image", "$this->pk IN($ids)");
+        $result = $this->select($this->table, "if_pet_image", "$this->pk IN($ids)");
         while($row = $result->fetch_assoc()){
-            unlink('../assets/file/'.$row['animal_image']);
+            unlink('../assets/lost_found/'.$row['if_pet_image']);
         }
-
 
         return $this->delete($this->table, "$this->pk IN($ids)");
     }
@@ -142,7 +122,8 @@ class Animals extends Connection
     {
         $ids = implode(",", $this->inputs['ids']);
         $form = array(
-            "status" => "A"
+            "status"        => "R",
+            "shelter_id"    => $_SESSION['user']['shelter'],
         );
 
         return $this->update($this->table, $form, "$this->pk IN($ids)");
@@ -150,8 +131,8 @@ class Animals extends Connection
 
     public function name($primary_id)
     {
-        $result = $this->select($this->table, 'animal_name', "$this->pk = '$primary_id'");
+        $result = $this->select($this->table, 'course_name', "$this->pk = '$primary_id'");
         $row = $result->fetch_assoc();
-        return $row['animal_name'];
+        return $row['course_name'];
     }
 }

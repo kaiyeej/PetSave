@@ -21,13 +21,13 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label>Name <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control input-item" name="input[if_animal_name]" id="if_animal_name" autocomplete="off" placeholder="Animal name" required>
+                                    <input type="text" class="form-control input-item" name="input[if_pet_name]" id="if_pet_name" autocomplete="off" placeholder="Animal name" required>
                                 </div>
                             </div>
                             <div class="col-sm-12">
                                 <div class="form-group">
                                     <label>Description  <span class="text-danger">*</span></label>
-                                    <textarea class="form-control input-item" name="input[if_animal_desc]" id="if_animal_desc" autocomplete="off" placeholder="Animal Description" required></textarea>
+                                    <textarea class="form-control input-item" name="input[if_pet_desc]" id="if_pet_desc" autocomplete="off" placeholder="Animal Description" required></textarea>
                                 </div>
                             </div>
                             <div class="col-sm-12">

@@ -6,10 +6,9 @@ $classes = array(
     'Homepage'          => $pre_class . 'homepage.php',
     'LoginUser'         => $pre_class . 'loginuser.php',
     'Adopt'             => $pre_class . 'adopt.php',
-    'Animals'           => $pre_class . 'animals.php',
-    'LostAndFound'      => $pre_class . 'lostandfound.php',
+    'Pets'              => $pre_class . 'pets.php',
+    'Rescues'           => $pre_class . 'rescues.php',
     'Profile'           => $pre_class . 'profile.php',
     'Users'             => $pre_class . 'users.php',
-    'Shelters'          => $pre_class . 'shelters.php',
     'Post'              => $pre_class . 'post.php',
 );

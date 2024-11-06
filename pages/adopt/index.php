@@ -3,7 +3,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="bradcam_text text-center">
-                        <h3>Adopt now</h3>
+                        <!-- <h3>Adopt now</h3> -->
                     </div>
                 </div>
             </div>
@@ -12,18 +12,9 @@
 <div class="pet_care_area">
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-lg-5 col-md-6">
+            <div class="col-lg-12">
                 <div class="pet_thumb">
-                    <img src="img/about/pet_care.png" alt="">
-                </div>
-            </div>
-            <div class="col-lg-6 offset-lg-1 col-md-6">
-                <div class="pet_info">
-                    <div class="section_title">
-                        <h3><span>We need your</span>
-                            help Adopt Us</h3>
-                        <p>All animals at PetSave are all looking for their Forever Homes right now!</p>
-                    </div>
+                    <img src="img/adopt.png" alt="">
                 </div>
             </div>
         </div>
@@ -52,7 +43,7 @@
     function adoptNow(id){
         $("#modalEntry").prependTo("body");
         $("#frm_submit").removeClass("required");
-        $("#animal_id").val(id);
+        $("#pet_id").val(id);
     }
 
     $("#frm_submit").submit(function(e) {
@@ -108,14 +99,14 @@
                                 '<div class="single_service">'+
                                    '<div class="service_thumb service_icon_bg_1 d-flex align-items-center justify-content-center">'+
                                         '<div class="service_icon">'+
-                                            '<img style="max-width: 300px;max-height: 220px;" src="admin/assets/file/' + json.data[i].animal_image + '" alt="">'+
+                                            '<img style="max-width: 300px;max-height: 220px;" src="admin/assets/file/' + json.data[i].pet_image + '" alt="">'+
                                         '</div>'+
                                     '</div>'+
                                     '<div class="service_content text-center">'+
-                                        '<h3  style="margin-bottom: 0px;">' + json.data[i].animal_name + '</h3>'+
+                                        '<h3  style="margin-bottom: 0px;">' + json.data[i].pet_name + '</h3>'+
                                         '<strong style="color: #ff5722;">' + json.data[i].shelter + '</strong>'+
-                                        '<p>' + json.data[i].animal_description + '</p><br>'+
-                                    '<a data-toggle="modal" data-backdrop="false" onclick="adoptNow('+ json.data[i].animal_id +')" data-target="#modalEntry" href="#" class="genric-btn info-border circle">Adopt now</a>'+
+                                        '<p>' + json.data[i].pet_description + '</p><br>'+
+                                    '<a data-toggle="modal" data-backdrop="false" onclick="adoptNow('+ json.data[i].pet_id +')" data-target="#modalEntry" href="#" class="genric-btn info-border circle">Adopt now</a>'+
                                     '</div>'+
                                '</div>'+
                             '</div>');
@@ -128,7 +119,7 @@
     }
 
     getAnimals();
-    getSelectOption('Animals', 'animal_id', 'animal_name', "status='0'");
+    getSelectOption('Animals', 'pet_id', 'pet_name', "status='0'");
 
     
     function getSelectOption(class_name, primary_id, label, param = '', attributes = [], pre_value='', pre_label = 'Please Select') {

@@ -1,28 +1,29 @@
 <?php
 
-class LostAndFound extends Connection
+class Pets extends Connection
 {
-    private $table = 'tbl_lost_and_found';
-    public $pk = 'if_id';
-    public $name = 'if_animal_name';
+    private $table = 'tbl_pets';
+    public $pk = 'pet_id';
+    public $name = 'pet_name';
 
 
     public function add()
     {
         if (isset($_FILES['file']['tmp_name'])) {
             $img_file = $_FILES['file']['name'];
-            move_uploaded_file($_FILES['file']['tmp_name'], '../assets/lost_found/' . $img_file);
+            move_uploaded_file($_FILES['file']['tmp_name'], '../assets/file/' . $img_file);
         } else {
             $img_file = "";
         }
 
         $form = array(
-            $this->name                 => $this->clean($this->inputs[$this->name]),
-            'if_animal_desc'            => $this->inputs['if_animal_desc'],
-            'if_animal_image'           => $img_file,
-            'if_last_location_found'    => $this->inputs['if_last_location_found'],
-            'if_other_remarks'          => $this->inputs['if_other_remarks'],
-            'if_type'                   => $this->inputs['if_type'],
+            $this->name             => $this->clean($this->inputs[$this->name]),
+            'pet_description'    => $this->inputs['pet_description'],
+            'pet_dob'            => $this->inputs['pet_dob'],
+            'pet_type'           => $this->inputs['pet_type'],
+            'pet_breed'          => $this->inputs['pet_breed'],
+            'pet_identifier'     => $this->inputs['pet_identifier'],
+            'pet_image'          => $img_file
         );
 
         return $this->insertIfNotExist($this->table, $form, "$this->name = '".$this->inputs[$this->name]."'");
@@ -38,13 +39,11 @@ class LostAndFound extends Connection
         } else {
             $form = array(
                 $this->name             => $this->clean($this->inputs[$this->name]),
-                'animal_description'    => $this->inputs['animal_description'],
-                'animal_dob'            => $this->inputs['animal_dob'],
-                'animal_type'           => $this->inputs['animal_type'],
-                'animal_breed'          => $this->inputs['animal_breed'],
-                'animal_weight'         => $this->inputs['animal_weight'],
-                'animal_color'          => $this->inputs['animal_color'],
-                'animal_identifier'     => $this->inputs['animal_identifier']
+                'pet_description'    => $this->inputs['pet_description'],
+                'pet_dob'            => $this->inputs['pet_dob'],
+                'pet_type'           => $this->inputs['pet_type'],
+                'pet_breed'          => $this->inputs['pet_breed'],
+                'pet_identifier'     => $this->inputs['pet_identifier']
             );
 
             return $this->updateIfNotExist($this->table, $form, "$this->pk != '$primary_id' AND $this->name = '".$this->inputs[$this->name]."'");
@@ -53,7 +52,7 @@ class LostAndFound extends Connection
 
     public function uploadImage()
     {
-        $id = $this->inputs['animal_id'];
+        $id = $this->inputs['pet_id'];
         if (isset($_FILES['file']['tmp_name'])) {
             $image_name = $_FILES['file']['name'];
             move_uploaded_file($_FILES['file']['tmp_name'], '../assets/file/' . $image_name);
@@ -62,19 +61,29 @@ class LostAndFound extends Connection
         }
 
         $form = array(
-            'animal_image' => $image_name,
+            'pet_image' => $image_name,
         );
         return $this->update($this->table, $form, "$this->pk = '$id'");
     }
 
     public function show()
     {
+        
         $param = isset($this->inputs['param']) ? $this->inputs['param'] : null;
         $rows = array();
         $result = $this->select($this->table, '*', $param);
         while ($row = $result->fetch_assoc()) {
-            $row['type'] = $row['if_type'] == "L" ? "LOST" : "FOUND";
-            $row['reported_date'] = date('M d, Y h:m A', strtotime($row["date_added"]));
+            $rows[] = $row;
+        }
+        return $rows;
+    }
+
+    public function show2()
+    {
+        
+        $rows = array();
+        $result = $this->select($this->table, '*');
+        while ($row = $result->fetch_assoc()) {
             $rows[] = $row;
         }
         return $rows;
@@ -87,23 +96,16 @@ class LostAndFound extends Connection
         return $result->fetch_assoc();
     }
 
-    public function availableAnimals()
-    {
-        $rows = array();
-        $result = $this->select($this->table, "*", "status='0'");
-        while ($row = $result->fetch_assoc()) {
-            $rows[] = $row;
-        }
-        return $rows;
-    }
 
     public function remove()
     {
         $ids = implode(",", $this->inputs['ids']);
-        $result = $this->select($this->table, "if_animal_image", "$this->pk IN($ids)");
+
+        $result = $this->select($this->table, "pet_image", "$this->pk IN($ids)");
         while($row = $result->fetch_assoc()){
-            unlink('../assets/lost_found/'.$row['if_animal_image']);
+            unlink('../assets/file/'.$row['pet_image']);
         }
+
 
         return $this->delete($this->table, "$this->pk IN($ids)");
     }
@@ -122,8 +124,7 @@ class LostAndFound extends Connection
     {
         $ids = implode(",", $this->inputs['ids']);
         $form = array(
-            "status"        => "R",
-            "shelter_id"    => $_SESSION['user']['shelter'],
+            "status" => "A"
         );
 
         return $this->update($this->table, $form, "$this->pk IN($ids)");
@@ -131,8 +132,8 @@ class LostAndFound extends Connection
 
     public function name($primary_id)
     {
-        $result = $this->select($this->table, 'course_name', "$this->pk = '$primary_id'");
+        $result = $this->select($this->table, 'pet_name', "$this->pk = '$primary_id'");
         $row = $result->fetch_assoc();
-        return $row['course_name'];
+        return $row['pet_name'];
     }
 }

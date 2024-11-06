@@ -2,8 +2,8 @@
 
 session_start();
 // print_r($_SESSION);
-if (isset($_SESSION["status"])) {
-    header("location:../homepage");
+if (isset($_SESSION["pas_status"])) {
+	header("location:../homepage");
 }
 ?>
 <!DOCTYPE html>
@@ -13,7 +13,7 @@ if (isset($_SESSION["status"])) {
 <head>
 	<base href="../">
 	<meta charset="utf-8" />
-	<title>PetSave</title>
+	<title>BACH Project PH</title>
 	<meta name="description" content="Login page" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
@@ -30,7 +30,7 @@ if (isset($_SESSION["status"])) {
 	<link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
 	<link href="assets/plugins/custom/prismjs/prismjs.bundle.css" rel="stylesheet" type="text/css" />
 	<link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+	<script type="text/javascript" src="assets/js/jquery.min.js"></script>
 	<!--end::Global Theme Styles-->
 
 	<!--begin::Layout Themes(used by all pages)-->
@@ -42,6 +42,17 @@ if (isset($_SESSION["status"])) {
 <!--end::Head-->
 
 <!--begin::Body-->
+<style>
+	.bg-cover {
+		background-image: url(assets/media/bg/b1.jpg);
+		background-size: cover;
+		/* Ensures the image covers the entire div */
+		background-repeat: no-repeat;
+		/* Prevents the image from repeating */
+		background-position: center;
+		/* Centers the image in the div */
+	}
+</style>
 
 <body id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled page-loading">
 
@@ -72,7 +83,7 @@ if (isset($_SESSION["status"])) {
 									<input class="form-control h-auto border-0 px-0 placeholder-dark-75" type="text" placeholder="Username" required name="input[username]" autocomplete="off" />
 								</div>
 								<div class="form-group py-3 border-top m-0">
-									<input class="form-control h-auto border-0 px-0 placeholder-dark-75" type="Password" placeholder="Password" required name="input[password]"/>
+									<input class="form-control h-auto border-0 px-0 placeholder-dark-75" type="Password" placeholder="Password" required name="input[password]" />
 								</div>
 
 								<div class="form-group d-flex flex-wrap justify-content-between align-items-center mt-3">
@@ -80,7 +91,7 @@ if (isset($_SESSION["status"])) {
 
 								<div class="form-group d-flex flex-wrap justify-content-between align-items-center mt-2">
 									<div class="my-3 mr-2">
-										
+
 									</div>
 									<button type="submit" id="kt_login_signin_submit" class="btn btn-warning font-weight-bold px-9 py-4 my-3">Sign In</button>
 								</div>
@@ -103,7 +114,7 @@ if (isset($_SESSION["status"])) {
 					<!--begin: Aside footer for desktop-->
 					<div class="d-flex flex-column-auto justify-content-between mt-15">
 						<div class="text-dark-50 font-weight-bold order-2 order-sm-1 my-2">
-							&copy; 2022 PetSave
+							&copy; 2024 BACH Project PH
 						</div>
 					</div>
 					<!--end: Aside footer for desktop-->
@@ -113,17 +124,8 @@ if (isset($_SESSION["status"])) {
 			<!--begin::Aside-->
 
 			<!--begin::Content-->
-			<div class="order-1 order-lg-2 flex-column-auto flex-lg-row-fluid d-flex flex-column p-7" style="background-image: url(assets/media/bg/bg-4.png);">
-				<!--begin::Content body-->
-				<div class="d-flex flex-column-fluid flex-lg-center">
-					<div class="d-flex flex-column justify-content-center">
-						<h3 class="display-3 font-weight-bold my-7 text-white">Welcome to PetSave!</h3>
-						<p class="font-weight-bold font-size-lg text-white opacity-80">
-						Our mission is to rescue dogs and cats that have been abandoned, abused, or neglected throughout the Philippines and to make sure that each animal is given "Life with a New Leash"
-						</p>
-					</div>
-				</div>
-				<!--end::Content body-->
+			<div class="order-1 order-lg-2 flex-column-auto flex-lg-row-fluid d-flex flex-column p-7 bg-cover" style="background-image: url(assets/media/bg/b1.jpg);background-repeat: no-repeat;">
+				<!-- <div class="order-1 order-lg-2 flex-column-auto flex-lg-row-fluid d-flex flex-column p-7 bg-cover"> -->
 			</div>
 			<!--end::Content-->
 		</div>
@@ -154,52 +156,52 @@ if (isset($_SESSION["status"])) {
 <!--end::Body-->
 <script type="text/javascript">
 	$("#frm_login").submit(function(e) {
-        e.preventDefault();
-        var url = "controllers/sql.php?c=LoginUser&q=login";
-        var data = $("#frm_login").serialize();
-        $("#btn_submit").prop('disabled', true);
-        $("#btn_submit").html("<span class='fa fa-spinner fa-spin'></span> Verifying ...");
-        $.ajax({
-            type: "POST",
-            url: url,
-            data: data,
-            success: function(data) {
-                var json = JSON.parse(data);
-                
+		e.preventDefault();
+		var url = "controllers/sql.php?c=LoginUser&q=login";
+		var data = $("#frm_login").serialize();
+		$("#btn_submit").prop('disabled', true);
+		$("#btn_submit").html("<span class='fa fa-spinner fa-spin'></span> Verifying ...");
+		$.ajax({
+			type: "POST",
+			url: url,
+			data: data,
+			success: function(data) {
+				var json = JSON.parse(data);
+
 				if (json.data != 0) {
-                    swal.fire({
-		                text: "All is cool! Signed in successfully",
-		                icon: "success",
-		                buttonsStyling: false,
-		                confirmButtonText: "Ok, got it!",
-                        customClass: {
-    						confirmButton: "btn font-weight-bold btn-light-primary"
-    					}
-		            }).then(function() {
+					swal.fire({
+						text: "All is cool! Signed in successfully",
+						icon: "success",
+						buttonsStyling: false,
+						confirmButtonText: "Ok, got it!",
+						customClass: {
+							confirmButton: "btn font-weight-bold btn-light-primary"
+						}
+					}).then(function() {
 						window.location = "homepage";
 					});
 				} else {
 					swal.fire({
-		                text: "Login Failed! Your username or password is incorrect. Please try again.",
-		                icon: "error",
-		                buttonsStyling: false,
-		                confirmButtonText: "Ok, got it!",
-                        customClass: {
-    						confirmButton: "btn font-weight-bold btn-light-primary"
-    					}
-		            }).then(function() {
+						text: "Login Failed! Your username or password is incorrect. Please try again.",
+						icon: "error",
+						buttonsStyling: false,
+						confirmButtonText: "Ok, got it!",
+						customClass: {
+							confirmButton: "btn font-weight-bold btn-light-primary"
+						}
+					}).then(function() {
 						KTUtil.scrollTop();
 					});
 				}
 
-                // var json = JSON.parse(data);
-                console.log(json.data);
+				// var json = JSON.parse(data);
+				console.log(json.data);
 
-            }
-        });
+			}
+		});
 
 
-    });
+	});
 </script>
 
 </html>

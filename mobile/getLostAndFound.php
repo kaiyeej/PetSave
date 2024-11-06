@@ -14,9 +14,9 @@ $data = json_decode(file_get_contents("php://input"));
     while ($row = $fetch->fetch_array()) {
         $list = array();
         $list['if_id'] = $row['if_id'];
-        $list['if_animal_name'] = $row['if_animal_name'];
-        $list['if_animal_desc'] = $row['if_animal_desc'];
-        $list['if_animal_image'] = $row['if_animal_image'];
+        $list['if_pet_name'] = $row['if_pet_name'];
+        $list['if_pet_desc'] = $row['if_pet_desc'];
+        $list['if_pet_image'] = $row['if_pet_image'];
         $list['status'] = $row['status'];
         array_push($response, $list);
     }

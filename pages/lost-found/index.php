@@ -118,13 +118,13 @@
                                 '<div class="single_service">'+
                                    '<div class="service_thumb service_icon_bg_1 d-flex align-items-center justify-content-center">'+
                                         '<div class="service_icon">'+
-                                            '<img style="max-width: 300px;max-height: 220px;" src="admin/assets/lost_found/' + json.data[i].if_animal_image + '" alt="">'+
+                                            '<img style="max-width: 300px;max-height: 220px;" src="admin/assets/lost_found/' + json.data[i].if_pet_image + '" alt="">'+
                                         '</div>'+
                                     '</div>'+
                                     '<div class="service_content text-center">'+
-                                        '<h3>Name: ' + json.data[i].if_animal_name + '</h3>'+
+                                        '<h3>Name: ' + json.data[i].if_pet_name + '</h3>'+
                                         '<p style="font-weight: bold;color: '+t_color+' ">' + json.data[i].type + '</p>'+
-                                        '<p style="text-align: left;">Description: ' + json.data[i].if_animal_desc + '</p>'+
+                                        '<p style="text-align: left;">Description: ' + json.data[i].if_pet_desc + '</p>'+
                                         '<p style="text-align: left;">Last location: ' + json.data[i].if_last_location_found + '</p>'+
                                         '<p style="text-align: left;">Other remarks: ' + json.data[i].if_other_remarks + '</p>'+
                                         '<p style="text-align: left;">Date Reported: ' + json.data[i].reported_date + '</p>'+

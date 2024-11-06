@@ -7,8 +7,6 @@
     position: relative;
     z-index: 0;
     .footer_top{
-        padding-top: 130px;
-        padding-bottom: 110px;
         @media #{$mobile_device} {
             padding-top: 60px;
             padding-bottom: 30px;

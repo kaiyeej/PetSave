@@ -8,7 +8,7 @@ include 'admin/core/config.php';
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>PetSave</title>
+    <title>BACH Project PH</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -50,10 +50,10 @@ include 'admin/core/config.php';
                         <div class="col-lg-6 col-md-4 ">
                             <div class="social_media_links">
                                 <a href="#">
-                                    <i class="fa fa-envelope"></i> petsave@gmail.com
+                                    <i class="fa fa-envelope"></i> concepcionbach@bachprojectph.org
                                 </a>
                                 <a href="#">
-                                    <i class="fa fa-phone"></i> 0000 000
+                                    <i class="fa fa-phone"></i> 0965 801 8292
                                 </a>
                             </div>
                         </div>
@@ -75,10 +75,10 @@ include 'admin/core/config.php';
                                 <nav>
                                     <ul id="navigation">
                                         <li><a  href="./">home</a></li>
-                                        <li><a href="./shelters">shelters</a></li>
                                         <li><a href="./adopt">adopt</a></li>
-                                        <li><a href="./lost-found">lost & found</a></li>
-                                        <li><a href="./pet-care">PetCare</a></li>
+                                        <li><a href="./rescue">rescue</a></li>
+                                        <li><a href="./pet-care">pets</a></li>
+                                        <li><a href="./support-us">support us</a></li>
                                         <li><a href="./about-us">About us</a></li>
                                     </ul>
                                 </nav>
@@ -118,9 +118,9 @@ include 'admin/core/config.php';
                                 Contact Us
                             </h3>
                             <ul class="address_line">
-                                <li>+000 0000 000</li>
-                                <li><a href="#">petsave@gmail.com</a></li>
-                                <li>Bacolod City, Philippines</li>
+                                <li>0965 801 8292</li>
+                                <li><a href="#">concepcionbach@bachprojectph.org</a></li>
+                                <li>Purok Balabag, Sitio Cubay, Brgy. Granada, Bacolod 6100 Bacolod CIty, Philippines</li>
                             </ul>
                         </div>
                     </div>
@@ -138,7 +138,7 @@ include 'admin/core/config.php';
                                 </a>
                             </div>
                             <a href="terms-condition">
-                                Terms and Condition
+                                About Us
                             </a>
                         </div>
                     </div>

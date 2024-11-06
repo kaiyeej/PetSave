@@ -6,7 +6,7 @@
                     <h4 class="modal-title" id="modalLabel"><span class='fa fa-pen'></span> Upload Image</h4>
                 </div>
                 <div class="modal-body">
-                    <input type="hidden" id="hidden_id_3" name="input[animal_id]">
+                    <input type="hidden" id="hidden_id_3" name="input[pet_id]">
                     <input type="file" required name="file">
                 </div>
                 <div class="modal-footer">

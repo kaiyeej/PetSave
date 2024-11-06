@@ -93,7 +93,7 @@
                     }
                 },
                 {
-                    "data": "if_animal_name"
+                    "data": "if_pet_name"
                 },
                 {
                     "data": "if_last_location_found"

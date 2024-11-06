@@ -12,7 +12,7 @@ class Adopt extends Connection
         $form = array(
             $this->name         => $this->clean($this->inputs[$this->name]),
             'application_date'  => $this->inputs['application_date'],
-            'animal_id'          => $this->inputs['animal_id'],
+            'pet_id'          => $this->inputs['pet_id'],
             'age'               => $this->inputs['age'],
             'social_media_account'   => $this->inputs['social_media_account'],
             'address'           => $this->inputs['address'],
@@ -23,27 +23,7 @@ class Adopt extends Connection
             'alternate_contact' => $this->inputs['alternate_contact'],
             'relationship'      => $this->inputs['relationship'],
             'guardian_contact_num'  => $this->inputs['guardian_contact_num'],
-            'q1'   => $this->inputs['q1'],
-            'q2'   => $this->inputs['q2'],
-            'q3'   => $this->inputs['q3'],
-            'q4'   => $this->inputs['q4'],
-            'q5'   => $this->inputs['q5'],
-            'q6'   => $this->inputs['q6'],
-            'q7'   => $this->inputs['q7'],
-            'q8'   => $this->inputs['q8'],
-            'q9'   => $this->inputs['q9'],
-            'q10'  => $this->inputs['q10'],
-            'q11'  => $this->inputs['q11'],
-            'q12'  => $this->inputs['q12'],
-            'q13'  => $this->inputs['q13'],
-            'q14'  => $this->inputs['q14'],
-            'q15'  => $this->inputs['q15'],
-            'q16'  => $this->inputs['q16'],
-            'q17'  => $this->inputs['q17'],
-            'q18'  => $this->inputs['q18'],
-            'q19'  => $this->inputs['q19'],
-            'q20' => $this->inputs['q20'],
-            'q21' => $this->inputs['q21'],
+           
         );
 
         return $this->insertIfNotExist($this->table, $form, "$this->name = '".$this->inputs[$this->name]."' AND status!='A'");
@@ -60,7 +40,7 @@ class Adopt extends Connection
             $form = array(
             $this->name         => $this->clean($this->inputs[$this->name]),
             'application_date'  => $this->inputs['application_date'],
-            'animal_id'          => $this->inputs['animal_id'],
+            'pet_id'          => $this->inputs['pet_id'],
             'age'               => $this->inputs['age'],
             'social_media_account'   => $this->inputs['social_media_account'],
             'address'           => $this->inputs['address'],
@@ -102,10 +82,12 @@ class Adopt extends Connection
     {
         $param = isset($this->inputs['param']) ? $this->inputs['param'] : null;
         $rows = array();
-        $Animals = new Animals();
+        $Users = new Users();
+        $Pets = new Pets();
         $result = $this->select($this->table, '*', $param);
         while ($row = $result->fetch_assoc()) {
-            $row['animal'] = ($row['animal_id'] <= 0 ? "---" : $Animals->name($row['animal_id']));
+            $row['animal'] = ($row['pet_id'] <= 0 ? "---" : $Pets->name($row['pet_id']));
+            $row['fullname'] = $Users->fullname($row['user_id']);
             $rows[] = $row;
         }
         return $rows;
@@ -138,14 +120,14 @@ class Adopt extends Connection
     public function approve()
     {
         $primary_id = $this->inputs['id'];
-        $animal_id = $this->adopt_animal_id($primary_id);
-        $result = $this->select("tbl_animals", '*', "animal_id = '$animal_id'");
+        $pet_id = $this->adopt_pet_id($primary_id);
+        $result = $this->select("tbl_pets", '*', "pet_id = '$pet_id'");
         $row = $result->fetch_assoc();
         if($row['status'] == 0){
             $form_ = array(
                 "status" => "1"
             );
-            $this->update("tbl_animals", $form_, "animal_id = '$animal_id'");
+            $this->update("tbl_pets", $form_, "pet_id = '$pet_id'");
 
             $form = array(
                 "status" => "A"
@@ -156,11 +138,11 @@ class Adopt extends Connection
         }
     }
 
-    public function adopt_animal_id($primary_id)
+    public function adopt_pet_id($primary_id)
     {
-        $result = $this->select($this->table, 'animal_id', "$this->pk = '$primary_id'");
+        $result = $this->select($this->table, 'pet_id', "$this->pk = '$primary_id'");
         $row = $result->fetch_assoc();
-        return $row['animal_id'];
+        return $row['pet_id'];
     } 
 
     public function name($primary_id)

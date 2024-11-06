@@ -22,9 +22,9 @@
 
 /* line 19, ../../Arafath/CL/january 2020/240. Animal/HTML/scss/_extend.scss */
 .boxed-btn3 {
-  background-image: -moz-linear-gradient(0deg, #f14437 0%, #ed5b0d 99%);
-  background-image: -webkit-linear-gradient(0deg, #f14437 0%, #ed5b0d 99%);
-  background-image: -ms-linear-gradient(0deg, #f14437 0%, #ed5b0d 99%);
+  background-image: -moz-linear-gradient(0deg, #8E793E 0%, #AD974F 99%);
+  background-image: -webkit-linear-gradient(0deg, #8E793E 0%, #AD974F 99%);
+  background-image: -ms-linear-gradient(0deg, #8E793E 0%, #AD974F 99%);
 }
 
 /* Normal desktop :1200px. */
@@ -1260,7 +1260,7 @@ h3 {
 /* line 252, ../../Arafath/CL/january 2020/240. Animal/HTML/scss/_header.scss */
 .header-area .header-top_area {
   padding: 19px 0;
-  background: #1c1818;
+  background: #231F20;
 }
 
 /* line 255, ../../Arafath/CL/january 2020/240. Animal/HTML/scss/_header.scss */
@@ -1665,8 +1665,10 @@ h3 {
     position: absolute;
     right: 0;
     bottom: 0;
-    border-top: 15px solid #ffffff;
-    border-left: 15px solid #ffffff;
+    border-top: 15px solid
+ #ffffff;
+    border-left: 15px solid
+ #ffffff;
     top: auto;
     width: 50%;
     height: 60%;
@@ -2646,8 +2648,8 @@ h3 {
 
 /* line 9, ../../Arafath/CL/january 2020/240. Animal/HTML/scss/_footer.scss */
 .footer .footer_top {
-  padding-top: 130px;
-  padding-bottom: 110px;
+  padding-top: 50px;
+  padding-bottom: 10px;
 }
 
 @media (max-width: 767px) {

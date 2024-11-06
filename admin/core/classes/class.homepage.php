@@ -23,7 +23,7 @@ class Homepage extends Connection
     }
 
     public function adopted_animals(){
-        $result = $this->select("tbl_animals","count(animal_id) as total","status='1'");
+        $result = $this->select("tbl_pets","count(pet_id) as total","status='1'");
         $row = $result->fetch_array();
 
         return $row['total'];
@@ -31,7 +31,7 @@ class Homepage extends Connection
 
     public function adopted_animals_shelter(){
         $shelter_id = $_SESSION['user']['shelter'];
-        $result = $this->select("tbl_animals","count(animal_id) as total","status='1' AND shelter_id='$shelter_id'");
+        $result = $this->select("tbl_pets","count(pet_id) as total","status='1' AND shelter_id='$shelter_id'");
         $row = $result->fetch_array();
 
         return $row['total'];
@@ -39,7 +39,7 @@ class Homepage extends Connection
 
     public function available_animals_shelter(){
         $shelter_id = $_SESSION['user']['shelter'];
-        $result = $this->select("tbl_animals","count(animal_id) as total","status='0' AND shelter_id='$shelter_id'");
+        $result = $this->select("tbl_pets","count(pet_id) as total","status='0' AND shelter_id='$shelter_id'");
         $row = $result->fetch_array();
 
         return $row['total'];
@@ -56,7 +56,7 @@ class Homepage extends Connection
 
     
     public function available_animals(){
-        $result = $this->select("tbl_animals","count(animal_id) as total","status='0'");
+        $result = $this->select("tbl_pets","count(pet_id) as total","status='0'");
         $row = $result->fetch_array();
 
         return $row['total'];

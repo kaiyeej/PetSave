@@ -70,7 +70,7 @@
 <script type="text/javascript">
     function addAdopt(){
         $("#btn_approve").hide();
-        $('#div_adopt').css('pointer-events', 'auto');
+        // $('#div_adopt').css('pointer-events', 'auto');
         addModal();
     }
 
@@ -165,6 +165,6 @@
 
     $(document).ready(function() {
         getEntries();
-        getSelectOption('Animals', 'animal_id', 'animal_name', "status='0' OR status='1'");
+        getSelectOption('Pets', 'pet_id', 'pet_name', "status='0' OR status='1'");
     });
 </script>

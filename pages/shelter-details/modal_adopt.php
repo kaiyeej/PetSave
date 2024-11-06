@@ -13,7 +13,7 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label>Animal <span class="text-danger">*</span></label>
-                                    <select style="pointer-events: none;" class="form-control input-item animal_id" readonly name="input[animal_id]" id="animal_id" required>
+                                    <select style="pointer-events: none;" class="form-control input-item pet_id" readonly name="input[pet_id]" id="pet_id" required>
                                     </select>
                                     </select>
                                 </div>

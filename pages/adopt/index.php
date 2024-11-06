@@ -1,3 +1,62 @@
+<style>
+#canvas_animals .animal-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Ensure full height for flex layout */
+}
+
+.animal-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.img-container {
+    height: 220px; /* Fixed height for consistent card size */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    background-color: #f5f5f5; /* Background to fill empty space if needed */
+}
+
+.img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Display the entire image without cropping */
+    object-position: center;
+}
+
+.card-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1; /* Allows the card body to expand */
+    text-align: center;
+}
+
+.card-title {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.card-text {
+    font-size: 0.9em;
+    color: #555;
+    flex-grow: 1; /* Allow text section to expand */
+}
+
+.btn {
+    margin-top: 15px;
+}
+
+
+</style>
 <div class="bradcam_area breadcam_bg">
         <div class="container">
             <div class="row">
@@ -78,44 +137,41 @@
     });
 
     function getAnimals() {
-        var q = "availableAnimals";
-        $.ajax({
-            type: 'POST',
-            url:  "admin/controllers/sql.php?c=Pets&q=" + q,
-            data:{
-
-            },
-            success: function(data) {
-                var json = JSON.parse(data);
-                var arr_count = json.data.length;
-                var i = 0;
-                if(arr_count <= 0){
-                    $("#canvas_animals").html('<div class="col-md-12">' +'<center> No data available</center>' +'</div>');
-                }else{
-                    while (i < arr_count) {
-                        console.log(json.data[i]);
-                        $("#canvas_animals").append(
-                            '<div class="col-lg-4 col-md-6">'+
-                                '<div class="single_service">'+
-                                   '<div class="service_thumb service_icon_bg_1 d-flex align-items-center justify-content-center">'+
-                                        '<div class="service_icon">'+
-                                            '<img style="max-width: 300px;max-height: 220px;" src="admin/assets/file/' + json.data[i].pet_image + '" alt="">'+
-                                        '</div>'+
-                                    '</div>'+
-                                    '<div class="service_content text-center">'+
-                                        '<h3  style="margin-bottom: 0px;">' + json.data[i].pet_name + '</h3>'+
-                                        '<p>' + json.data[i].pet_description + '</p><br>'+
-                                    '<a data-toggle="modal" data-backdrop="false" onclick="adoptNow('+ json.data[i].pet_id +')" data-target="#modalEntry" href="#" class="genric-btn info-border circle">Adopt now</a>'+
-                                    '</div>'+
-                               '</div>'+
-                            '</div>');
-                        i++;
-                    }
+    var q = "availableAnimals";
+    $.ajax({
+        type: 'POST',
+        url:  "admin/controllers/sql.php?c=Pets&q=" + q,
+        data: {},
+        success: function(data) {
+            var json = JSON.parse(data);
+            var arr_count = json.data.length;
+            var i = 0;
+            if(arr_count <= 0){
+                $("#canvas_animals").html('<div class="col-md-12"><center>No data available</center></div>');
+            }else{
+                $("#canvas_animals").html(''); // Clear existing content
+                while (i < arr_count) {
+                    const pet = json.data[i];
+                    $("#canvas_animals").append(
+                        `<div class="col-lg-4 col-md-6 mb-4">
+                            <div class="card animal-card shadow-sm border-0">
+                                <div class="card-img-top img-container">
+                                    <img src="admin/assets/file/${pet.pet_image}" class="img-fluid rounded-top" alt="${pet.pet_name}">
+                                </div>
+                                <div class="card-body text-center">
+                                    <h5 class="card-title mb-1">${pet.pet_name}</h5>
+                                    <p class="card-text text-muted">${pet.pet_description}</p>
+                                    <button style="display:none;" onclick="adoptNow(${pet.pet_id})" class="btn btn-info btn-sm">Adopt Now</button>
+                                </div>
+                            </div>
+                        </div>`
+                    );
+                    i++;
                 }
-
             }
-        });
-    }
+        }
+    });
+}
 
     getAnimals();
     getSelectOption('Pets', 'pet_id', 'pet_name', "status='0'");

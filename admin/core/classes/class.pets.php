@@ -50,6 +50,17 @@ class Pets extends Connection
         }
     }
 
+    public function availableAnimals()
+    {
+        $rows = array();
+        $param = isset($this->inputs['param']) ? $this->inputs['param']." AND " : null;
+        $result = $this->select($this->table, "*", $param);
+        while ($row = $result->fetch_assoc()) {
+            $rows[] = $row;
+        }
+        return $rows;
+    }
+
     public function uploadImage()
     {
         $id = $this->inputs['pet_id'];

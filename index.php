@@ -75,8 +75,8 @@ include 'admin/core/config.php';
                                 <nav>
                                     <ul id="navigation">
                                         <li><a  href="./">home</a></li>
-                                        <li><a href="./adopt">adopt</a></li>
-                                        <li><a href="./rescue">rescue</a></li>
+                                        <!-- <li><a href="./adopt">adopt</a></li> -->
+                                        <li><a href="./adopt">rescue</a></li>
                                         <li><a href="./support-us">support us</a></li>
                                         <li><a href="./about-us">About us</a></li>
                                     </ul>

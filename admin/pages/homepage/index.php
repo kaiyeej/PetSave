@@ -16,15 +16,15 @@ $Homepage = new Homepage();
                             <div class="flex-grow-1 p-12 card-rounded bgi-no-repeat d-flex flex-column justify-content-center align-items-start" style="background-color: #AD974F; background-position: right bottom; background-size: auto 100%; background-image: url(assets/media/logos/logo.png)">
                                 <h4 class="text-light font-weight-bolder m-0">BACH Project PH</h4>
 
-                                <p class="text-light-50 my-5 font-size-xl font-weight-bold" style="width: 70%;">
-                                BACH Project PH is grounded in the belief that all animals deserve to be treated with compassion, respect, and care, ensuring their well-being in a safe and non-judgmental environment.
+                                <p class="text-light-50 my-5 font-size-xl font-weight-bold" style="width: 70%;color: #eef0f8;">
+                                    BACH Project PH is grounded in the belief that all animals deserve to be treated with compassion, respect, and care, ensuring their well-being in a safe and non-judgmental environment.
                                 </p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                
+
                 <div class="col-xl-4">
                     <!--begin::Tiles Widget 8-->
                     <div class="card card-custom gutter-b card-stretch">
@@ -53,11 +53,11 @@ $Homepage = new Homepage();
                                         </div>
                                         <div>
                                             <a href="#"
-                                                class="font-size-h6 text-dark-75 text-hover-primary font-weight-bolder">Rescued Animals <br><label onclick="showRescued()" class="badge badge-success">View</label></a>
+                                                class="font-size-h6 text-dark-75 text-hover-primary font-weight-bolder">Rescued Animals
+                                            </a>
                                         </div>
                                     </div>
-                                    <div
-                                        class="label label-light label-inline font-weight-bold text-dark-50 py-4 px-3 font-size-base">1</div>
+                                    <div class="label label-primary label-inline font-weight-bold text-light-50 py-4 px-3 font-size-base"><?= $Homepage->total_resue() ?></div>
                                 </div>
                                 <!--end::Item-->
 
@@ -72,11 +72,10 @@ $Homepage = new Homepage();
                                         </div>
                                         <div>
                                             <a href="#"
-                                                class="font-size-h6 text-dark-75 text-hover-primary font-weight-bolder">Available Animals</a>
+                                                class="font-size-h6 text-dark-75 text-hover-primary font-weight-bolder">Total Pets</a>
                                         </div>
                                     </div>
-                                    <div
-                                        class="label label-light label-inline font-weight-bold text-dark-50 py-4 px-3 font-size-base">1</div>
+                                    <div class="label label-primary label-inline font-weight-bold text-light-50 py-4 px-3 font-size-base"><?= $Homepage->total_pets() ?></div>
                                 </div>
                                 <!--end::Item-->
 
@@ -94,8 +93,7 @@ $Homepage = new Homepage();
                                                 class="font-size-h6 text-dark-75 text-hover-primary font-weight-bolder">Adopted Animals</a>
                                         </div>
                                     </div>
-                                    <div
-                                        class="label label-light label-inline font-weight-bold text-dark-50 py-4 px-3 font-size-base">1</div>
+                                    <div class="label label-primary label-inline font-weight-bold text-light-50 py-4 px-3 font-size-base"><?= $Homepage->total_adopted() ?></div>
                                 </div>
                                 <!--end::Item-->
 
@@ -114,7 +112,7 @@ $Homepage = new Homepage();
                         <!--begin::Header-->
                         <div class="card-header border-0 py-5">
                             <h3 class="card-title align-items-start flex-column">
-                                <span class="card-label font-weight-bolder text-dark">Rescue Animals</span>
+                                <span class="card-label text-dark"><strong style="color: #ad974f;">Animals in Rehab:</strong> Ongoing Care and Recovery</span>
                             </h3>
                         </div>
                         <!--end::Header-->
@@ -127,11 +125,10 @@ $Homepage = new Homepage();
                                     id="dt_entries">
                                     <thead>
                                         <tr class="text-left">
-                                            <th class="pl-0" style="min-width: 120px"></th>
-                                            <th class="pl-0" style="min-width: 120px">Image</th>
-                                            <th style="min-width: 110px">Location</th>
-                                            <th style="min-width: 110px">Description</th>
-                                            <th style="min-width: 110px">Date Reported</th>
+                                            <th>#</th>
+                                            <th>Pet Name</th>
+                                            <th>Description</th>
+                                            <th>Confinement Date</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -157,6 +154,8 @@ $Homepage = new Homepage();
     });
 
     function getEntries() {
+        var param = "status = 'O'";
+
         $("#dt_entries").DataTable().destroy();
         $("#dt_entries").DataTable({
             "searching": false,
@@ -164,31 +163,25 @@ $Homepage = new Homepage();
             "info": false,
             "processing": true,
             "ajax": {
-                "url": "controllers/sql.php?c=" + route_settings.class_name + "&q=pending",
+                "url": "controllers/sql.php?c=Rehab&q=show",
                 "dataSrc": "data",
                 "data": {
-                }
+                    input: {
+                        param: param
+                    }
+                },
             },
-            "columns": [
-                {
-                    "mRender": function(data, type, row) {
-                        return "<center><button title='Rescue Animal' class='btn btn-icon btn-sm btn-light-success' onclick='rescueAnimal(" + row.rescue_id + ")'><i class='flaticon2-check-mark'></i></button></center>";
-
-                    }
+            "columns": [{
+                    "data": "count"
                 },
                 {
-                    "mRender": function(data, type, row) {
-                        return "<img src='assets/lost_found/" + row.img_file + "' style='width:50px;' onclick=\"uploadImage('" + row.img_file + "')\">";
-                    }
+                    "data": "pet_name"
                 },
                 {
-                    "data": "location"
+                    "data": "rehab_desc"
                 },
                 {
-                    "data": "description"
-                },
-                {
-                    "data": "date_added"
+                    "data": "date_started"
                 }
 
             ]
@@ -196,16 +189,16 @@ $Homepage = new Homepage();
     }
 
     function uploadImage(img) {
-      // alert(id);
-      $("#div_img").html("<img style='width:100%;' src='assets/lost_found/" + img + "'\">");
-      $("#modalUpload").modal('show');
+        // alert(id);
+        $("#div_img").html("<img style='width:100%;' src='assets/lost_found/" + img + "'\">");
+        $("#modalUpload").modal('show');
 
     }
 
     function showRescued() {
-      // alert(id);
-      getEntries2();
-      $("#modalRescued").modal('show');
+        // alert(id);
+        getEntries2();
+        $("#modalRescued").modal('show');
 
     }
 
@@ -219,11 +212,9 @@ $Homepage = new Homepage();
             "ajax": {
                 "url": "controllers/sql.php?c=" + route_settings.class_name + "&q=show",
                 "dataSrc": "data",
-                "data": {
-                }
+                "data": {}
             },
-            "columns": [
-                {
+            "columns": [{
                     "mRender": function(data, type, row) {
                         return "<img src='assets/lost_found/" + row.img_file + "' style='width:50px;' onclick=\"uploadImage('" + row.img_file + "')\">";
                     }
@@ -245,41 +236,40 @@ $Homepage = new Homepage();
 
     function rescueAnimal(id) {
         swal({
-            title: "Are you sure to rescue animal?",
-            text: "This entries will be finished!",
-            type: "warning",
-            showCancelButton: true,
-            confirmButtonClass: "btn-info",
-            cancelButtonClass: "btn-danger",
-            confirmButtonText: "Yes, rescue it!",
-            cancelButtonText: "No, cancel!",
-            closeOnConfirm: false,
-            closeOnCancel: false
-          },
-          function(isConfirm) {
-            if (isConfirm) {
-              $.ajax({
-                type: "POST",
-                url: "controllers/sql.php?c=" + route_settings.class_name + "&q=rescue",
-                data: {
-                  input: {
-                    id: id
-                  }
-                },
-                success: function(data) {
-                  var json = JSON.parse(data);
-                  if (json.data == 1) {
-                    swal("Success!", "Successfully saved animal!", "success");
-                    window.location.reload();
-                  } else {
-                    failed_query(json);
-                  }
+                title: "Are you sure to rescue animal?",
+                text: "This entries will be finished!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonClass: "btn-info",
+                cancelButtonClass: "btn-danger",
+                confirmButtonText: "Yes, rescue it!",
+                cancelButtonText: "No, cancel!",
+                closeOnConfirm: false,
+                closeOnCancel: false
+            },
+            function(isConfirm) {
+                if (isConfirm) {
+                    $.ajax({
+                        type: "POST",
+                        url: "controllers/sql.php?c=" + route_settings.class_name + "&q=rescue",
+                        data: {
+                            input: {
+                                id: id
+                            }
+                        },
+                        success: function(data) {
+                            var json = JSON.parse(data);
+                            if (json.data == 1) {
+                                swal("Success!", "Successfully saved animal!", "success");
+                                window.location.reload();
+                            } else {
+                                failed_query(json);
+                            }
+                        }
+                    });
+                } else {
+                    swal("Cancelled", "Entries are safe :)", "error");
                 }
-              });
-            } else {
-              swal("Cancelled", "Entries are safe :)", "error");
-            }
-          });
+            });
     }
-
 </script>

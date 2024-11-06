@@ -81,7 +81,7 @@
         var q = "availableAnimals";
         $.ajax({
             type: 'POST',
-            url:  "admin/controllers/sql.php?c=Animals&q=" + q,
+            url:  "admin/controllers/sql.php?c=Pets&q=" + q,
             data:{
 
             },
@@ -104,7 +104,6 @@
                                     '</div>'+
                                     '<div class="service_content text-center">'+
                                         '<h3  style="margin-bottom: 0px;">' + json.data[i].pet_name + '</h3>'+
-                                        '<strong style="color: #ff5722;">' + json.data[i].shelter + '</strong>'+
                                         '<p>' + json.data[i].pet_description + '</p><br>'+
                                     '<a data-toggle="modal" data-backdrop="false" onclick="adoptNow('+ json.data[i].pet_id +')" data-target="#modalEntry" href="#" class="genric-btn info-border circle">Adopt now</a>'+
                                     '</div>'+
@@ -119,7 +118,7 @@
     }
 
     getAnimals();
-    getSelectOption('Animals', 'pet_id', 'pet_name', "status='0'");
+    getSelectOption('Pets', 'pet_id', 'pet_name', "status='0'");
 
     
     function getSelectOption(class_name, primary_id, label, param = '', attributes = [], pre_value='', pre_label = 'Please Select') {

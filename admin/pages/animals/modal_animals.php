@@ -60,7 +60,7 @@
                         <div class="col-sm-12">
                             <div class="form-group" id="div_image">
                                 <label><strong>Image</strong> <span class="text-danger">*</span></label>
-                                <input type="file" class="form-control" name="file" id="if_pet_image" required>
+                                <input type="file" class="form-control" name="file" required>
                             </div>
                         </div>
                     </div>

@@ -15,40 +15,22 @@ class Homepage extends Connection
         return $rows;
     }
 
-    public function lost_and_found(){
-        $result = $this->select("tbl_lost_and_found","count(if_id) as total");
+    public function total_resue(){
+        $result = $this->select("tbl_rescue","count(rescue_id) as total");
         $row = $result->fetch_array();
 
         return $row['total'];
     }
 
-    public function adopted_animals(){
-        $result = $this->select("tbl_pets","count(pet_id) as total","status='1'");
+    public function total_adopted(){
+        $result = $this->select("tbl_adoption","count(adoption_id) as total","status='A'");
         $row = $result->fetch_array();
 
         return $row['total'];
     }
 
-    public function adopted_animals_shelter(){
-        $shelter_id = $_SESSION['user']['shelter'];
-        $result = $this->select("tbl_pets","count(pet_id) as total","status='1' AND shelter_id='$shelter_id'");
-        $row = $result->fetch_array();
-
-        return $row['total'];
-    }
-
-    public function available_animals_shelter(){
-        $shelter_id = $_SESSION['user']['shelter'];
-        $result = $this->select("tbl_pets","count(pet_id) as total","status='0' AND shelter_id='$shelter_id'");
-        $row = $result->fetch_array();
-
-        return $row['total'];
-    }
-
-    
-    public function rescued_animals_shelter(){
-        $shelter_id = $_SESSION['user']['shelter'];
-        $result = $this->select("tbl_rescue","count(rescue_id) as total","shelter_id='$shelter_id'");
+    public function total_pets(){
+        $result = $this->select("tbl_pets","count(pet_id) as total","pet_status !='A'");
         $row = $result->fetch_array();
 
         return $row['total'];

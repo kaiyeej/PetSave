@@ -17,10 +17,10 @@ class Users extends Connection
             $form = array(
                 'user_fullname'     => $this->inputs['user_fullname'],
                 'user_category'     => $this->inputs['user_category'],
+                'user_contact_num'     => $this->inputs['user_contact_num'],
                 'date_added'        => $this->getCurrentDate(),
                 'username'          => $this->inputs['username'],
                 'password'          => md5($pass),
-                'shelter_id'        => $_SESSION['user']['shelter'],
             );
             return $this->insert($this->table, $form);
         }
@@ -38,6 +38,12 @@ class Users extends Connection
         return $this->update($this->table, $form, "username = '$username' AND  $this->pk = '$primary_id'");
     }
 
+    public function remove()
+    {
+        $ids = implode(",", $this->inputs['ids']);
+
+        return $this->delete($this->table, "$this->pk IN($ids)");
+    }
 
     public function update_password()
     {
@@ -58,8 +64,7 @@ class Users extends Connection
     public function show()
     {
         $rows = array();
-        $shelter_id = $_SESSION['user']['shelter'];
-        $result = $this->select($this->table, "*", "shelter_id='$shelter_id'");
+        $result = $this->select($this->table, "*");
         while ($row = $result->fetch_assoc()) {
             $row['category'] = $row['user_category'] == "A" ? "Admin" :  "Staff";
             $rows[] = $row;

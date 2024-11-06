@@ -86,7 +86,7 @@
             },
             "columns": [{
                     "mRender": function(data, type, row) {
-                        return row.user_category == "S" ? "<input type='checkbox' value=" + row.user_id + " class='dt_id' style='position: initial; opacity:1;'>" : "";
+                        return "<input type='checkbox' value=" + row.user_id + " class='dt_id' style='position: initial; opacity:1;'>";
                     }
                 },
                 {

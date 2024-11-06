@@ -92,7 +92,7 @@ if (!isset($_SESSION['pas_user_id'])) {
                 <div class="aside-brand d-flex flex-column align-items-center flex-column-auto py-4 py-lg-8">
                     <!--begin::Logo-->
                     <a href="./">
-                        <img alt="Logo" src="assets/media/logos/logo_white.png" class="max-h-70px" />
+                        <img alt="Logo" src="assets/media/logos/logo.png" class="max-h-70px" />
                     </a>
                     <!--end::Logo-->
                 </div>
@@ -124,7 +124,7 @@ if (!isset($_SESSION['pas_user_id'])) {
                                         <span id="span_shelter" style="text-transform: uppercase;color: #f44336 !important;font-size: 15px;" class="text-muted font-weight-bold font-size-base d-none d-md-inline"></span>
                                     </div>
                                     <span class="symbol symbol-35 symbol-light-warning">
-                                        <span class="symbol-label font-size-h5 font-weight-bold"><span id="span_username_initial"></span></span>
+                                        <span class="symbol-label font-size-h5 font-weight-bold"><i class="fa fa-user"></i></span>
                                     </span>
                                 </div>
                             </div>
@@ -148,8 +148,8 @@ if (!isset($_SESSION['pas_user_id'])) {
                     <div class=" container  d-flex flex-column flex-md-row align-items-center justify-content-between">
                         <!--begin::Copyright-->
                         <div class="text-dark order-2 order-md-1">
-                            <span class="text-muted font-weight-bold mr-2">2022&copy;</span>
-                            <a href="#" target="_blank" class="text-dark-75 text-hover-primary">University of Saint La Salle</a>
+                            <span class="text-muted font-weight-bold mr-2">2024&copy;</span>
+                            <a href="#" target="_blank" class="text-dark-75 text-hover-primary">BACH Project PH</a>
                         </div>
                         <!--end::Copyright-->
                     </div>
@@ -283,23 +283,7 @@ if (!isset($_SESSION['pas_user_id'])) {
 
                 <!--end::Item-->
             </div>
-            <div>
-                <!--begin::Item-->
-                <div class="d-flex align-items-center bg-light-danger rounded p-5 gutter-b">
-                    <span class="svg-icon svg-icon-success mr-5">
-                        <i class="flaticon2-architecture-and-city"></i>
-                    </span>
-
-                    <div class="d-flex flex-column flex-grow-1 mr-2">
-                        <a href="./shelters" class="font-weight-normal text-dark-75 text-hover-primary font-size-lg mb-1">Shelter</a>
-                        <span class="text-muted font-size-sm">Shelter's information and settings</span>
-                    </div>
-
-                </div>
-                <!--end::Item-->
-
-                <!--end::Item-->
-            </div>
+            
             <!--end::Notifications-->
         </div>
         <!--end::Content-->

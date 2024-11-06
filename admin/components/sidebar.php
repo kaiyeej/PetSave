@@ -8,32 +8,37 @@ $page = str_replace("/petsave/admin/", "", $request);
         <!--begin::Item-->
         <li class="nav-item mb-5" data-toggle="tooltip" data-placement="right" data-container="body" data-boundary="window" title="Dashboard">
             <a href="./" class="nav-link btn btn-icon btn-clean btn-icon-white btn-lg <?= $page == "" || $page == "homepage" || $page == null ? 'active' : '' ?>">
-                <i class="flaticon-dashboard icon-lg"></i>
+                <i class="fa fa-home icon-lg"></i>
             </a>
         </li>
         <li class="nav-item mb-5" data-toggle="tooltip" data-placement="right" data-container="body" data-boundary="window" title="Adoption">
             <a href="./adopt" class="nav-link btn btn-icon btn-clean btn-icon-white btn-lg <?= $page == 'adopt' ? 'active' : '' ?>">
-                <i class="flaticon-folder-1 icon-lg"></i>
+                <i class="fa fa-hand-holding-heart icon-lg"></i>
             </a>
         </li>
-        <li class="nav-item mb-5" data-toggle="tooltip" data-placement="right" data-container="body" data-boundary="window" title="Animals">
+        <li class="nav-item mb-5" data-toggle="tooltip" data-placement="right" data-container="body" data-boundary="window" title="Pets">
             <a href="./animals" class="nav-link btn btn-icon btn-clean btn-icon-white btn-lg <?= $page == 'animals' ? 'active' : '' ?>">
-                <i class="flaticon2-shelter icon-lg"></i>
+                <i class="fas fa-paw icon-lg"></i>
             </a>
         </li>
-        <li class="nav-item mb-5" data-toggle="tooltip" data-placement="right" data-container="body" data-boundary="window" title="Lost and Found">
-            <a href="./lost-found" class="nav-link btn btn-icon btn-clean btn-icon-white btn-lg <?= $page == 'lost-found' ? 'active' : '' ?>">
-                <i class="flaticon-open-box icon-lg"></i>
+        <li class="nav-item mb-5" data-toggle="tooltip" data-placement="right" data-container="body" data-boundary="window" title="Rescues">
+            <a href="./rescue" class="nav-link btn btn-icon btn-clean btn-icon-white btn-lg <?= $page == 'rescue' ? 'active' : '' ?>">
+                <i class="fa fa-first-aid icon-lg"></i>
             </a>
         </li>
-        <li class="nav-item mb-5" data-toggle="tooltip" data-placement="right" data-container="body" data-boundary="window" title="Post">
+        <li class="nav-item mb-5" data-toggle="tooltip" data-placement="right" data-container="body" data-boundary="window" title="Rehab">
+            <a href="./rehab" class="nav-link btn btn-icon btn-clean btn-icon-white btn-lg <?= $page == 'rehab' ? 'active' : '' ?>">
+                <i class="fa fa-hospital icon-lg"></i>
+            </a>
+        </li>
+        <!-- <li class="nav-item mb-5" data-toggle="tooltip" data-placement="right" data-container="body" data-boundary="window" title="Post">
             <a href="./post" class="nav-link btn btn-icon btn-clean btn-icon-white btn-lg <?= $page == 'post' ? 'active' : '' ?>">
                 <i class="flaticon-notes icon-lg"></i>
             </a>
-        </li>
+        </li> -->
         <li class="nav-item mb-5" data-toggle="tooltip" data-placement="right" data-container="body" data-boundary="window" title="Lost and Found">
             <a href="./users" class="nav-link btn btn-icon btn-clean btn-icon-white btn-lg <?= $page == 'users' ? 'active' : '' ?>">
-                <i class="flaticon-user-add icon-lg"></i>
+                <i class="fa fa-users icon-lg"></i>
             </a>
         </li>
         

@@ -77,7 +77,6 @@ include 'admin/core/config.php';
                                         <li><a  href="./">home</a></li>
                                         <li><a href="./adopt">adopt</a></li>
                                         <li><a href="./rescue">rescue</a></li>
-                                        <li><a href="./pet-care">pets</a></li>
                                         <li><a href="./support-us">support us</a></li>
                                         <li><a href="./about-us">About us</a></li>
                                     </ul>

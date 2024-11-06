@@ -11,4 +11,5 @@ $classes = array(
     'Profile'           => $pre_class . 'profile.php',
     'Users'             => $pre_class . 'users.php',
     'Post'              => $pre_class . 'post.php',
+    'Rehab'             => $pre_class . 'rehab.php',
 );

@@ -3,7 +3,7 @@
     <div class="modal-dialog modal-lg" style="margin-top: 50px;border: 2px dashed #ff9800;" role="document">
         <form method='POST' id='frm_submit'>
             <div class="modal-content">
-                <div class="modal-header" style="">
+                <div class="modal-header">
                     <h4 id="modalLabel"><i class='flaticon-edit'></i> ADOPTION APPLICATION </h4>
                 </div>
                 <div class="modal-body">

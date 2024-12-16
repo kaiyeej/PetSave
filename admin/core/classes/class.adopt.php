@@ -13,20 +13,46 @@ class Adopt extends Connection
             $this->name         => $this->clean($this->inputs[$this->name]),
             'application_date'  => $this->inputs['application_date'],
             'pet_id'          => $this->inputs['pet_id'],
-            'age'               => $this->inputs['age'],
-            'social_media_account'   => $this->inputs['social_media_account'],
-            'address'           => $this->inputs['address'],
-            'contact_num'       => $this->inputs['contact_num'],
-            'email_adderess'    => $this->inputs['email_adderess'],
-            'occupation'        => $this->inputs['occupation'],
-            'civil_status'      => $this->inputs['civil_status'],
-            'alternate_contact' => $this->inputs['alternate_contact'],
-            'relationship'      => $this->inputs['relationship'],
-            'guardian_contact_num'  => $this->inputs['guardian_contact_num'],
+            'fullname'               => $this->inputs['fullname'],
+            'user_occupation'   => $this->inputs['user_occupation'],
+            'user_contact_num'           => $this->inputs['user_contact_num'],
+            'user_home_address'       => $this->inputs['user_home_address'],
+            'user_email'    => $this->inputs['user_email'],
+            'user_social_media'        => $this->inputs['user_social_media'],
+            'user_spouse'      => $this->inputs['user_spouse'],
+            'user_civil_status' => $this->inputs['user_civil_status'],
+
+
+            'a_q1'  => $this->inputs['a_q1'],
+            'a_q2'  => $this->inputs['a_q2'],
+            'a_q3'  => $this->inputs['a_q3'],
+            'a_q4'  => $this->inputs['a_q4'],
+            'a_q5'  => $this->inputs['a_q5'],
+            'a_q6'  => $this->inputs['a_q6'],
+            'a_q7'  => $this->inputs['a_q7'],
+            'a_q8'  => $this->inputs['a_q8'],
+            'a_q9'  => $this->inputs['a_q9'],
+            'a_q8'  => $this->inputs['a_q8'],
+            'a_q9'  => $this->inputs['a_q9'],
+            'a_q10' => $this->inputs['a_q10'],
+            'a_q11' => $this->inputs['a_q11'],
+            'a_q12' => $this->inputs['a_q12'],
+            'a_q13' => $this->inputs['a_q13'],
+            'a_q14' => $this->inputs['a_q14'],
+            'a_q15' => $this->inputs['a_q15'],
+            'a_q16' => $this->inputs['a_q16'],
+
+            'adopted_from' => $this->inputs['adopted_from'],
+            'veterinarian_name' => $this->inputs['veterinarian_name'],
+            'veterinarian_number' => $this->inputs['veterinarian_number'],
+            'veterinarian_clinic' => $this->inputs['veterinarian_clinic'],
+            'veterinarian_address' => $this->inputs['veterinarian_address'],
+
            
         );
 
-        return $this->insertIfNotExist($this->table, $form, "$this->name = '".$this->inputs[$this->name]."' AND status!='A'");
+        // return $this->insertIfNotExist($this->table, $form, "$this->name = '".$this->inputs[$this->name]."' AND status!='A'");
+        return $this->insert($this->table, $form);
     }
 
     public function edit()

@@ -23,6 +23,7 @@ class Pets extends Connection
             'pet_type'           => $this->inputs['pet_type'],
             'pet_breed'          => $this->inputs['pet_breed'],
             'pet_identifier'     => $this->inputs['pet_identifier'],
+            'pet_status'         => 'P',
             'pet_image'          => $img_file
         );
 

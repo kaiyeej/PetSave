@@ -12,8 +12,8 @@
                             <input type="hidden" id="hidden_id" name="input[adoption_id]">
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label>Animal <span class="text-danger">*</span></label>
-                                    <select class="form-control input-item" readonly name="input[pet_id]" id="pet_id" required>
+                                    <label>Pet <span class="text-danger">*</span></label>
+                                    <select class="form-control input-item select2" readonly name="input[pet_id]" id="pet_id" required>
                                     </select>
                                 </div>
                             </div>
@@ -68,7 +68,7 @@
                                     <input type="text" class="form-control input-item" name="input[user_social_media]" id="user_social_media" autocomplete="off" placeholder="Social media account">
                                 </div>
                             </div>
-
+<!-- 
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label>Phone <span class="text-danger">*</span></label>
@@ -80,7 +80,7 @@
                                     <label>Email <span class="text-danger">*</span></label>
                                     <input type="email" class="form-control input-item" name="input[email_adderess]" id="email_adderess" autocomplete="off" placeholder="Email address">
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label>Spouse / Significant Other: <span class="text-danger">*</span></label>

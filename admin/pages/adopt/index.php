@@ -165,6 +165,6 @@
 
     $(document).ready(function() {
         getEntries();
-        getSelectOption('Pets', 'pet_id', 'pet_name', "status='0' OR status='1'");
+        getSelectOption('Pets', 'pet_id', 'pet_name', "pet_status='' OR pet_status='P'");
     });
 </script>

@@ -174,7 +174,7 @@
 }
 
     getAnimals();
-    getSelectOption('Pets', 'pet_id', 'pet_name', "status='0'");
+    getSelectOption('Pets', 'pet_id', 'pet_name', "pet_status='P' OR pet_status='R'");
 
     
     function getSelectOption(class_name, primary_id, label, param = '', attributes = [], pre_value='', pre_label = 'Please Select') {

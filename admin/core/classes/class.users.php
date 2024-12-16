@@ -64,7 +64,8 @@ class Users extends Connection
     public function show()
     {
         $rows = array();
-        $result = $this->select($this->table, "*");
+        $param = isset($this->inputs['param']) ? $this->inputs['param'] : null;
+        $result = $this->select($this->table, "*", $param);
         while ($row = $result->fetch_assoc()) {
             $row['category'] = $row['user_category'] == "A" ? "Admin" :  "Staff";
             $rows[] = $row;

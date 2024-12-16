@@ -10,18 +10,18 @@ class Adopt extends Connection
     public function add()
     {
         $form = array(
-            $this->name         => $this->clean($this->inputs[$this->name]),
+            // $this->name         => $this->clean($this->inputs[$this->name]),
             'application_date'  => $this->inputs['application_date'],
-            'pet_id'          => $this->inputs['pet_id'],
-            'fullname'               => $this->inputs['fullname'],
+            'pet_id'            => $this->inputs['pet_id'],
+            // 'fullname'          => $this->inputs['fullname'],
+            'user_id'           => $this->inputs['user_id'],
             'user_occupation'   => $this->inputs['user_occupation'],
-            'user_contact_num'           => $this->inputs['user_contact_num'],
-            'user_home_address'       => $this->inputs['user_home_address'],
-            'user_email'    => $this->inputs['user_email'],
-            'user_social_media'        => $this->inputs['user_social_media'],
-            'user_spouse'      => $this->inputs['user_spouse'],
+            'user_contact_num'  => $this->inputs['user_contact_num'],
+            'user_home_address' => $this->inputs['user_home_address'],
+            'user_email'        => $this->inputs['user_email'],
+            'user_social_media' => $this->inputs['user_social_media'],
+            'user_spouse'       => $this->inputs['user_spouse'],
             'user_civil_status' => $this->inputs['user_civil_status'],
-
 
             'a_q1'  => $this->inputs['a_q1'],
             'a_q2'  => $this->inputs['a_q2'],
@@ -30,8 +30,6 @@ class Adopt extends Connection
             'a_q5'  => $this->inputs['a_q5'],
             'a_q6'  => $this->inputs['a_q6'],
             'a_q7'  => $this->inputs['a_q7'],
-            'a_q8'  => $this->inputs['a_q8'],
-            'a_q9'  => $this->inputs['a_q9'],
             'a_q8'  => $this->inputs['a_q8'],
             'a_q9'  => $this->inputs['a_q9'],
             'a_q10' => $this->inputs['a_q10'],
@@ -64,40 +62,41 @@ class Adopt extends Connection
             return 2;
         } else {
             $form = array(
-            $this->name         => $this->clean($this->inputs[$this->name]),
-            'application_date'  => $this->inputs['application_date'],
-            'pet_id'          => $this->inputs['pet_id'],
-            'age'               => $this->inputs['age'],
-            'social_media_account'   => $this->inputs['social_media_account'],
-            'address'           => $this->inputs['address'],
-            'contact_num'       => $this->inputs['contact_num'],
-            'email_adderess'    => $this->inputs['email_adderess'],
-            'occupation'        => $this->inputs['occupation'],
-            'civil_status'      => $this->inputs['civil_status'],
-            'alternate_contact' => $this->inputs['alternate_contact'],
-            'relationship'      => $this->inputs['relationship'],
-            'guardian_contact_num'  => $this->inputs['guardian_contact_num'],
-            'q1'   => $this->inputs['q1'],
-            'q2'   => $this->inputs['q2'],
-            'q3'   => $this->inputs['q3'],
-            'q4'   => $this->inputs['q4'],
-            'q5'   => $this->inputs['q5'],
-            'q6'   => $this->inputs['q6'],
-            'q7'   => $this->inputs['q7'],
-            'q8'   => $this->inputs['q8'],
-            'q9'   => $this->inputs['q9'],
-            'q10'  => $this->inputs['q10'],
-            'q11'  => $this->inputs['q11'],
-            'q12'  => $this->inputs['q12'],
-            'q13'  => $this->inputs['q13'],
-            'q14'  => $this->inputs['q14'],
-            'q15'  => $this->inputs['q15'],
-            'q16'  => $this->inputs['q16'],
-            'q17'  => $this->inputs['q17'],
-            'q18'  => $this->inputs['q18'],
-            'q19'  => $this->inputs['q19'],
-            'q20' => $this->inputs['q20'],
-            'q21' => $this->inputs['q21'],
+                $this->name         => $this->clean($this->inputs[$this->name]),
+                'application_date'  => $this->inputs['application_date'],
+                'pet_id'            => $this->inputs['pet_id'],
+                // 'fullname'          => $this->inputs['fullname'],
+                'user_id'           => $this->inputs['user_id'],
+                'user_occupation'   => $this->inputs['user_occupation'],
+                'user_contact_num'  => $this->inputs['user_contact_num'],
+                'user_home_address' => $this->inputs['user_home_address'],
+                'user_email'        => $this->inputs['user_email'],
+                'user_social_media' => $this->inputs['user_social_media'],
+                'user_spouse'       => $this->inputs['user_spouse'],
+                'user_civil_status' => $this->inputs['user_civil_status'],
+    
+                'a_q1'  => $this->inputs['a_q1'],
+                'a_q2'  => $this->inputs['a_q2'],
+                'a_q3'  => $this->inputs['a_q3'],
+                'a_q4'  => $this->inputs['a_q4'],
+                'a_q5'  => $this->inputs['a_q5'],
+                'a_q6'  => $this->inputs['a_q6'],
+                'a_q7'  => $this->inputs['a_q7'],
+                'a_q8'  => $this->inputs['a_q8'],
+                'a_q9'  => $this->inputs['a_q9'],
+                'a_q10' => $this->inputs['a_q10'],
+                'a_q11' => $this->inputs['a_q11'],
+                'a_q12' => $this->inputs['a_q12'],
+                'a_q13' => $this->inputs['a_q13'],
+                'a_q14' => $this->inputs['a_q14'],
+                'a_q15' => $this->inputs['a_q15'],
+                'a_q16' => $this->inputs['a_q16'],
+    
+                'adopted_from' => $this->inputs['adopted_from'],
+                'veterinarian_name' => $this->inputs['veterinarian_name'],
+                'veterinarian_number' => $this->inputs['veterinarian_number'],
+                'veterinarian_clinic' => $this->inputs['veterinarian_clinic'],
+                'veterinarian_address' => $this->inputs['veterinarian_address'],
             );
 
             return $this->updateIfNotExist($this->table, $form, "$this->pk != '$primary_id' AND $this->name = '".$this->inputs[$this->name]."' AND status!='A'");
@@ -149,9 +148,9 @@ class Adopt extends Connection
         $pet_id = $this->adopt_pet_id($primary_id);
         $result = $this->select("tbl_pets", '*', "pet_id = '$pet_id'");
         $row = $result->fetch_assoc();
-        if($row['status'] == 0){
+        if($row['pet_status'] == 0){
             $form_ = array(
-                "status" => "1"
+                "pet_status" => "A"
             );
             $this->update("tbl_pets", $form_, "pet_id = '$pet_id'");
 

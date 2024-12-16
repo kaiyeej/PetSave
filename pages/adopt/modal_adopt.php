@@ -66,7 +66,7 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label>Email <span class="text-danger">*</span></label>
-                                    <input type="email" class="form-control input-item" name="input[email_adderess]" id="email_adderess" autocomplete="off" placeholder="Email address" >
+                                    <input type="email" class="form-control input-item" name="input[email_address]" id="email_address" autocomplete="off" placeholder="Email address" >
                                 </div>
                             </div>
                             <div class="col-sm-6">
@@ -124,7 +124,7 @@
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label>1. What prompted you to adopt from PetSave? <span class="text-danger">*</span></label>
-                                    <select class="form-control input-item" name="input[q1]" id="q1" required>
+                                    <select class="form-control input-item" name="input[a_q1]" id="a_q1" required>
                                         <option value="">Please Select</option>
                                         <option value="Friends">Friends</option>
                                         <option value="Website">Website</option>
@@ -137,7 +137,7 @@
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label>2. What are you looking to adopt? <span class="text-danger">*</span></label>
-                                    <select class="form-control input-item" name="input[q2]" id="q2" required>
+                                    <select class="form-control input-item" name="input[a_q2]" id="a_q2" required>
                                         <option value="">Please Select</option>
                                         <option value="Cat">Cat</option>
                                         <option value="Dog">Dog</option>
@@ -149,26 +149,26 @@
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label>3. Have you adopted from PetSave before? <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control input-item" name="input[q3]" id="q3" autocomplete="off" placeholder="Yes or No">
+                                    <input type="text" class="form-control input-item" name="input[a_q3]" id="a_q3" autocomplete="off" placeholder="Yes or No" require>
                                     <p style="font-size:12px;">If yes, when?</p>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label>4. Do you know the name of the animal you want to adopt? You may list up to 3 <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control input-item" name="input[q4]" id="q4" autocomplete="off">
+                                    <input type="text" class="form-control input-item" name="input[a_q4]" id="a_q4" autocomplete="off">
                                 </div>
                             </div>  
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label>5. Describe your ideal pet, including its sex, age, appearance, temperament, etc <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control input-item" name="input[q5]" id="q5" autocomplete="off">
+                                    <input type="text" class="form-control input-item" name="input[a_q5]" id="a_q5" autocomplete="off">
                                 </div>
                             </div> 
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label>6. For whom are you adopting a pet? <span class="text-danger">*</span></label>
-                                    <select class="form-control input-item" name="input[q6]" id="q6" required>
+                                    <select class="form-control input-item" name="input[a_q6]" id="a_q6" required>
                                         <option value="">Please Select</option>
                                         <option value="For myself">For myself</option>
                                         <option value="For someone else">For someone else (as a gift)</option>
@@ -179,14 +179,14 @@
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label>7. Are there children (below 18) in the house? <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control input-item" name="input[q7]" id="q7" autocomplete="off">
+                                    <input type="text" class="form-control input-item" name="input[a_q7]" id="a_q7" autocomplete="off">
                                     <p style="font-size:12px;">If yes, how old are they?</p>
                                 </div>
                             </div>
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label>8. Do you have other pets? <span class="text-danger">*</span></label>
-                                    <select class="form-control input-item" name="input[q8]" id="q8" required>
+                                    <select class="form-control input-item" name="input[a_q8]" id="a_q8" required>
                                         <option value="">Please Select</option>
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
@@ -196,7 +196,7 @@
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label>9. Have you had pets in the past? <span class="text-danger">*</span></label>
-                                    <select class="form-control input-item" name="input[q9]" id="q9" required>
+                                    <select class="form-control input-item" name="input[a_q9]" id="a_q9" required>
                                         <option value="">Please Select</option>
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
@@ -206,7 +206,7 @@
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label>10. Who else do you live with? <span class="text-danger">*</span></label>
-                                    <select class="form-control input-item" name="input[q10]" id="q10" required>
+                                    <select class="form-control input-item" name="input[a_q10]" id="a_q10" required>
                                         <option value="">Please Select</option>
                                         <option value="Spouse">Spouse</option>
                                         <option value="Parents">Parents</option>
@@ -218,49 +218,49 @@
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label>11. Are any members of your household allergic to animals? If yes, how will it be managed? <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control input-item" name="input[q11]" id="q11" autocomplete="off" required>
+                                    <input type="text" class="form-control input-item" name="input[a_q11]" id="a_q11" autocomplete="off" required>
                                 </div>
                             </div>
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label>12.	Who will be responsible for feeding, grooming, and generally caring for your pet? <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control input-item" name="input[q12]" id="q12" autocomplete="off" required>
+                                    <input type="text" class="form-control input-item" name="input[a_q12]" id="a_q12" autocomplete="off" required>
                                 </div>
                             </div>
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label>13.	Who will be financially responsible for your pet’s needs (i.e. food, vet bills, etc.)?   <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control input-item" name="input[q13]" id="q13" autocomplete="off" required>
+                                    <input type="text" class="form-control input-item" name="input[a_q13]" id="a_q13" autocomplete="off" required>
                                 </div>
                             </div>
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label>14. Who will look after your pet if you go on vacation or in case of emergency?  <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control input-item" name="input[q14]" id="q14" autocomplete="off" required>
+                                    <input type="text" class="form-control input-item" name="input[a_q14]" id="a_q14" autocomplete="off" required>
                                 </div>
                             </div>
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label>15. How many hours in an average workday will your pet be left alone? <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control input-item" name="input[q15]" id="q15" autocomplete="off" required>
+                                    <input type="text" class="form-control input-item" name="input[a_q15]" id="a_q15" autocomplete="off" required>
                                 </div>
                             </div>
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label>16. Does everyone in the family support your decision to adopt a pet? Please explain: <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control input-item" name="input[q16]" id="q16" autocomplete="off" required>
+                                    <input type="text" class="form-control input-item" name="input[a_q16]" id="a_q16" autocomplete="off" required>
                                 </div>
                             </div>
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label>17.	What steps will you take to familiarize your new pet with his/her new surroundings? <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control input-item" name="input[q17]" id="q17" autocomplete="off" required>
+                                    <input type="text" class="form-control input-item" name="input[a_q17]" id="a_q17" autocomplete="off" required>
                                 </div>
                             </div>
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label>18.	What type of building do you live in? <span class="text-danger">*</span></label>
-                                    <select class="form-control input-item" name="input[q18]" id="q18" required>
+                                    <select class="form-control input-item" name="input[a_q18]" id="a_q18" required>
                                         <option value="">Please Select</option>
                                         <option value="House">House</option>
                                         <option value="Apartment">Apartment</option>
@@ -272,19 +272,19 @@
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label>19. Do you rent? If yes, how long have you lived there?  <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control input-item" name="input[q19]" id="q19" autocomplete="off" required>
+                                    <input type="text" class="form-control input-item" name="input[a_q19]" id="a_q19" autocomplete="off" required>
                                 </div>
                             </div>
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label>20.	What happens to your pet if or when you move? <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control input-item" name="input[q20]" id="q20" autocomplete="off" required>
+                                    <input type="text" class="form-control input-item" name="input[a_q20]" id="a_q20" autocomplete="off" required>
                                 </div>
                             </div>
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label>21.	If renting or living in a shared building, can you provide a copy of your building's pet policy? <span class="text-danger">*</span></label>
-                                    <select class="form-control input-item" name="input[q21]" id="q21" required>
+                                    <select class="form-control input-item" name="input[a_q21]" id="a_q21" required>
                                         <option value="">Please Select</option>
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>

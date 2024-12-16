@@ -35,7 +35,9 @@
                             <div class="col-sm-12">
                                 <div class="form-group">
                                     <label>Complete Name <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control input-item" name="input[fullname]" id="fullname" autocomplete="off" placeholder="Full name" required>
+                                    <select class="form-control input-item select2" readonly name="input[user_id]" id="user_id" required>
+                                    </select>
+                                    <!-- <input type="text" class="form-control input-item" name="input[fullname]" id="fullname" autocomplete="off" placeholder="Full name" required> -->
                                 </div>
                             </div>
                             <div class="col-sm-6">
@@ -129,7 +131,7 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label>Has anyone in your household experienced allergies or asthma? <span class="text-danger">*</span></label>
-                                    <select class="form-control input-item" name="input[a_q2]" id="a_q3" required>
+                                    <select class="form-control input-item" name="input[a_q3]" id="a_q3" required>
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
                                     </select>

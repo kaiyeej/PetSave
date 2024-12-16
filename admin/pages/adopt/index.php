@@ -166,5 +166,6 @@
     $(document).ready(function() {
         getEntries();
         getSelectOption('Pets', 'pet_id', 'pet_name', "pet_status='' OR pet_status='P'");
+        getSelectOption('Users', 'user_id', 'user_fullname', "user_category !='A'");
     });
 </script>

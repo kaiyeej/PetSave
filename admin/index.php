@@ -2,7 +2,7 @@
 include 'core/config.php';
 
 if (!isset($_SESSION['pas_user_id'])) {
- header("location:./login/index.php");
+  header("location:./login/index.php");
 }
 
 ?>
@@ -11,36 +11,31 @@ if (!isset($_SESSION['pas_user_id'])) {
 <!--begin::Head-->
 
 <head>
-    <base href="">
-    <meta charset="utf-8" />
-    <title>BACH Project PH</title>
-    <meta name="description" content="Updates and statistics" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <base href="">
+  <meta charset="utf-8" />
+  <title>BACH Project PH</title>
+  <meta name="description" content="Updates and statistics" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-    <!--begin::Fonts-->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
-    <!--end::Fonts-->
+  <!--begin::Fonts-->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+  <!--end::Fonts-->
 
-    <!--begin::Page Vendors Styles(used by this page)-->
-    <link href="assets/plugins/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css" />
-    <link href="assets/plugins/custom/leaflet/leaflet.bundle.css" rel="stylesheet" type="text/css" />
-    <!--end::Page Vendors Styles-->
+  <!--begin::Page Vendors Styles(used by this page)-->
+  <link href="assets/plugins/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css" />
+  <link href="assets/plugins/custom/leaflet/leaflet.bundle.css" rel="stylesheet" type="text/css" />
+  <!--end::Page Vendors Styles-->
 
-    <link href="assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css"/>
-    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
-    <link rel="stylesheet" href="assets/sweetalert/sweetalert.css">
+  <link href="assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+  <link rel="stylesheet" href="assets/sweetalert/sweetalert.css">
 
 
-    <!--begin::Global Theme Styles(used by all pages)-->
-    <link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
-    <link href="assets/plugins/custom/prismjs/prismjs.bundle.css" rel="stylesheet" type="text/css" />
-    <link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
-    
-
-    <link rel="shortcut icon" href="assets/media/logos/logo.png" />
-  
-      
-    
+  <!--begin::Global Theme Styles(used by all pages)-->
+  <link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+  <link href="assets/plugins/custom/prismjs/prismjs.bundle.css" rel="stylesheet" type="text/css" />
+  <link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+  <link rel="shortcut icon" href="assets/media/logos/logo.png" />
 </head>
 
 <!--end::Head-->
@@ -49,254 +44,253 @@ if (!isset($_SESSION['pas_user_id'])) {
 
 <body id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled page-loading">
 
-    <!--begin::Main-->
-    <!--begin::Header Mobile-->
-    <div id="kt_header_mobile" class="header-mobile  header-mobile-fixed ">
-        <!--begin::Logo-->
-        <a href="./">
-            <img alt="Logo" src="assets/media/logos/logo_white.png" class="logo-default max-h-30px" />
-        </a>
-        <!--end::Logo-->
+  <!--begin::Main-->
+  <!--begin::Header Mobile-->
+  <div id="kt_header_mobile" class="header-mobile  header-mobile-fixed ">
+    <!--begin::Logo-->
+    <a href="./">
+      <img alt="Logo" src="assets/media/logos/logo_white.png" class="logo-default max-h-30px" />
+    </a>
+    <!--end::Logo-->
 
-        <!--begin::Toolbar-->
-        <div class="d-flex align-items-center">
-            <!--begin::Aside Mobile Toggle-->
-            <button class="btn p-0 burger-icon burger-icon-left" id="kt_aside_mobile_toggle">
-                <span></span>
-            </button>
-            <!--end::Aside Mobile Toggle-->
+    <!--begin::Toolbar-->
+    <div class="d-flex align-items-center">
+      <!--begin::Aside Mobile Toggle-->
+      <button class="btn p-0 burger-icon burger-icon-left" id="kt_aside_mobile_toggle">
+        <span></span>
+      </button>
+      <!--end::Aside Mobile Toggle-->
 
-            <!--begin::Topbar Mobile Toggle-->
-            <button class="btn btn-hover-text-primary p-0 ml-2" id="kt_header_mobile_topbar_toggle">
-                <span class="svg-icon svg-icon-xl">
-                    <!--begin::Svg Icon | path:assets/media/svg/icons/General/User.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                            <polygon points="0 0 24 0 24 24 0 24" />
-                            <path d="M12,11 C9.790861,11 8,9.209139 8,7 C8,4.790861 9.790861,3 12,3 C14.209139,3 16,4.790861 16,7 C16,9.209139 14.209139,11 12,11 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" />
-                            <path d="M3.00065168,20.1992055 C3.38825852,15.4265159 7.26191235,13 11.9833413,13 C16.7712164,13 20.7048837,15.2931929 20.9979143,20.2 C21.0095879,20.3954741 20.9979143,21 20.2466999,21 C16.541124,21 11.0347247,21 3.72750223,21 C3.47671215,21 2.97953825,20.45918 3.00065168,20.1992055 Z" fill="#000000" fill-rule="nonzero" />
-                        </g>
-                    </svg>
-                    <!--end::Svg Icon-->
-                </span> </button>
-            <!--end::Topbar Mobile Toggle-->
-        </div>
-        <!--end::Toolbar-->
+      <!--begin::Topbar Mobile Toggle-->
+      <button class="btn btn-hover-text-primary p-0 ml-2" id="kt_header_mobile_topbar_toggle">
+        <span class="svg-icon svg-icon-xl">
+          <!--begin::Svg Icon | path:assets/media/svg/icons/General/User.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+              <polygon points="0 0 24 0 24 24 0 24" />
+              <path d="M12,11 C9.790861,11 8,9.209139 8,7 C8,4.790861 9.790861,3 12,3 C14.209139,3 16,4.790861 16,7 C16,9.209139 14.209139,11 12,11 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" />
+              <path d="M3.00065168,20.1992055 C3.38825852,15.4265159 7.26191235,13 11.9833413,13 C16.7712164,13 20.7048837,15.2931929 20.9979143,20.2 C21.0095879,20.3954741 20.9979143,21 20.2466999,21 C16.541124,21 11.0347247,21 3.72750223,21 C3.47671215,21 2.97953825,20.45918 3.00065168,20.1992055 Z" fill="#000000" fill-rule="nonzero" />
+            </g>
+          </svg>
+          <!--end::Svg Icon-->
+        </span> </button>
+      <!--end::Topbar Mobile Toggle-->
     </div>
-    <!--end::Header Mobile-->
-    <div class="d-flex flex-column flex-root">
-        <!--begin::Page-->
-        <div class="d-flex flex-row flex-column-fluid page">
-            <!--begin::Aside-->
-            <div class="aside aside-left d-flex flex-column " id="kt_aside">
-                <!--begin::Brand-->
-                <div class="aside-brand d-flex flex-column align-items-center flex-column-auto py-4 py-lg-8">
-                    <!--begin::Logo-->
-                    <a href="./">
-                        <img alt="Logo" src="assets/media/logos/logo.png" class="max-h-70px" />
-                    </a>
-                    <!--end::Logo-->
-                </div>
-                <!--end::Brand-->
-
-                <!--begin::Nav Wrapper-->
-                  <?php include "components/sidebar.php"; ?>
-                <!--end::Nav Wrapper-->
-            </div>
-            <!--end::Aside-->
-
-            <!--begin::Wrapper-->
-            <div class="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper">
-                <!--begin::Header-->
-                <div id="kt_header" class="header bg-white  header-fixed ">
-                    <!--begin::Container-->
-                    <div class=" container-fluid  d-flex align-items-stretch justify-content-between">
-                        <!--begin::Left-->
-                        <div class="d-flex align-items-stretch mr-2">
-                        </div>
-                        <!--end::Left-->
-
-                        <!--begin::Topbar-->
-                        <div class="topbar">
-                            <!--begin::User-->
-                            <div class="topbar-item">
-                                <div class="btn btn-icon w-auto btn-clean d-flex align-items-center btn-lg px-2" id="kt_quick_user_toggle">
-                                    <div class="d-flex flex-column text-right pr-3">
-                                        <span id="span_shelter" style="text-transform: uppercase;color: #f44336 !important;font-size: 15px;" class="text-muted font-weight-bold font-size-base d-none d-md-inline"></span>
-                                    </div>
-                                    <span class="symbol symbol-35 symbol-light-warning">
-                                        <span class="symbol-label font-size-h5 font-weight-bold"><i class="fa fa-user"></i></span>
-                                    </span>
-                                </div>
-                            </div>
-                            <!--end::User-->
-                        </div>
-                        <!--end::Topbar-->
-                    </div>
-                    <!--end::Container-->
-                </div>
-                <!--end::Header-->
-
-                <!--begin::Content-->
-                <div class="content  d-flex flex-column flex-column-fluid" id="kt_content" style="padding-top: 50px;">
-                    <?php require 'routes/routes.php'; ?>
-                </div>
-                <!--end::Content-->
-
-                <!--begin::Footer-->
-                <div class="footer bg-white py-4 d-flex flex-lg-column " id="kt_footer">
-                    <!--begin::Container-->
-                    <div class=" container  d-flex flex-column flex-md-row align-items-center justify-content-between">
-                        <!--begin::Copyright-->
-                        <div class="text-dark order-2 order-md-1">
-                            <span class="text-muted font-weight-bold mr-2">2024&copy;</span>
-                            <a href="#" target="_blank" class="text-dark-75 text-hover-primary">BACH Project PH</a>
-                        </div>
-                        <!--end::Copyright-->
-                    </div>
-                    <!--end::Container-->
-                </div>
-                <!--end::Footer-->
-            </div>
-            <!--end::Wrapper-->
+    <!--end::Toolbar-->
+  </div>
+  <!--end::Header Mobile-->
+  <div class="d-flex flex-column flex-root">
+    <!--begin::Page-->
+    <div class="d-flex flex-row flex-column-fluid page">
+      <!--begin::Aside-->
+      <div class="aside aside-left d-flex flex-column " id="kt_aside">
+        <!--begin::Brand-->
+        <div class="aside-brand d-flex flex-column align-items-center flex-column-auto py-4 py-lg-8">
+          <!--begin::Logo-->
+          <a href="./">
+            <img alt="Logo" src="assets/media/logos/logo.png" class="max-h-70px" />
+          </a>
+          <!--end::Logo-->
         </div>
-        <!--end::Page-->
-    </div>
-    <!--end::Main-->
+        <!--end::Brand-->
 
+        <!--begin::Nav Wrapper-->
+        <?php include "components/sidebar.php"; ?>
+        <!--end::Nav Wrapper-->
+      </div>
+      <!--end::Aside-->
 
-    <!--begin::Search Panel-->
-    <div id="kt_quick_search" class="offcanvas offcanvas-right p-10">
+      <!--begin::Wrapper-->
+      <div class="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper">
         <!--begin::Header-->
-        <div class="offcanvas-header d-flex align-items-center justify-content-between mb-5">
-            <h3 class="font-weight-bold m-0">
-                Search
-                <small class="text-muted font-size-sm ml-2">files, reports, members</small>
-            </h3>
-            <a href="#" class="btn btn-xs btn-icon btn-light btn-hover-primary" id="kt_quick_search_close">
-                <i class="ki ki-close icon-xs text-muted"></i>
-            </a>
+        <div id="kt_header" class="header bg-white  header-fixed ">
+          <!--begin::Container-->
+          <div class=" container-fluid  d-flex align-items-stretch justify-content-between">
+            <!--begin::Left-->
+            <div class="d-flex align-items-stretch mr-2">
+            </div>
+            <!--end::Left-->
+
+            <!--begin::Topbar-->
+            <div class="topbar">
+              <!--begin::User-->
+              <div class="topbar-item">
+                <div class="btn btn-icon w-auto btn-clean d-flex align-items-center btn-lg px-2" id="kt_quick_user_toggle">
+                  <div class="d-flex flex-column text-right pr-3">
+                    <span id="span_shelter" style="text-transform: uppercase;color: #f44336 !important;font-size: 15px;" class="text-muted font-weight-bold font-size-base d-none d-md-inline"></span>
+                  </div>
+                  <span class="symbol symbol-35 symbol-light-warning">
+                    <span class="symbol-label font-size-h5 font-weight-bold"><i class="fa fa-user"></i></span>
+                  </span>
+                </div>
+              </div>
+              <!--end::User-->
+            </div>
+            <!--end::Topbar-->
+          </div>
+          <!--end::Container-->
         </div>
         <!--end::Header-->
 
         <!--begin::Content-->
-        <div class="offcanvas-content">
-            <!--begin::Container-->
-            <div class="quick-search quick-search-offcanvas quick-search-has-result" id="kt_quick_search_offcanvas">
-                <!--begin::Form-->
-                <form method="get" class="quick-search-form border-bottom pt-5 pb-1">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">
-                                <span class="svg-icon svg-icon-lg">
-                                    <!--begin::Svg Icon | path:assets/media/svg/icons/General/Search.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                            <rect x="0" y="0" width="24" height="24" />
-                                            <path d="M14.2928932,16.7071068 C13.9023689,16.3165825 13.9023689,15.6834175 14.2928932,15.2928932 C14.6834175,14.9023689 15.3165825,14.9023689 15.7071068,15.2928932 L19.7071068,19.2928932 C20.0976311,19.6834175 20.0976311,20.3165825 19.7071068,20.7071068 C19.3165825,21.0976311 18.6834175,21.0976311 18.2928932,20.7071068 L14.2928932,16.7071068 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" />
-                                            <path d="M11,16 C13.7614237,16 16,13.7614237 16,11 C16,8.23857625 13.7614237,6 11,6 C8.23857625,6 6,8.23857625 6,11 C6,13.7614237 8.23857625,16 11,16 Z M11,18 C7.13400675,18 4,14.8659932 4,11 C4,7.13400675 7.13400675,4 11,4 C14.8659932,4 18,7.13400675 18,11 C18,14.8659932 14.8659932,18 11,18 Z" fill="#000000" fill-rule="nonzero" />
-                                        </g>
-                                    </svg>
-                                    <!--end::Svg Icon-->
-                                </span> </span>
-                        </div>
-                        <input type="text" class="form-control " placeholder="Search..." />
-                        <div class="input-group-append">
-                            <span class="input-group-text">
-                                <i class="quick-search-close ki ki-close icon-sm text-muted"></i>
-                            </span>
-                        </div>
-                    </div>
-                </form>
-                <!--end::Form-->
-
-                <!--begin::Wrapper-->
-                <div class="quick-search-wrapper pt-5">
-                    <div class="quick-search-result">
-                        
-                        <!--end::Section-->
-                    </div>
-                </div>
-                <!--end::Wrapper-->
-            </div>
-            <!--end::Container-->
+        <div class="content  d-flex flex-column flex-column-fluid" id="kt_content" style="padding-top: 50px;">
+          <?php require 'routes/routes.php'; ?>
         </div>
         <!--end::Content-->
-    </div>
-    <!--end::Search Panel-->
 
-
-
-    <!-- begin::User Panel-->
-    <div id="kt_quick_user" class="offcanvas offcanvas-right p-10">
-        <!--begin::Header-->
-        <div class="offcanvas-header d-flex align-items-center justify-content-between pb-5">
-            <h3 class="font-weight-bold m-0">
-                User Profile
-            </h3>
-            <a href="#" class="btn btn-xs btn-icon btn-light btn-hover-primary" id="kt_quick_user_close">
-                <i class="ki ki-close icon-xs text-muted"></i>
-            </a>
-        </div>
-        <!--end::Header-->
-
-        <!--begin::Content-->
-        <div class="offcanvas-content pr-5 mr-n5">
-            <!--begin::Header-->
-            <div class="d-flex align-items-center mt-5">
-                <div class="symbol symbol-100 mr-5">
-                    <div class="symbol-label"><span class="flaticon-profile-1" style="font-size: 6.5rem !important;color: purple;"></span></div>
-                    <i class="symbol-badge bg-success"></i>
-                </div>
-                <div class="d-flex flex-column">
-                    <a href="#" class="font-weight-bold font-size-h5 text-dark-75 text-hover-primary">
-                      <span id="span_fullname"></span>
-                    </a>
-                    <div class="text-muted mt-1">
-                      <span id="span_username"></span>
-                    </div>
-                    <div class="navi mt-2">
-                        <a href="#" onclick="logout()" class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5">Sign Out</a>
-                    </div>
-                </div>
+        <!--begin::Footer-->
+        <div class="footer bg-white py-4 d-flex flex-lg-column " id="kt_footer">
+          <!--begin::Container-->
+          <div class=" container  d-flex flex-column flex-md-row align-items-center justify-content-between">
+            <!--begin::Copyright-->
+            <div class="text-dark order-2 order-md-1">
+              <span class="text-muted font-weight-bold mr-2">2024&copy;</span>
+              <a href="#" target="_blank" class="text-dark-75 text-hover-primary">BACH Project PH</a>
             </div>
-            <!--end::Header-->
-
-            <!--begin::Separator-->
-            <div class="separator separator-dashed mt-8 mb-5"></div>
-            <!--end::Separator-->
-            <!--end::Separator-->
-
-            <!--begin::Notifications-->
-            <div>
-                <!--begin::Item-->
-                <div class="d-flex align-items-center bg-light-success rounded p-5 gutter-b">
-                    <span class="svg-icon svg-icon-success mr-5">
-                        <i class="flaticon-profile"></i>
-                    </span>
-
-                    <div class="d-flex flex-column flex-grow-1 mr-2">
-                        <a href="./profile" class="font-weight-normal text-dark-75 text-hover-primary font-size-lg mb-1">Profile</a>
-                        <span class="text-muted font-size-sm">User's profile and settings</span>
-                    </div>
-
-                </div>
-                <!--end::Item-->
-
-                <!--end::Item-->
-            </div>
-            
-            <!--end::Notifications-->
+            <!--end::Copyright-->
+          </div>
+          <!--end::Container-->
         </div>
-        <!--end::Content-->
+        <!--end::Footer-->
+      </div>
+      <!--end::Wrapper-->
     </div>
-    <!-- end::User Panel-->
-    <script type='text/javascript'>
+    <!--end::Page-->
+  </div>
+  <!--end::Main-->
+
+
+  <!--begin::Search Panel-->
+  <div id="kt_quick_search" class="offcanvas offcanvas-right p-10">
+    <!--begin::Header-->
+    <div class="offcanvas-header d-flex align-items-center justify-content-between mb-5">
+      <h3 class="font-weight-bold m-0">
+        Search
+        <small class="text-muted font-size-sm ml-2">files, reports, members</small>
+      </h3>
+      <a href="#" class="btn btn-xs btn-icon btn-light btn-hover-primary" id="kt_quick_search_close">
+        <i class="ki ki-close icon-xs text-muted"></i>
+      </a>
+    </div>
+    <!--end::Header-->
+
+    <!--begin::Content-->
+    <div class="offcanvas-content">
+      <!--begin::Container-->
+      <div class="quick-search quick-search-offcanvas quick-search-has-result" id="kt_quick_search_offcanvas">
+        <!--begin::Form-->
+        <form method="get" class="quick-search-form border-bottom pt-5 pb-1">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <span class="svg-icon svg-icon-lg">
+                  <!--begin::Svg Icon | path:assets/media/svg/icons/General/Search.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                      <rect x="0" y="0" width="24" height="24" />
+                      <path d="M14.2928932,16.7071068 C13.9023689,16.3165825 13.9023689,15.6834175 14.2928932,15.2928932 C14.6834175,14.9023689 15.3165825,14.9023689 15.7071068,15.2928932 L19.7071068,19.2928932 C20.0976311,19.6834175 20.0976311,20.3165825 19.7071068,20.7071068 C19.3165825,21.0976311 18.6834175,21.0976311 18.2928932,20.7071068 L14.2928932,16.7071068 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" />
+                      <path d="M11,16 C13.7614237,16 16,13.7614237 16,11 C16,8.23857625 13.7614237,6 11,6 C8.23857625,6 6,8.23857625 6,11 C6,13.7614237 8.23857625,16 11,16 Z M11,18 C7.13400675,18 4,14.8659932 4,11 C4,7.13400675 7.13400675,4 11,4 C14.8659932,4 18,7.13400675 18,11 C18,14.8659932 14.8659932,18 11,18 Z" fill="#000000" fill-rule="nonzero" />
+                    </g>
+                  </svg>
+                  <!--end::Svg Icon-->
+                </span> </span>
+            </div>
+            <input type="text" class="form-control " placeholder="Search..." />
+            <div class="input-group-append">
+              <span class="input-group-text">
+                <i class="quick-search-close ki ki-close icon-sm text-muted"></i>
+              </span>
+            </div>
+          </div>
+        </form>
+        <!--end::Form-->
+
+        <!--begin::Wrapper-->
+        <div class="quick-search-wrapper pt-5">
+          <div class="quick-search-result">
+
+            <!--end::Section-->
+          </div>
+        </div>
+        <!--end::Wrapper-->
+      </div>
+      <!--end::Container-->
+    </div>
+    <!--end::Content-->
+  </div>
+  <!--end::Search Panel-->
+
+
+
+  <!-- begin::User Panel-->
+  <div id="kt_quick_user" class="offcanvas offcanvas-right p-10">
+    <!--begin::Header-->
+    <div class="offcanvas-header d-flex align-items-center justify-content-between pb-5">
+      <h3 class="font-weight-bold m-0">
+        User Profile
+      </h3>
+      <a href="#" class="btn btn-xs btn-icon btn-light btn-hover-primary" id="kt_quick_user_close">
+        <i class="ki ki-close icon-xs text-muted"></i>
+      </a>
+    </div>
+    <!--end::Header-->
+
+    <!--begin::Content-->
+    <div class="offcanvas-content pr-5 mr-n5">
+      <!--begin::Header-->
+      <div class="d-flex align-items-center mt-5">
+        <div class="symbol symbol-100 mr-5">
+          <div class="symbol-label"><span class="flaticon-profile-1" style="font-size: 6.5rem !important;color: purple;"></span></div>
+          <i class="symbol-badge bg-success"></i>
+        </div>
+        <div class="d-flex flex-column">
+          <a href="#" class="font-weight-bold font-size-h5 text-dark-75 text-hover-primary">
+            <span id="span_fullname"></span>
+          </a>
+          <div class="text-muted mt-1">
+            <span id="span_username"></span>
+          </div>
+          <div class="navi mt-2">
+            <a href="#" onclick="logout()" class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5">Sign Out</a>
+          </div>
+        </div>
+      </div>
+      <!--end::Header-->
+
+      <!--begin::Separator-->
+      <div class="separator separator-dashed mt-8 mb-5"></div>
+      <!--end::Separator-->
+      <!--end::Separator-->
+
+      <!--begin::Notifications-->
+      <div>
+        <!--begin::Item-->
+        <div class="d-flex align-items-center bg-light-success rounded p-5 gutter-b">
+          <span class="svg-icon svg-icon-success mr-5">
+            <i class="flaticon-profile"></i>
+          </span>
+
+          <div class="d-flex flex-column flex-grow-1 mr-2">
+            <a href="./profile" class="font-weight-normal text-dark-75 text-hover-primary font-size-lg mb-1">Profile</a>
+            <span class="text-muted font-size-sm">User's profile and settings</span>
+          </div>
+
+        </div>
+        <!--end::Item-->
+
+        <!--end::Item-->
+      </div>
+
+      <!--end::Notifications-->
+    </div>
+    <!--end::Content-->
+  </div>
+  <!-- end::User Panel-->
+  <script type='text/javascript'>
     <?php
-      echo "var route_settings = " . $route_settings . ";\n";
-      echo "var user_profile = " . $user_profile . ";\n";
+    echo "var route_settings = " . $route_settings . ";\n";
+    echo "var user_profile = " . $user_profile . ";\n";
     ?>
   </script>
-<script type="text/javascript">
-
+  <script type="text/javascript">
     var modal_detail_status = 0;
     $(document).ready(function() {
       $(".select2").select2();
@@ -305,9 +299,11 @@ if (!isset($_SESSION['pas_user_id'])) {
         "width": "100%"
       });
 
-      $(".input-item").css({"color": "#fff;"});
+      $(".input-item").css({
+        "color": "#fff;"
+      });
 
-      $('ul li a').click(function(){
+      $('ul li a').click(function() {
         $('li a').removeClass("active");
         $(this).addClass("active");
       });
@@ -397,13 +393,15 @@ if (!isset($_SESSION['pas_user_id'])) {
       $("#hidden_id").val(0);
       document.getElementById("frm_submit").reset();
 
-      var element = document.getElementById('reference_code');
-      if (typeof(element) != 'undefined' && element != null) {
-        generateReference(route_settings.class_name);
+      if (route_settings.class_name == "Rescues") {
+        $(".div_image").show();
+        $("#file_rescue").attr('required', 'required');
+        $("#approveButton").hide();
       }
 
       $("#modalLabel").html("<i class='flaticon2-add'></i> Add Entry");
       $("#modalEntry").modal('show');
+
     }
 
     $("#frm_submit").submit(function(e) {
@@ -422,8 +420,8 @@ if (!isset($_SESSION['pas_user_id'])) {
         cache: false,
         processData: false,
         success: function(data) {
-          route_settings.class_name != "SharedDocuments" ? getEntries() : "" ;
-          
+          route_settings.class_name != "SharedDocuments" ? getEntries() : "";
+
           var json = JSON.parse(data);
           if (route_settings.has_detail == 1) {
             if (json.data > 0) {
@@ -473,11 +471,20 @@ if (!isset($_SESSION['pas_user_id'])) {
             this.value = json[id_name];
           });
 
-          if(route_settings.class_name == "Adopt" && json.status == "A"){
+          if (route_settings.class_name == "Adopt" && json.status == "A") {
             $("#btn_approve").hide();
             $("#btn_submit").hide();
             // $('#div_adopt').css('pointer-events', 'none');
-          }else{
+          } else if (route_settings.class_name == "Rescues") {
+            $(".div_image").hide();
+            $("#file_rescue").removeAttr('required');
+            if(json.status == "A"){
+              $("#approveButton").hide();
+            }else{
+              $("#approveButton").show();
+            }
+
+          } else {
             $("#btn_approve").show();
             $("#btn_submit").show();
             $('#div_adopt').css('pointer-events', 'auto');
@@ -602,10 +609,10 @@ if (!isset($_SESSION['pas_user_id'])) {
               swal("Cancelled", "Entries are safe :)", "error");
             }
           });
-        } else {
-          swal("Cannot proceed!", "Please select entries to delete!", "warning");
-        }
+      } else {
+        swal("Cannot proceed!", "Please select entries to delete!", "warning");
       }
+    }
 
     function approveEntry() {
 
@@ -908,7 +915,7 @@ if (!isset($_SESSION['pas_user_id'])) {
     }
     // END MODULE
 
-    function getSelectOption(class_name, primary_id, label, param = '', attributes = [], pre_value='', pre_label = 'Please Select') {
+    function getSelectOption(class_name, primary_id, label, param = '', attributes = [], pre_value = '', pre_label = 'Please Select') {
       $.ajax({
         type: "POST",
         url: "controllers/sql.php?c=" + class_name + "&q=show",
@@ -919,7 +926,7 @@ if (!isset($_SESSION['pas_user_id'])) {
         },
         success: function(data) {
           var json = JSON.parse(data);
-          if(pre_value != "remove"){
+          if (pre_value != "remove") {
             $("#" + primary_id).html("<option value='" + pre_value + "'> &mdash; " + pre_label + " &mdash; </option>");
           }
 
@@ -963,21 +970,21 @@ if (!isset($_SESSION['pas_user_id'])) {
 
 
 
-    <!--begin::Global Theme Bundle(used by all pages)-->
-    <script src="assets/plugins/global/plugins.bundle.js"></script>
-    <script src="assets/plugins/custom/prismjs/prismjs.bundle.js"></script>
-    <script src="assets/js/scripts.bundle.js"></script>
-    <!--end::Global Theme Bundle-->
+  <!--begin::Global Theme Bundle(used by all pages)-->
+  <script src="assets/plugins/global/plugins.bundle.js"></script>
+  <script src="assets/plugins/custom/prismjs/prismjs.bundle.js"></script>
+  <script src="assets/js/scripts.bundle.js"></script>
+  <!--end::Global Theme Bundle-->
 
-    
-    <script src="assets/plugins/custom/datatables/datatables.bundle.js"></script>
-    <script src="assets/sweetalert/sweetalert.js"></script>
 
-    <!--begin::Page Vendors(used by this page)-->
-    <script src="assets/plugins/custom/fullcalendar/fullcalendar.bundle.js"></script>
-    <script src="assets/plugins/custom/leaflet/leaflet.bundle.js"></script>
-    <script src="assets/js/pages/crud/forms/editors/summernote.js"></script>
-    <!--end::Page Vendors-->
+  <script src="assets/plugins/custom/datatables/datatables.bundle.js"></script>
+  <script src="assets/sweetalert/sweetalert.js"></script>
+
+  <!--begin::Page Vendors(used by this page)-->
+  <script src="assets/plugins/custom/fullcalendar/fullcalendar.bundle.js"></script>
+  <script src="assets/plugins/custom/leaflet/leaflet.bundle.js"></script>
+  <script src="assets/js/pages/crud/forms/editors/summernote.js"></script>
+  <!--end::Page Vendors-->
 
 </body>
 <!--end::Body-->

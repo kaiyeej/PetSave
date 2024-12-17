@@ -15,9 +15,9 @@
                 <a href="#" onclick="addModal()" data-container="body" data-offset="20px 20px" data-toggle="popover" data-placement="top" data-content="Add New Entry" style="padding:10px;" class="btn btn-primary  btn-sm">
                     <i class="flaticon2-add"></i> Add
                 </a>
-                <a href="#" data-container="body" data-offset="20px 20px" data-toggle="popover" data-placement="top" data-content="Resolve Selected Entry" onclick='resolveEntry()' style="padding:10px;" class="btn btn-success btn-sm">
+                <!-- <a href="#" data-container="body" data-offset="20px 20px" data-toggle="popover" data-placement="top" data-content="Resolve Selected Entry" onclick='resolveEntry()' style="padding:10px;" class="btn btn-success btn-sm">
                     <i class="flaticon2-check-mark"></i> Accepted
-                </a>
+                </a> -->
                 <a href="#" data-container="body" data-offset="20px 20px" data-toggle="popover" data-placement="top" data-content="Cancel Selected Entry" onclick='cancelEntry()' style="padding:10px;" class="btn btn-warning btn-sm">
                     <i class="flaticon2-cancel"></i> Cancel
                 </a>
@@ -48,7 +48,7 @@
                                     <tr>
                                         <th><input type='checkbox' onchange="checkAll(this, 'dt_id')"></th>
                                         <th></th>
-                                        <th>Name</th>
+                                        <th>Pet</th>
                                         <th>Location</th>
                                         <th>Description</th>
                                         <th>Type</th>
@@ -70,6 +70,7 @@
     <!--end::Container-->
 </div>
 <?php require_once 'modal_rescue.php'; ?>
+<?php require_once 'modal_animals.php'; ?>
 <script type="text/javascript">
 </script>
 <script type="text/javascript">
@@ -84,7 +85,7 @@
             },
             "columns": [{
                     "mRender": function(data, type, row) {
-                        return row.status == "R" ? "" : "<input type='checkbox' value=" + row.rescue_id + " class='dt_id' style='position: initial; opacity:1;'>";
+                        return row.status == "A" ? "" : "<input type='checkbox' value=" + row.rescue_id + " class='dt_id' style='position: initial; opacity:1;'>";
                     }
                 },
                 {
@@ -107,7 +108,7 @@
                 },
                 {
                     "mRender": function(data, type, row) {
-                        return row.status == "A" ? "<span class='badge badge-success'>Accepted</span>" : "<span class='badge badge-warning'>Pending</span>";
+                        return row.status == "A" ? "<span class='badge badge-success'>Accepted</span>" : (row.status == "C" ? "<span class='badge badge-danger'>CANCEL</span>" : "<span class='badge badge-warning'>Pending</span>");
 
                     }
                 },
@@ -118,8 +119,16 @@
         });
     }
 
-
     $(document).ready(function() {
         getEntries();
+    });
+
+    $('#approveButton').click(function () {
+        var rescue_id = $("#hidden_id").val();
+        if (confirm('Are you sure you want to accept this rescue?')) {
+            $("#pet_rescue_id").val(rescue_id);
+            $('#modalPet').modal('show');
+            $('#modalEntry').modal('hide');
+        }
     });
 </script>

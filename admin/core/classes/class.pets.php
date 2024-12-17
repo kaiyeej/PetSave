@@ -27,14 +27,47 @@ class Pets extends Connection
             'pet_image'          => $img_file
         );
 
-        return $this->insertIfNotExist($this->table, $form, "$this->name = '".$this->inputs[$this->name]."'");
+        return $this->insertIfNotExist($this->table, $form, "$this->name = '" . $this->inputs[$this->name] . "'");
     }
+
+    public function add_rescue()
+    {
+        $rescue_id = $this->inputs['rescue_id'];
+
+        if (isset($_FILES['file']['tmp_name'])) {
+            $img_file = $_FILES['file']['name'];
+            move_uploaded_file($_FILES['file']['tmp_name'], '../assets/file/' . $img_file);
+        } else {
+            $img_file = "";
+        }
+
+        $form = array(
+            $this->name             => $this->clean($this->inputs[$this->name]),
+            'pet_description'    => $this->inputs['pet_description'],
+            'pet_dob'            => $this->inputs['pet_dob'],
+            'pet_type'           => $this->inputs['pet_type'],
+            'pet_breed'          => $this->inputs['pet_breed'],
+            'pet_identifier'     => $this->inputs['pet_identifier'],
+            'pet_status'         => 'P',
+            'rescue_id'          => $rescue_id,
+            'pet_image'          => $img_file
+        );
+
+        $pet_id = $this->insertIfNotExist($this->table, $form, "$this->name = '" . $this->inputs[$this->name] . "'", "Y");
+
+        if ($pet_id) {
+            $this->update("tbl_rescue", ['pet_id' => $pet_id, 'status' => 'A'], "rescue_id = '$rescue_id'");
+        }
+
+        return $pet_id;
+    }
+
 
     public function edit()
     {
         $primary_id = $this->inputs[$this->pk];
         $name = $this->clean($this->inputs[$this->name]);
-        $is_exist = $this->select($this->table, $this->pk, "$this->pk != '$primary_id' AND $this->name = '".$this->inputs[$this->name]."'");
+        $is_exist = $this->select($this->table, $this->pk, "$this->pk != '$primary_id' AND $this->name = '" . $this->inputs[$this->name] . "'");
         if ($is_exist->num_rows > 0) {
             return 2;
         } else {
@@ -47,14 +80,14 @@ class Pets extends Connection
                 'pet_identifier'     => $this->inputs['pet_identifier']
             );
 
-            return $this->updateIfNotExist($this->table, $form, "$this->pk != '$primary_id' AND $this->name = '".$this->inputs[$this->name]."'");
+            return $this->updateIfNotExist($this->table, $form, "$this->pk != '$primary_id' AND $this->name = '" . $this->inputs[$this->name] . "'");
         }
     }
 
     public function availableAnimals()
     {
         $rows = array();
-        $param = isset($this->inputs['param']) ? $this->inputs['param']." AND " : null;
+        $param = isset($this->inputs['param']) ? $this->inputs['param'] . " AND " : null;
         $result = $this->select($this->table, "*", $param);
         while ($row = $result->fetch_assoc()) {
             $rows[] = $row;
@@ -80,7 +113,7 @@ class Pets extends Connection
 
     public function show()
     {
-        
+
         $param = isset($this->inputs['param']) ? $this->inputs['param'] : null;
         $rows = array();
         $result = $this->select($this->table, '*', $param);
@@ -92,7 +125,7 @@ class Pets extends Connection
 
     public function show2()
     {
-        
+
         $rows = array();
         $result = $this->select($this->table, '*');
         while ($row = $result->fetch_assoc()) {
@@ -114,8 +147,8 @@ class Pets extends Connection
         $ids = implode(",", $this->inputs['ids']);
 
         $result = $this->select($this->table, "pet_image", "$this->pk IN($ids)");
-        while($row = $result->fetch_assoc()){
-            unlink('../assets/file/'.$row['pet_image']);
+        while ($row = $result->fetch_assoc()) {
+            unlink('../assets/file/' . $row['pet_image']);
         }
 
 
@@ -145,7 +178,11 @@ class Pets extends Connection
     public function name($primary_id)
     {
         $result = $this->select($this->table, 'pet_name', "$this->pk = '$primary_id'");
-        $row = $result->fetch_assoc();
-        return $row['pet_name'];
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            return $row['pet_name'];
+        } else {
+            return "---";
+        }
     }
 }

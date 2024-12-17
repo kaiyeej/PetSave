@@ -67,7 +67,7 @@ class Users extends Connection
         $param = isset($this->inputs['param']) ? $this->inputs['param'] : null;
         $result = $this->select($this->table, "*", $param);
         while ($row = $result->fetch_assoc()) {
-            $row['category'] = $row['user_category'] == "A" ? "Admin" :  "Staff";
+            $row['category'] = $row['user_category'] == "A" ? "Admin" :  "User";
             $rows[] = $row;
         }
         return $rows;

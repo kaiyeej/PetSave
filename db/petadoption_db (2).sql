@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 16, 2024 at 09:34 AM
+-- Generation Time: Dec 17, 2024 at 08:10 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 5.6.40
 
@@ -76,7 +76,7 @@ INSERT INTO `tbl_adoption` (`adoption_id`, `pet_id`, `status`, `application_date
 (3, 0, 'A', '2022-10-25', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '2022-10-25 14:04:31', 0),
 (28, 6, 'A', '2024-12-16', '', '3', '3', '3', '3@gmail.com', '3', '3', 'Widowed', '3', 'Yes', 'Yes', 'House', '3', 'Balcony', 'As a gift', 'Yes', 'Yes', '3', '3', 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', '3', '3', '3', 'Cambodia St', '2024-12-16 15:38:58', 0),
 (29, 6, 'A', '2024-12-16', '', '3', '3', '3', '3@gmail.com', '3', '3', 'Widowed', '3', 'Yes', 'Yes', 'House', '3', 'Balcony', 'As a gift', 'Yes', 'Yes', '3', '3', 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', '3', '3', '3', 'Cambodia St', '2024-12-16 15:39:54', 3),
-(30, 6, 'S', '2024-12-16', '', '3', '3', '3', '3@gmail.com', '3', '3', 'Widowed', '3', 'Yes', 'Yes', 'House', '3', 'Balcony', 'As a gift', 'Yes', 'Yes', '3', '3', 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', '3', '3', '3', 'Cambodia St', '2024-12-16 15:40:27', 3);
+(30, 6, 'A', '2024-12-16', '', '3', '3', '3', '3@gmail.com', '3', '3', 'Widowed', '3', 'Yes', 'Yes', 'House', '3', 'Balcony', 'As a gift', 'Yes', 'Yes', '3', '3', 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', '3', '3', '3', 'Cambodia St', '2024-12-16 15:40:27', 3);
 
 -- --------------------------------------------------------
 
@@ -125,21 +125,27 @@ CREATE TABLE `tbl_pets` (
   `pet_status` varchar(1) NOT NULL COMMENT 'P - for adoption; A- aptode ; R - rescues; B - rehabilitated; C - reclaimed',
   `pet_owner` int(11) NOT NULL,
   `date_added` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `date_modified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `date_modified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `rescue_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_pets`
 --
 
-INSERT INTO `tbl_pets` (`pet_id`, `pet_name`, `pet_description`, `pet_dob`, `pet_type`, `pet_breed`, `pet_identifier`, `pet_image`, `pet_status`, `pet_owner`, `date_added`, `date_modified`) VALUES
-(2, 'Bantay', 'white', '2022-10-26', 'A', 'Askal', ' ', 'download (2).jpg', '0', 1, '2022-10-26 12:56:54', '2022-11-04 08:39:52'),
-(3, 'Memeng', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut', '2022-09-30', 'C', 'Cat', 'Cat', 'images (1).jpg', '0', 1, '2022-10-26 13:58:20', '2022-11-04 08:39:55'),
-(4, 'Madison', 'This little girl stole our hearts with her sweetness. She is settling in to her foster home and learning how to be a dog. Stay tuned for more on Maddie!', '2022-09-15', 'D', '--', '', 'Madison+2.jpg', '0', 1, '2022-10-26 14:12:10', '2022-11-04 08:39:57'),
-(5, 'CHLOE', 'She is estimated to be about 4 years old and 20lbs. She is good with other dogs and good with kids. She is super cuddly and so far doing great with training. Stay tuned for more on Brooke!', '2022-09-06', 'D', ' ', '', 'Jerry4.jpg', '0', 1, '2022-10-26 14:15:24', '2022-11-04 08:45:26'),
-(6, 'Pepe', 'pepe', '2024-10-02', 'p', 'p', 'p', 'dog_PNG50375.png', 'A', 0, '2024-11-05 16:43:39', '2024-12-16 15:48:43'),
-(7, 'Bantay 1', '1', '2024-12-01', 'a', 'askal', 'askal', 'images.jfif', 'P', 0, '2024-12-16 15:49:57', '2024-12-16 15:49:57'),
-(8, 's', 'a', '2024-12-16', '2', '2', '2', 'images (2).jfif', '', 0, '2024-12-16 16:19:26', '2024-12-16 16:19:26');
+INSERT INTO `tbl_pets` (`pet_id`, `pet_name`, `pet_description`, `pet_dob`, `pet_type`, `pet_breed`, `pet_identifier`, `pet_image`, `pet_status`, `pet_owner`, `date_added`, `date_modified`, `rescue_id`) VALUES
+(2, 'Bantay', 'white', '2022-10-26', 'A', 'Askal', ' ', 'download (2).jpg', '0', 1, '2022-10-26 12:56:54', '2022-11-04 08:39:52', 0),
+(3, 'Memeng', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut', '2022-09-30', 'C', 'Cat', 'Cat', 'images (1).jpg', '0', 1, '2022-10-26 13:58:20', '2022-11-04 08:39:55', 0),
+(4, 'Madison', 'This little girl stole our hearts with her sweetness. She is settling in to her foster home and learning how to be a dog. Stay tuned for more on Maddie!', '2022-09-15', 'D', '--', '', 'Madison+2.jpg', '0', 1, '2022-10-26 14:12:10', '2022-11-04 08:39:57', 0),
+(5, 'CHLOE', 'She is estimated to be about 4 years old and 20lbs. She is good with other dogs and good with kids. She is super cuddly and so far doing great with training. Stay tuned for more on Brooke!', '2022-09-06', 'D', ' ', '', 'Jerry4.jpg', '0', 1, '2022-10-26 14:15:24', '2022-11-04 08:45:26', 0),
+(6, 'Pepe', 'pepe', '2024-10-02', 'p', 'p', 'p', 'dog_PNG50375.png', 'A', 0, '2024-11-05 16:43:39', '2024-12-16 15:48:43', 0),
+(7, 'Bantay 1', '1', '2024-12-01', 'a', 'askal', 'askal', 'images.jfif', 'P', 0, '2024-12-16 15:49:57', '2024-12-16 15:49:57', 0),
+(8, 's', 'a', '2024-12-16', '2', '2', '2', 'images (2).jfif', '', 0, '2024-12-16 16:19:26', '2024-12-16 16:19:26', 0),
+(9, '2', '2', '2024-12-17', '2', '3', '3', 'project-lifecycle.png', 'P', 0, '2024-12-17 14:19:58', '2024-12-17 14:19:58', 0),
+(10, '', '', '0000-00-00', '', '', '', '', 'P', 0, '2024-12-17 14:26:49', '2024-12-17 14:26:49', 0),
+(11, '3', '3', '2024-12-17', '3', '3', '3', 'project-lifecycle.png', 'P', 0, '2024-12-17 14:35:59', '2024-12-17 14:35:59', 0),
+(12, '3324', '3', '2024-12-18', '2', '3', '3', 'project-lifecycle.png', 'P', 0, '2024-12-17 14:37:44', '2024-12-17 14:37:44', 1),
+(13, '23', '2', '2024-12-17', '3', '3', '3', 'project-lifecycle.png', 'P', 0, '2024-12-17 14:39:01', '2024-12-17 14:39:01', 1);
 
 -- --------------------------------------------------------
 
@@ -184,6 +190,13 @@ CREATE TABLE `tbl_rehab` (
   `status` varchar(1) NOT NULL COMMENT 'O - ongoing ; R - reclaimed'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `tbl_rehab`
+--
+
+INSERT INTO `tbl_rehab` (`rehab_id`, `pet_id`, `rehab_desc`, `date_started`, `date_ended`, `status`) VALUES
+(1, 2, 43, '2024-12-17', '2024-12-17', 'R');
+
 -- --------------------------------------------------------
 
 --
@@ -196,10 +209,19 @@ CREATE TABLE `tbl_rescue` (
   `location` text,
   `photo` text,
   `description` text,
-  `date_added` datetime DEFAULT NULL,
+  `date_added` datetime DEFAULT CURRENT_TIMESTAMP,
   `rescue_type` varchar(1) DEFAULT NULL COMMENT 'C - Rescue ; R - reported',
+  `pet_id` int(11) NOT NULL,
   `status` varchar(1) DEFAULT NULL COMMENT 'A - Accepted'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_rescue`
+--
+
+INSERT INTO `tbl_rescue` (`rescue_id`, `user_id`, `location`, `photo`, `description`, `date_added`, `rescue_type`, `pet_id`, `status`) VALUES
+(1, 1, 'sa', 'project-lifecycle.png', 'as', '2024-12-17 13:49:44', 'C', 13, 'A'),
+(2, 1, 'w', 'project-lifecycle.png', 'w', '2024-12-17 14:02:07', 'C', 0, 'C');
 
 -- --------------------------------------------------------
 
@@ -306,7 +328,7 @@ ALTER TABLE `tbl_lost_and_found`
 -- AUTO_INCREMENT for table `tbl_pets`
 --
 ALTER TABLE `tbl_pets`
-  MODIFY `pet_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `pet_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `tbl_posts`
@@ -318,13 +340,13 @@ ALTER TABLE `tbl_posts`
 -- AUTO_INCREMENT for table `tbl_rehab`
 --
 ALTER TABLE `tbl_rehab`
-  MODIFY `rehab_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `rehab_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tbl_rescue`
 --
 ALTER TABLE `tbl_rescue`
-  MODIFY `rescue_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `rescue_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tbl_users`

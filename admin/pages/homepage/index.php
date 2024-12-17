@@ -163,6 +163,7 @@ $Homepage = new Homepage();
             "info": false,
             "processing": true,
             "ajax": {
+                "type": "POST",
                 "url": "controllers/sql.php?c=Rehab&q=show",
                 "dataSrc": "data",
                 "data": {

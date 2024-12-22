@@ -38,7 +38,6 @@ class Adopt extends Connection
             'a_q13' => $this->inputs['a_q13'],
             'a_q14' => $this->inputs['a_q14'],
             'a_q15' => $this->inputs['a_q15'],
-            'a_q16' => $this->inputs['a_q16'],
 
             'adopted_from' => $this->inputs['adopted_from'],
             'veterinarian_name' => $this->inputs['veterinarian_name'],
@@ -149,15 +148,11 @@ class Adopt extends Connection
         $result = $this->select("tbl_pets", '*', "pet_id = '$pet_id'");
         $row = $result->fetch_assoc();
         if($row['pet_status'] == 0){
-            $form_ = array(
-                "pet_status" => "A"
-            );
-            $this->update("tbl_pets", $form_, "pet_id = '$pet_id'");
+           
+            $this->update("tbl_pets", ["pet_status" => "A"], "pet_id = '$pet_id'");
 
-            $form = array(
-                "status" => "A"
-            );
-            return $this->update($this->table, $form, "$this->pk = '$primary_id'");
+            $this->update($this->table, ["status" => "C"], "pet_id = '$pet_id' AND $this->pk != '$primary_id' AND status != 'A'");
+            return $this->update($this->table, ["status" => "A"], "$this->pk = '$primary_id'");
         }else{
             return -1;
         }

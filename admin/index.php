@@ -471,16 +471,16 @@ if (!isset($_SESSION['pas_user_id'])) {
             this.value = json[id_name];
           });
 
-          if (route_settings.class_name == "Adopt" && json.status == "A") {
+          if (route_settings.class_name == "Adopt" && (json.status == "A" || json.status == "C")) {
             $("#btn_approve").hide();
             $("#btn_submit").hide();
             // $('#div_adopt').css('pointer-events', 'none');
           } else if (route_settings.class_name == "Rescues") {
             $(".div_image").hide();
             $("#file_rescue").removeAttr('required');
-            if(json.status == "A"){
+            if (json.status == "A") {
               $("#approveButton").hide();
-            }else{
+            } else {
               $("#approveButton").show();
             }
 
@@ -651,6 +651,7 @@ if (!isset($_SESSION['pas_user_id'])) {
                   console.log(json);
                   if (json.data == 1) {
                     success_approve();
+                    getSelectOption('Pets', 'pet_id', 'pet_name', "pet_status='' OR pet_status='P'");
                   } else {
                     failed_query(json);
                   }

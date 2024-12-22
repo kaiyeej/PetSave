@@ -163,7 +163,6 @@
                                     <select class="form-control select2 input-item" multiple="" name="input[a_q6]" id="a_q6" required>
                                         <option value="Patio">Patio</option>
                                         <option value="Balcony">Balcony</option>
-                                        <option value="Pet Door">Pet Door</option>
                                         <option value="Screened Windows">Screened Windows</option>
                                         <option value="Screened Doors">Screened Doors</option>
                                         <option value="Backyard">Backyard</option>
@@ -187,17 +186,8 @@
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label>Why are you looking to adopt a pet?<span class="text-danger">*</span></label>
-                                    <select class="form-control input-item" name="input[a_q8]" id="a_q8" required>
-                                        <option value="Yes">Yes</option>
-                                        <option value="No">No</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
                                     <label>Are you prepared to care for this pet for 15-20 years? <span class="text-danger">*</span></label>
-                                    <select class="form-control input-item" name="input[a_q9]" id="a_q9" required>
+                                    <select class="form-control input-item" name="input[a_q8]" id="a_q8" required>
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
                                     </select>
@@ -215,19 +205,19 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label>How many hours a day will your pet be left alone? <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control input-item" name="input[a_q10]" id="a_q10" autocomplete="off" required>
+                                    <input type="text" class="form-control input-item" name="input[a_q9]" id="a_q9" autocomplete="off" required>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label>Where will your new pet be left when alone? <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control input-item" name="input[a_q11]" id="a_q11" autocomplete="off" required>
+                                    <input type="text" class="form-control input-item" name="input[a_q10]" id="a_q10" autocomplete="off" required>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label>Is this your first pet? <span class="text-danger">*</span></label>
-                                    <select class="form-control input-item" name="input[a_q12]" id="a_q12" required>
+                                    <select class="form-control input-item" name="input[a_q11]" id="a_q11" required>
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
                                     </select>
@@ -236,7 +226,7 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label>Do you currently have any other pets? <span class="text-danger">*</span></label>
-                                    <select class="form-control input-item" name="input[a_q13]" id="a_q13" required>
+                                    <select class="form-control input-item" name="input[a_q12]" id="a_q12" required>
                                         <option value="">Please Select</option>
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
@@ -247,7 +237,7 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label>Do you plan to declaw your new cat? <span class="text-danger">*</span></label>
-                                    <select class="form-control input-item" name="input[a_q14]" id="a_q14" required>
+                                    <select class="form-control input-item" name="input[a_q13]" id="a_q13" required>
                                         <option value="">Please Select</option>
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
@@ -258,7 +248,7 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label>Do you plan to spay/neuter your pet? <span class="text-danger">*</span></label>
-                                    <select class="form-control input-item" name="input[a_q15]" id="a_q15" required>
+                                    <select class="form-control input-item" name="input[a_q14]" id="a_q14" required>
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
                                         <option value="Unsure">Unsure</option>
@@ -268,7 +258,7 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label>Is there a pet behavior that would not be acceptable to you? <span class="text-danger">*</span></label>
-                                    <select class="form-control input-item" name="input[a_q16]" id="a_q16" required>
+                                    <select class="form-control input-item" name="input[a_q15]" id="a_q15" required>
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
                                     </select>
@@ -286,7 +276,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="row">
                             <div class="col-sm-12">
                                 <hr style="margin-top: 0rem;margin-bottom: 1rem;border-top: 1px solid #ff5722;">

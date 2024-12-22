@@ -9,9 +9,10 @@ require_once 'core/config.php';
 $data = json_decode(file_get_contents("php://input"));
 $description = $mysqli_connect->real_escape_string($data->r_description);
 $location = $mysqli_connect->real_escape_string($data->r_location);
+$user_id = $mysqli_connect->real_escape_string($data->user_id);
 
 $image = $mysqli_connect->real_escape_string($data->image->dataUrl);
-$DIR = "../admin/assets/lost_found/";
+$DIR = "../admin/assets/rescue/";
 $file_chunks = explode(";base64,", $image);
 $fileType = explode("image/", $file_chunks[0]);
 $image_type = $fileType[1];
@@ -23,13 +24,13 @@ $file = $DIR . $img_file;
 
 $date = getCurrentDate();
 
-$sql= $mysqli_connect->query("INSERT INTO `tbl_rescue`(`description`, `location`, `img_file`) VALUES ('$description','$location','$img_file')");
+$sql= $mysqli_connect->query("INSERT INTO `tbl_rescue`(`description`, `location`, `photo`,user_id,rescue_type) VALUES ('$description','$location','$img_file','$user_id', 'R')");
 			
 if($sql){
     $base64Img = base64_decode($file_chunks[1]);
     file_put_contents($file, $base64Img);
     
-    $mysqli_connect->query("DELETE FROM `tbl_rescue` WHERE description = '' AND location = '' AND img_file != ''");
+    $mysqli_connect->query("DELETE FROM `tbl_rescue` WHERE description = '' AND location = '' AND photo != ''");
     echo 1;
 }else{
     echo 0;

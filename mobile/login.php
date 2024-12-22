@@ -16,7 +16,7 @@ if(isset($data->username) && !empty($data->username) ){
 
 	$date = getCurrentDate();
 
-	$fetch_rows = $mysqli_connect->query("SELECT user_id, user_category from tbl_users where username='$username' and password=md5('$password') ") or die(mysqli_error());
+	$fetch_rows = $mysqli_connect->query("SELECT user_id, user_category, user_fullname from tbl_users where username='$username' and password=md5('$password') AND user_category!='A'") or die(mysqli_error());
 	$row = $fetch_rows->fetch_array();
 
 	$response = array();
@@ -25,6 +25,7 @@ if(isset($data->username) && !empty($data->username) ){
 
 		$response['user_id'] = $row['user_id'];
 		$response['user_category'] = $row['user_category'];
+		$response['user_fullname'] = $row['user_fullname'];
 		$response['response'] = 1;
 
 	}else{

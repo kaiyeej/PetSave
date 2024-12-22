@@ -25,8 +25,12 @@ $routes = array(
         'class_name' => 'Users',
         'has_detail' => 0
     ),
-    "post" => array(
-        'class_name' => 'Post',
+    "rehab" => array(
+        'class_name' => 'Rehab',
+        'has_detail' => 0
+    ),
+    "rescue" => array(
+        'class_name' => 'Rescues',
         'has_detail' => 0
     ),
 );

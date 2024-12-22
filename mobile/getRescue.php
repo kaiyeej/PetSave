@@ -16,8 +16,7 @@ $data = json_decode(file_get_contents("php://input"));
         $list['rescue_id'] = $row['rescue_id'];
         $list['location'] = $row['location'];
         $list['description'] = $row['description'];
-        $list['img_file'] = $row['img_file'];
-        $list['shelter_id'] = $row['shelter_id'];
+        $list['photo'] = $row['photo'];
         $list['date_added'] = date("F j, Y h:i A",strtotime($row['date_added']));
         array_push($response, $list);
     }
